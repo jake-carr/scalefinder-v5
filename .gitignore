@@ -1,0 +1,9 @@
+node_modules
+
+bundle.js
+
+package-lock.json
+
+styles/
+
+tailwind.css

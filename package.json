@@ -1,0 +1,34 @@
+{
+  "name": "scalefinder_v5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -w",
+    "start": "nodemon server",
+    "prod": "webpack --mode production",
+    "build:css": "NODE_ENV=development npx tailwindcss -i ./client/src/styles/tailwind.css -o ./client/dist/tailwind.css "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^15.12.3",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "autoprefixer": "^10.2.6",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "postcss-preset-env": "^6.7.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tailwindcss": "^2.2.2",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.4",
+    "webpack": "^5.39.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
