@@ -7,5 +7,11 @@ export const reducer = (state, action) => {
       [action.payload]: !state[action.payload],
     }
   }
+  if (action.type === actions.SET_VALUE) {
+    return {
+      ...state,
+      [action.setting]: action.payload,
+    }
+  }
   return state
 }

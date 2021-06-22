@@ -1,7 +1,7 @@
 export const sharps = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
 export const flats = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab']
 
-const parseNote = (n) => {
+export const parseNote = (n) => {
   if (n >= 24) return n - 24
   else if (n >= 12) return n - 12
   else return n

@@ -1,31 +1,14 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { listScales } from '../constants/scales'
-import { indexToString } from '../constants/utils'
+import React from 'react'
+import Settings from './layout/Settings'
+import Fretboard from './layout/Fretboard'
+import Footer from './layout/Footer'
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
-
-function App({ sharps, rootIndex, scaleIndex, toggle }) {
-  const scaleNames = listScales()
+export default function App() {
   return (
-    <div className="text-3xl mx-100 text-pink-200 font-bold">
-      {indexToString(rootIndex, sharps)}
-      {scaleNames[scaleIndex]}
-      <button onClick={() => toggle('sharps')}>click</button>
-    </div>
+    <>
+      <Settings />
+      <Fretboard />
+      <Footer />
+    </>
   )
-}
-
-function mapStateToProps(state) {
-  return {
-    sharps: state.sharps,
-    rootIndex: state.rootIndex,
-    scaleIndex: state.scaleIndex,
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    toggle: (name) => dispatch({ type: 'TOGGLE', payload: name }),
-  }
 }

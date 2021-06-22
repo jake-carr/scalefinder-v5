@@ -1,6 +1,14 @@
-import { TOGGLE } from './actionTypes'
+import { TOGGLE, SET_VALUE } from './actionTypes'
 
-export const toggle = (name) => ({
+// Booleans
+export const toggle = (field) => ({
   type: TOGGLE,
-  payload: name,
+  payload: field,
+})
+
+// Number, string or array
+export const setValue = (field, value) => ({
+  type: SET_VALUE,
+  setting: field,
+  payload: value,
 })
