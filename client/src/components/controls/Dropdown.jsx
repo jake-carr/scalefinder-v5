@@ -17,6 +17,7 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
     const p0 = toHex(primary0, dark)
     const p1 = toHex(primary1, dark)
     const t = toHex(text, dark)
+    // todo- different colors for degree notation
     return {
       ...theme.colors,
       primary: p0,
@@ -38,21 +39,19 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
   }
 
   const mapOptions = () => {
-    if (name === 'Degree Notation') {
-      return options.map((opt, i) => {
+    return options.map((option, i) => {
+      if (name === 'Degree Notation') {
         return {
-          value: opt,
-          label: opt,
+          value: option,
+          label: option,
         }
-      })
-    } else {
-      return options.map((opt, i) => {
+      } else {
         return {
           value: i,
-          label: opt,
+          label: option,
         }
-      })
-    }
+      }
+    })
   }
 
   const opts = mapOptions()
@@ -64,12 +63,11 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
     }
     if (name === 'Degree Notation') {
       return val
-    }
-    // TODO tuning
-    else {
+    } else {
       return scaleNames[val]
     }
   }
+
   const handleSelect = (e) => {
     action(e.value)
     changeSelection(e.label)
@@ -84,17 +82,24 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
       changeSelection(indexToString(val, sharps))
     } else if (name === 'Degree Notation') {
       changeSelection(val)
-      // TODO Tuning
     } else {
       changeSelection(scaleNames[val])
     }
   }, [val])
 
+  const setWidth = () => {
+    if (name === 'Root') {
+      return 'w-20'
+    } else if (name === 'Degree Notation') {
+      return 'w-40'
+    } else {
+      return 'w-56'
+    }
+  }
+
   return (
-    <div className="" onBlur={() => toggleOpen(false)}>
-      <label className="" htmlFor={name}>
-        {name.toUpperCase()}
-      </label>
+    <div className={`${setWidth()} mx-2`} onBlur={() => toggleOpen(false)}>
+      <label htmlFor={name}>{name.toUpperCase()}</label>
       <Select
         theme={(theme) => ({
           ...theme,
@@ -122,7 +127,7 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
         onChange={(e) => handleSelect(e)}
         options={opts}
         value={{
-          value: val,
+          value: displayValue(),
           label: selection,
         }}
       />

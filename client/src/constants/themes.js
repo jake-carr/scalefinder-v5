@@ -31,6 +31,10 @@ export const toHex = (tailwind, dark) => {
         return '#8B5CF6'
       case 'gray-100':
         return '#F3F4F6'
+      case 'pink-500':
+        return '#EC4899'
+      case 'pink-400':
+        return '#F472B6'
     }
   }
 }

@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { scales, createScale, listScales } from '../../constants/scales'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 import RectangularButton from '../controls/RectangularButton'
 import RoundButtonSmall from '../controls/RoundButtonSmall'
+import TuningDropdown from '../controls/TuningDropdown'
 import { getAlteration } from '../../constants/utils'
 import RoundButton from '../controls/RoundButton'
+import { tunings } from '../../constants/tunings'
 import Metronome from '../controls/Metronome'
 import Checkbox from '../controls/Checkbox'
 import Dropdown from '../controls/Dropdown'
@@ -27,10 +29,10 @@ function Settings({
   set,
   toggle,
 }) {
+  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   const noteOptions = getAlteration(sharps)
   const scaleOptions = listScales()
   const degreeOptions = ['Numeric', 'Roman numeral', 'Indian sargams']
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   const randomize = () => {
     set('rootIndex', Math.floor(Math.random() * 12))
@@ -83,12 +85,12 @@ function Settings({
           action={selectScale}
           val={scaleIndex}
           name={'Scale'}
-        />{' '}
+        />
         <RoundButtonSmall
           title="Information about this scale."
           action={() => toggle('infoModal')}
         />
-        [Tuning Dropdown ]{' '}
+        <TuningDropdown />
         <Stepper
           label="Strings"
           value={tuning.length}
