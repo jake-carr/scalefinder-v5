@@ -7,6 +7,7 @@ import RoundButtonSmall from '../controls/RoundButtonSmall'
 import { getAlteration } from '../../constants/utils'
 import RoundButton from '../controls/RoundButton'
 import Metronome from '../controls/Metronome'
+import Checkbox from '../controls/Checkbox'
 import Dropdown from '../controls/Dropdown'
 import Stepper from '../controls/Stepper'
 
@@ -69,7 +70,6 @@ function Settings({
 
   return (
     <main className={`w-full text-${theme.text}`}>
-      {/* <Metronome /> */}
       <div className={`flex flex-row bg-${theme.bg0}`}>
         <RoundButton title="Randomize root and scale." action={randomize} />
         <Dropdown
@@ -101,7 +101,7 @@ function Settings({
           title="Toggle between light and dark theme."
           action={() => toggle('darkTheme')}
         />
-        [Remember] (Right)
+        <Checkbox />
       </div>
       <div className={`flex flex-row bg-${theme.bg1}`}>
         <RoundButtonSmall
@@ -130,9 +130,8 @@ function Settings({
           action={selectDegreeNotation}
           val={degreeNotation}
           name={'Degree Notation'}
-        />{' '}
-        (Space) Metronome (Right)
-        {rootIndex}
+        />
+        <Metronome />
       </div>
     </main>
   )

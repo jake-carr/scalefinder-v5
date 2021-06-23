@@ -1,29 +1,32 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { saveLocally } from '../constants/storage'
+import { saveInLocalStorage } from '../../constants/storage'
+import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checkbox)
 
-function Checkbox({ rememberSettings, toggle }) {
+function Checkbox({ rememberSettings, toggle, darkTheme }) {
+  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+
   const handleToggle = () => {
     toggle('rememberSettings')
   }
 
   useEffect(() => {
-    if (!rememberSettings) saveLocally('saveSettings', false)
+    if (!rememberSettings) saveInLocalStorage('saveSettings', false)
   }, [rememberSettings])
 
   return (
-    <div className="checkbox">
+    // className todo
+    <div>
       <input
         name="saveSettings"
         type="checkbox"
-        checked={on}
+        checked={rememberSettings}
         onChange={() => handleToggle()}
       />
       <label
-        className="checkbox-label"
-        style={{ color: theme.text }}
+        className={`text-${theme.text}`}
         htmlFor="saveSettings"
         onClick={() => handleToggle()}
       >
@@ -36,6 +39,7 @@ function Checkbox({ rememberSettings, toggle }) {
 function mapStateToProps(state) {
   return {
     rememberSettings: state.rememberSettings,
+    darkTheme: state.darkTheme,
   }
 }
 
