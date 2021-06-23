@@ -15,6 +15,7 @@ const defaultSettings = {
   tuning: tunings[0].values, // Standard
   frets: 12,
   tempo: 120, // Metronome
+  infoModal: false,
 }
 
 const store = createStore(reducer, defaultSettings)

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { scales, createScale, listScales } from '../../constants/scales'
 import { getAlteration } from '../../constants/utils'
 import RectangularButton from '../controls/RectangularButton'
+import RoundButtonSmall from '../controls/RoundButtonSmall'
 import RoundButton from '../controls/RoundButton'
 import Metronome from '../controls/Metronome'
 import Dropdown from '../controls/Dropdown'
@@ -28,7 +29,7 @@ function Settings({
   const degreeOptions = ['Numeric', 'Roman numeral', 'Indian sargams']
 
   const randomize = () => {
-    set('noteIndex', Math.floor(Math.random() * 12))
+    set('rootIndex', Math.floor(Math.random() * 12))
     set('scaleIndex', Math.floor(Math.random() * scales.length))
   }
 
@@ -61,10 +62,22 @@ function Settings({
           val={scaleIndex}
           name={'Scale'}
         />{' '}
-        [i button below scale] - Tuning Dropdown - Fret and String steppers (Space) Theme
-        and Remember (Right)
+        <RoundButtonSmall
+          title="Information about this scale."
+          action={() => toggle('infoModal')}
+        />
+        [Tuning Dropdown ] [Fret and String steppers] (Space){' '}
+        <RoundButton
+          title="Toggle between light and dark theme."
+          action={() => toggle('darkTheme')}
+        />
+        [Remember] (Right)
       </div>
       <div className="settings-lower">
+        <RoundButtonSmall
+          title="Toggle preferred alteration between sharps and flats."
+          action={() => toggle('sharps')}
+        />
         <RectangularButton
           title="Highlight root notes"
           action={() => toggle('highlightRoots')}
@@ -107,6 +120,7 @@ function mapStateToProps(state) {
     degreeNotation: state.degreeNotation,
     tuning: state.tuning,
     frets: state.frets,
+    infoModal: state.infoModal,
   }
 }
 
