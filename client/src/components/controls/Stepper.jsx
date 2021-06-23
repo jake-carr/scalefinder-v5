@@ -14,14 +14,14 @@ export default function Stepper({ label, value, action, min, max }) {
   }
 
   return (
-    <div className="">
-      <label className="">{label.toUpperCase()}</label>
-      <div className="">
-        <button className="" onClick={decrement}>
+    <div className="flex flex-col mx-2">
+      <label>{label.toUpperCase()}</label>
+      <div className="flex flex-row justify-center">
+        <button className="px-1" onClick={decrement}>
           -
         </button>
-        <div className="">{value}</div>
-        <button className="" onClick={increment}>
+        <div className="px-1">{value}</div>
+        <button className="px-1" onClick={increment}>
           +
         </button>
       </div>

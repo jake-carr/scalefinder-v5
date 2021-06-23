@@ -71,8 +71,10 @@ function Settings({
   }
 
   return (
-    <main className={`w-full text-${theme.text}`}>
-      <div className={`flex flex-row bg-${theme.bg0}`}>
+    <main
+      className={`w-full text-${theme.text} bg-gradient-to-b from-${theme.bg0} via-${theme.bg1} to-${theme.bg2}`}
+    >
+      <div className="flex flex-row p-1">
         <RoundButton title="Randomize root and scale." action={randomize} />
         <Dropdown
           options={noteOptions}
@@ -105,7 +107,7 @@ function Settings({
         />
         <Checkbox />
       </div>
-      <div className={`flex flex-row bg-${theme.bg1}`}>
+      <div className="flex flex-row">
         <RoundButtonSmall
           title="Toggle preferred alteration between sharps and flats."
           action={() => toggle('sharps')}
