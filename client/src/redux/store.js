@@ -14,6 +14,7 @@ const defaultSettings = {
   degreeNotation: 'Numeric',
   tuning: tunings[0].values, // Standard
   frets: 12,
+  tempo: 120, // Metronome
 }
 
 const store = createStore(reducer, defaultSettings)

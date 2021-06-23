@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { scales, createScale, listScales } from '../../constants/scales'
 import RoundButton from '../controls/RoundButton'
+import Metronome from '../controls/Metronome'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)
 
@@ -26,6 +27,7 @@ function Settings({
   }
   return (
     <main>
+      <Metronome />
       <h2>{sharps ? 'b' : '#'}</h2>
       <div className="settings-upper">
         <RoundButton title="Randomize root and scale." action={randomize} />
