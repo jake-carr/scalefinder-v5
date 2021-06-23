@@ -8,11 +8,10 @@ function Fretboard({ tuning }) {
   const renderGuitarStrings = () => {
     return tuning.map((note, i) => {
       return (
-        <div>a guitar string</div>
-        // <GuitarString
-        //   stringIndex={i} // index within tuning
-        //   key={i}
-        // />
+        <GuitarString
+          stringIndex={i} // index within tuning
+          key={i}
+        />
       )
     })
   }

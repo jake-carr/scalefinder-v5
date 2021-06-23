@@ -16,6 +16,7 @@ const defaultSettings = {
   frets: 12,
   tempo: 120, // Metronome
   infoModal: false,
+  currentScale: [],
 }
 
 const store = createStore(reducer, defaultSettings)
