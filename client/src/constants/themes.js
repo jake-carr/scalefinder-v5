@@ -20,3 +20,17 @@ export const DARK_THEME = {
   hover0: 'gray-700', // bg color on button hover
   hover1: 'coolGray-200', // text and border color on button hover
 }
+
+// todo
+export const toHex = (tailwind, dark) => {
+  if (dark) {
+    switch (tailwind) {
+      case 'purple-600':
+        return '#7C3AED'
+      case 'purple-500':
+        return '#8B5CF6'
+      case 'gray-100':
+        return '#F3F4F6'
+    }
+  }
+}

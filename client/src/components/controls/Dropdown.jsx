@@ -2,34 +2,39 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
 import { listScales } from '../../constants/scales'
+import { LIGHT_THEME, DARK_THEME, toHex } from '../../constants/themes'
 import Select from 'react-select'
 
 export default connect(mapStateToProps, null)(Dropdown)
 
-function Dropdown({ options, action, val, name, sharps }) {
+function Dropdown({ options, action, val, name, sharps, darkTheme }) {
   const [open, toggleOpen] = useState(false)
   const [selection, changeSelection] = useState('')
 
-  // TODO
-  const createTheme = (theme) => {
-    // return {
-    //   ...theme.colors,
-    //   primary: // TODO
-    //   primary25: // TODO,
-    //   primary50: // TODO,
-    //   primary75: // TODO,
-    //   neutral0: // TODO
-    //   neutral5: // TODO
-    //   neutral10: // TODO,
-    //   neutral20: // TODO,
-    //   neutral30: // TODO,
-    //   neutral40: // TODO,
-    //   neutral50: // TODO,
-    //   neutral60: // TODO,
-    //   neutral70: // TODO,
-    //   neutral80: // TODO,
-    //   neutral90: // TODO,
-    // };
+  const createTheme = (theme, dark) => {
+    const scheme = dark ? DARK_THEME : LIGHT_THEME
+    const { primary0, primary1, text } = scheme
+    const p0 = toHex(primary0, dark)
+    const p1 = toHex(primary1, dark)
+    const t = toHex(text, dark)
+    return {
+      ...theme.colors,
+      primary: p0,
+      primary25: p1,
+      primary50: t,
+      primary75: p1,
+      neutral0: p0,
+      neutral5: p0,
+      neutral10: p1,
+      neutral20: p1,
+      neutral30: t,
+      neutral40: t,
+      neutral50: t,
+      neutral60: t,
+      neutral70: t,
+      neutral80: t,
+      neutral90: t,
+    }
   }
 
   const mapOptions = () => {
@@ -91,10 +96,10 @@ function Dropdown({ options, action, val, name, sharps }) {
         {name.toUpperCase()}
       </label>
       <Select
-        // theme={(theme) => ({
-        //   ...theme,
-        //   colors: createTheme(theme),
-        // })}
+        theme={(theme) => ({
+          ...theme,
+          colors: createTheme(theme, darkTheme),
+        })}
         styles={{
           menu: (provided) => ({
             ...provided,
@@ -128,5 +133,6 @@ function Dropdown({ options, action, val, name, sharps }) {
 function mapStateToProps(state) {
   return {
     sharps: state.sharps,
+    darkTheme: state.darkTheme,
   }
 }
