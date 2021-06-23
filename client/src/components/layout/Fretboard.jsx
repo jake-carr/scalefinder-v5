@@ -1,10 +1,12 @@
-import React, { useState, useContext } from 'react'
-import GuitarString from '../display/GuitarString.jsx'
+import React from 'react'
 import { connect } from 'react-redux'
+import GuitarString from '../display/GuitarString.jsx'
+import { DARK_THEME, LIGHT_THEME } from '../../constants/themes'
 
 export default connect(mapStateToProps, null)(Fretboard)
 
-function Fretboard({ tuning }) {
+function Fretboard({ tuning, darkTheme }) {
+  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   const renderGuitarStrings = () => {
     return tuning.map((note, i) => {
       return (
@@ -16,11 +18,16 @@ function Fretboard({ tuning }) {
     })
   }
 
-  return <div className="fretboard">{renderGuitarStrings()}</div>
+  return (
+    <div className={`w-full p-12 flex flex-col bg-${theme.bg2}`}>
+      {renderGuitarStrings()}
+    </div>
+  )
 }
 
 function mapStateToProps(state) {
   return {
     tuning: state.tuning,
+    darkTheme: state.darkTheme,
   }
 }

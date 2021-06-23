@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { scales, createScale, listScales } from '../../constants/scales'
-import { getAlteration } from '../../constants/utils'
+import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 import RectangularButton from '../controls/RectangularButton'
 import RoundButtonSmall from '../controls/RoundButtonSmall'
+import { getAlteration } from '../../constants/utils'
 import RoundButton from '../controls/RoundButton'
 import Metronome from '../controls/Metronome'
 import Dropdown from '../controls/Dropdown'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import Stepper from '../controls/Stepper'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)
 
@@ -47,10 +48,29 @@ function Settings({
     set('degreeNotation', notation)
   }
 
+  const changeFretCount = (n) => {
+    set('frets', n)
+  }
+
+  const changeStringCount = (strings) => {
+    let update = [...tuning]
+    if (strings < tuning.length) update.length = strings
+    else if (strings > tuning.length) {
+      for (let i = strings - tuning.length - 1; i >= 0; i--) {
+        let note = 7 // default note E
+        if (i + tuning.length === 4) note = 0 // 5th string, A
+        if (i + tuning.length === 6) note = 2 // 7th string, B
+        if (i + tuning.length === 7) note = 9 // 8th string, F#
+        update.push(note)
+      }
+    }
+    set('tuning', update)
+  }
+
   return (
     <main className={`w-full text-${theme.text}`}>
       {/* <Metronome /> */}
-      <div className={`bg-${theme.bg0}`}>
+      <div className={`flex flex-row bg-${theme.bg0}`}>
         <RoundButton title="Randomize root and scale." action={randomize} />
         <Dropdown
           options={noteOptions}
@@ -68,14 +88,22 @@ function Settings({
           title="Information about this scale."
           action={() => toggle('infoModal')}
         />
-        [Tuning Dropdown ] [Fret and String steppers] (Space){' '}
+        [Tuning Dropdown ]{' '}
+        <Stepper
+          label="Strings"
+          value={tuning.length}
+          action={changeStringCount}
+          min={4}
+          max={12}
+        />
+        <Stepper label="Frets" value={frets} action={changeFretCount} min={12} max={24} />
         <RoundButton
           title="Toggle between light and dark theme."
           action={() => toggle('darkTheme')}
         />
         [Remember] (Right)
       </div>
-      <div className={`bg-${theme.bg1}`}>
+      <div className={`flex flex-row bg-${theme.bg1}`}>
         <RoundButtonSmall
           title="Toggle preferred alteration between sharps and flats."
           action={() => toggle('sharps')}
