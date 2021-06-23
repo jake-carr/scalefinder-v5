@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { scales, createScale, listScales } from '../../constants/scales'
 import { getAlteration } from '../../constants/utils'
+import RectangularButton from '../controls/RectangularButton'
 import RoundButton from '../controls/RoundButton'
 import Metronome from '../controls/Metronome'
 import Dropdown from '../controls/Dropdown'
@@ -64,7 +65,23 @@ function Settings({
         and Remember (Right)
       </div>
       <div className="settings-lower">
-        (Left) Alt - Highlights - Labels - Degrees -{' '}
+        <RectangularButton
+          title="Highlight root notes"
+          action={() => toggle('highlightRoots')}
+          value={highlightRoots}
+          condition={'highlightRoots'}
+        />{' '}
+        <RectangularButton
+          title={labelAllNotes ? 'Label scale only' : 'Label all notes'}
+          action={() => toggle('labelAllNotes')}
+          value={labelAllNotes}
+        />{' '}
+        <RectangularButton
+          title={degrees ? 'Hide scale degrees' : 'Show scale degrees'}
+          action={() => toggle('degrees')}
+          value={degrees}
+          condition={'degrees'}
+        />
         <Dropdown
           options={degreeOptions}
           action={selectDegreeNotation}
@@ -73,7 +90,6 @@ function Settings({
         />{' '}
         (Space) Metronome (Right)
         {rootIndex}
-        <button onClick={() => set('rootIndex', 8)}>aaa</button>
       </div>
     </main>
   )
