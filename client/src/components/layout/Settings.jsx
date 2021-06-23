@@ -7,6 +7,7 @@ import RoundButtonSmall from '../controls/RoundButtonSmall'
 import RoundButton from '../controls/RoundButton'
 import Metronome from '../controls/Metronome'
 import Dropdown from '../controls/Dropdown'
+import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)
 
@@ -27,6 +28,7 @@ function Settings({
   const noteOptions = getAlteration(sharps)
   const scaleOptions = listScales()
   const degreeOptions = ['Numeric', 'Roman numeral', 'Indian sargams']
+  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   const randomize = () => {
     set('rootIndex', Math.floor(Math.random() * 12))
@@ -46,9 +48,9 @@ function Settings({
   }
 
   return (
-    <main>
+    <main className={`w-full text-${theme.text}`}>
       {/* <Metronome /> */}
-      <div className="settings-upper">
+      <div className={`bg-${theme.bg0}`}>
         <RoundButton title="Randomize root and scale." action={randomize} />
         <Dropdown
           options={noteOptions}
@@ -73,7 +75,7 @@ function Settings({
         />
         [Remember] (Right)
       </div>
-      <div className="settings-lower">
+      <div className={`bg-${theme.bg1}`}>
         <RoundButtonSmall
           title="Toggle preferred alteration between sharps and flats."
           action={() => toggle('sharps')}
