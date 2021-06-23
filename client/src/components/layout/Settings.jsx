@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { scales, createScale, listScales } from '../../constants/scales'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
@@ -69,6 +69,10 @@ function Settings({
     }
     set('tuning', update)
   }
+
+  useEffect(() => {
+    set('currentScale', createScale(rootIndex, scales[scaleIndex].pattern))
+  }, [rootIndex, scaleIndex])
 
   return (
     <main
@@ -154,6 +158,7 @@ function mapStateToProps(state) {
     tuning: state.tuning,
     frets: state.frets,
     infoModal: state.infoModal,
+    currentScale: state.currentScale,
   }
 }
 

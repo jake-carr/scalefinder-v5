@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
+import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
 export default connect(mapStateToProps, null)(Fret)
 
@@ -8,20 +9,27 @@ function Fret({
   note,
   sharps,
   allNotes,
-  highlight,
+  highlightRoots,
   degrees,
   degreeNotation,
   label,
   currentScale,
+  darkTheme,
 }) {
-  const colorizeFret = () => {
-    if (currentScale[0] === note && highlight) {
-      // highlight color
+  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+
+  const colorFret = () => {
+    if (currentScale[0] === note && highlightRoots) {
+      return theme.secondary0
     } else if (currentScale.includes(note)) {
-      // primary color
+      return theme.primary0
     } else {
-      // empty color
+      return theme.bg3
     }
+  }
+
+  const colorText = () => {
+    return currentScale[0] === note && highlightRoots ? theme.bg0 : theme.text
   }
 
   // const displayDegree = () => {
@@ -32,8 +40,10 @@ function Fret({
   // };
 
   return (
-    <div>
-      {indexToString(note, sharps)}
+    <div
+      className={`w-16 h-12 pt-3 rounded text-center text-${colorText()} bg-${colorFret()} duration-300 mx-1`}
+    >
+      <span>{indexToString(note, sharps)}</span>
       {/* degree and label logic */}
     </div>
   )
@@ -47,5 +57,6 @@ function mapStateToProps(state) {
     degrees: state.degrees,
     degreeNotation: state.degreeNotation,
     currentScale: state.currentScale,
+    darkTheme: state.darkTheme,
   }
 }
