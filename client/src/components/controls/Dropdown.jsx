@@ -13,43 +13,58 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
 
   const createTheme = (theme, dark) => {
     const scheme = dark ? DARK_THEME : LIGHT_THEME
-    const { primary0, primary1, text } = scheme
+    const { primary0, primary1, text, tertiary0, tertiary1 } = scheme
+    const txt = toHex(text, dark)
     const p0 = toHex(primary0, dark)
     const p1 = toHex(primary1, dark)
-    const t = toHex(text, dark)
-    // todo- different colors for degree notation
-    return {
-      ...theme.colors,
-      primary: p0,
-      primary25: p1,
-      primary50: t,
-      primary75: p1,
-      neutral0: p0,
-      neutral5: p0,
-      neutral10: p1,
-      neutral20: p1,
-      neutral30: t,
-      neutral40: t,
-      neutral50: t,
-      neutral60: t,
-      neutral70: t,
-      neutral80: t,
-      neutral90: t,
+    const t0 = toHex(tertiary0, dark)
+    const t1 = toHex(tertiary1, dark)
+    if (name === 'Degree Notation') {
+      return {
+        ...theme.colors,
+        primary: t0,
+        primary25: t1,
+        primary50: txt,
+        primary75: t1,
+        neutral0: t0,
+        neutral5: t0,
+        neutral10: t1,
+        neutral20: t1,
+        neutral30: txt,
+        neutral40: txt,
+        neutral50: txt,
+        neutral60: txt,
+        neutral70: txt,
+        neutral80: txt,
+        neutral90: txt,
+      }
+    } else {
+      return {
+        ...theme.colors,
+        primary: p0,
+        primary25: p1,
+        primary50: txt,
+        primary75: p1,
+        neutral0: p0,
+        neutral5: p0,
+        neutral10: p1,
+        neutral20: p1,
+        neutral30: txt,
+        neutral40: txt,
+        neutral50: txt,
+        neutral60: txt,
+        neutral70: txt,
+        neutral80: txt,
+        neutral90: txt,
+      }
     }
   }
 
   const mapOptions = () => {
     return options.map((option, i) => {
-      if (name === 'Degree Notation') {
-        return {
-          value: option,
-          label: option,
-        }
-      } else {
-        return {
-          value: i,
-          label: option,
-        }
+      return {
+        value: i,
+        label: option,
       }
     })
   }
@@ -69,7 +84,11 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
   }
 
   const handleSelect = (e) => {
-    action(e.value)
+    if (name === 'Degree Notation') {
+      action(options[e.value])
+    } else {
+      action(e.value)
+    }
     changeSelection(e.label)
   }
 

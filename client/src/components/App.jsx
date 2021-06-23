@@ -5,10 +5,10 @@ import Footer from './layout/Footer'
 
 export default function App() {
   return (
-    <>
+    <div className="w-screen h-screen">
       <Settings />
       <Fretboard />
       <Footer />
-    </>
+    </div>
   )
 }

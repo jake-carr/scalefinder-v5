@@ -13,8 +13,8 @@ export const DARK_THEME = {
   primary1: 'purple-500',
   secondary0: 'green-400', // highlighted frets
   secondary1: 'green-300',
-  tertiary0: 'blue-500', // degrees, degree notation selector
-  tertiary1: 'blue-400',
+  tertiary0: 'blue-600', // degrees, degree notation selector
+  tertiary1: 'blue-500',
   tuning0: 'pink-500', // tuning selector, indivdual tuners
   tuning1: 'pink-400',
   hover0: 'gray-700', // bg color on button hover
@@ -35,6 +35,10 @@ export const toHex = (tailwind, dark) => {
         return '#EC4899'
       case 'pink-400':
         return '#F472B6'
+      case 'blue-600':
+        return '#2563EB'
+      case 'blue-500':
+        return '#3B82F6'
     }
   }
 }

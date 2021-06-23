@@ -19,7 +19,7 @@ function Fretboard({ tuning, darkTheme }) {
   }
 
   return (
-    <div className={`w-full p-12 flex flex-col bg-${theme.bg2}`}>
+    <div className={`w-full min-h-3/5 max-h-4/5 p-4 flex flex-col bg-${theme.bg2}`}>
       {renderGuitarStrings()}
     </div>
   )

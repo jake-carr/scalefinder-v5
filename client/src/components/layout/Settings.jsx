@@ -75,71 +75,97 @@ function Settings({
   }, [rootIndex, scaleIndex])
 
   return (
-    <main
-      className={`w-full text-${theme.text} bg-gradient-to-b from-${theme.bg0} via-${theme.bg1} to-${theme.bg2}`}
-    >
-      <div className="flex flex-row p-1">
-        <RoundButton title="Randomize root and scale." action={randomize} />
-        <Dropdown
-          options={noteOptions}
-          action={selectNote}
-          val={rootIndex}
-          name={'Root'}
-        />
-        <Dropdown
-          options={scaleOptions}
-          action={selectScale}
-          val={scaleIndex}
-          name={'Scale'}
-        />
-        <RoundButtonSmall
-          title="Information about this scale."
-          action={() => toggle('infoModal')}
-        />
-        <TuningDropdown />
-        <Stepper
-          label="Strings"
-          value={tuning.length}
-          action={changeStringCount}
-          min={4}
-          max={12}
-        />
-        <Stepper label="Frets" value={frets} action={changeFretCount} min={12} max={24} />
-        <RoundButton
-          title="Toggle between light and dark theme."
-          action={() => toggle('darkTheme')}
-        />
-        <Checkbox />
+    <main className={`w-full text-base text-${theme.text} h-1/4`}>
+      <div
+        className={`flex flex-row justify-around bg-${theme.bg0} h-1/2 py-8 content-center items-center`}
+      >
+        <div className="inline-flex flex-row justify-left">
+          <RoundButton
+            title="Randomize root and scale."
+            action={randomize}
+            margin={'my-6 ml-2'}
+          />
+          <Dropdown
+            options={noteOptions}
+            action={selectNote}
+            val={rootIndex}
+            name={'Root'}
+          />
+          <Dropdown
+            options={scaleOptions}
+            action={selectScale}
+            val={scaleIndex}
+            name={'Scale'}
+          />
+          <RoundButtonSmall
+            title="Information about this scale."
+            action={() => toggle('infoModal')}
+            margin={'mx-1 my-7'}
+          />
+          <TuningDropdown />
+          <Stepper
+            label="Strings"
+            value={tuning.length}
+            action={changeStringCount}
+            min={4}
+            max={12}
+          />
+          <Stepper
+            label="Frets"
+            value={frets}
+            action={changeFretCount}
+            min={12}
+            max={24}
+          />
+        </div>
+        <div className="flex flex-row justify-right py-2 px-2">
+          <Checkbox />
+          <RoundButton
+            title="Toggle between light and dark theme."
+            action={() => toggle('darkTheme')}
+          />
+        </div>
       </div>
-      <div className="flex flex-row">
-        <RoundButtonSmall
-          title="Toggle preferred alteration between sharps and flats."
-          action={() => toggle('sharps')}
-        />
-        <RectangularButton
-          title="Highlight root notes"
-          action={() => toggle('highlightRoots')}
-          value={highlightRoots}
-          condition={'highlightRoots'}
-        />{' '}
-        <RectangularButton
-          title={labelAllNotes ? 'Label scale only' : 'Label all notes'}
-          action={() => toggle('labelAllNotes')}
-          value={labelAllNotes}
-        />{' '}
-        <RectangularButton
-          title={degrees ? 'Hide scale degrees' : 'Show scale degrees'}
-          action={() => toggle('degrees')}
-          value={degrees}
-          condition={'degrees'}
-        />
-        <Dropdown
-          options={degreeOptions}
-          action={selectDegreeNotation}
-          val={degreeNotation}
-          name={'Degree Notation'}
-        />
-        <Metronome />
+      <div
+        className={`flex flex-row justify-around bg-${theme.bg1} h-1/2 py-8 content-center items-center`}
+      >
+        <div className="flex flex-row justify-left">
+          <RoundButtonSmall
+            title="Toggle preferred alteration between sharps and flats."
+            action={() => toggle('sharps')}
+            margin={'my-2 mx-4'}
+          />
+          <RectangularButton
+            title="Highlight root notes"
+            action={() => toggle('highlightRoots')}
+            value={highlightRoots}
+            condition={'highlightRoots'}
+          />
+          <RectangularButton
+            title={labelAllNotes ? 'Label scale only' : 'Label all notes'}
+            action={() => toggle('labelAllNotes')}
+            value={labelAllNotes}
+          />
+          <RectangularButton
+            title={degrees ? 'Hide scale degrees' : 'Show scale degrees'}
+            action={() => toggle('degrees')}
+            value={degrees}
+            condition={'degrees'}
+          />
+          {degrees ? (
+            <Dropdown
+              options={degreeOptions}
+              action={selectDegreeNotation}
+              val={degreeNotation}
+              name={'Degree Notation'}
+            />
+          ) : (
+            <div>placeholder</div>
+          )}
+        </div>
+        <div className="flex flex-row justify-right">
+          <Metronome />
+        </div>
       </div>
     </main>
   )
