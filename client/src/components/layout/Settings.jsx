@@ -75,9 +75,9 @@ function Settings({
   }, [rootIndex, scaleIndex])
 
   return (
-    <main className={`w-full text-base text-${theme.text} h-1/4`}>
+    <main className={`w-full text-base h-1/4`} style={{color: theme.text}}>
       <div
-        className={`flex flex-row justify-around bg-${theme.bg0} h-1/2 py-8 content-center items-center`}
+        className={`flex flex-row justify-around h-1/2 py-8 content-center items-center`} style={{backgroundColor: theme.bg0}}
       >
         <div className="inline-flex flex-row justify-left">
           <RoundButton
@@ -127,7 +127,7 @@ function Settings({
         </div>
       </div>
       <div
-        className={`flex flex-row justify-around bg-${theme.bg1} h-1/2 py-8 content-center items-center`}
+        className={`flex flex-row justify-around  h-1/2 py-8 content-center items-center`} style={{backgroundColor: theme.bg1}}
       >
         <div className="flex flex-row justify-left">
           <RoundButtonSmall

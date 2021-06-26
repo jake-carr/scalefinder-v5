@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
 import { listScales } from '../../constants/scales'
-import { LIGHT_THEME, DARK_THEME, toHex } from '../../constants/themes'
+import { LIGHT_THEME, DARK_THEME  } from '../../constants/themes'
 import Select from 'react-select'
 
 export default connect(mapStateToProps, null)(Dropdown)
@@ -11,51 +11,46 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
   const [open, toggleOpen] = useState(false)
   const [selection, changeSelection] = useState('')
 
-  const createTheme = (theme, dark) => {
-    const scheme = dark ? DARK_THEME : LIGHT_THEME
+  const createTheme = (theme) => {
+    const scheme = darkTheme ? DARK_THEME : LIGHT_THEME
     const { primary0, primary1, text, tertiary0, tertiary1 } = scheme
-    const txt = toHex(text, dark)
-    const p0 = toHex(primary0, dark)
-    const p1 = toHex(primary1, dark)
-    const t0 = toHex(tertiary0, dark)
-    const t1 = toHex(tertiary1, dark)
     if (name === 'Degree Notation') {
       return {
         ...theme.colors,
-        primary: t0,
-        primary25: t1,
-        primary50: txt,
-        primary75: t1,
-        neutral0: t0,
-        neutral5: t0,
-        neutral10: t1,
-        neutral20: t1,
-        neutral30: txt,
-        neutral40: txt,
-        neutral50: txt,
-        neutral60: txt,
-        neutral70: txt,
-        neutral80: txt,
-        neutral90: txt,
+        primary: tertiary0,
+        primary25: tertiary1,
+        primary50: text,
+        primary75: tertiary1,
+        neutral0: tertiary0,
+        neutral5: tertiary0,
+        neutral10: tertiary1,
+        neutral20: tertiary1,
+        neutral30: text,
+        neutral40: text,
+        neutral50: text,
+        neutral60: text,
+        neutral70: text,
+        neutral80: text,
+        neutral90: text,
       }
     } else {
       return {
         ...theme.colors,
-        primary: p0,
-        primary25: p1,
-        primary50: txt,
-        primary75: p1,
-        neutral0: p0,
-        neutral5: p0,
-        neutral10: p1,
-        neutral20: p1,
-        neutral30: txt,
-        neutral40: txt,
-        neutral50: txt,
-        neutral60: txt,
-        neutral70: txt,
-        neutral80: txt,
-        neutral90: txt,
+        primary: primary0,
+        primary25: primary1,
+        primary50: text,
+        primary75: primary1,
+        neutral0: primary0,
+        neutral5: primary0,
+        neutral10: primary1,
+        neutral20: primary1,
+        neutral30: text,
+        neutral40: text,
+        neutral50: text,
+        neutral60: text,
+        neutral70: text,
+        neutral80: text,
+        neutral90: text,
       }
     }
   }
@@ -122,7 +117,7 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
       <Select
         theme={(theme) => ({
           ...theme,
-          colors: createTheme(theme, darkTheme),
+          colors: createTheme(theme),
         })}
         styles={{
           menu: (provided) => ({

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Select from 'react-select'
 import { tunings } from '../../constants/tunings'
-import { LIGHT_THEME, DARK_THEME, toHex } from '../../constants/themes'
+import { LIGHT_THEME, DARK_THEME  } from '../../constants/themes'
 
 export default connect(mapStateToProps, mapDispatchToProps)(TuningDropdown)
 
@@ -23,28 +23,25 @@ function TuningDropdown({ tuning, set, darkTheme }) {
     set('tuning', values[index]) // set('tuning')
   }
 
-  const createTheme = (theme, dark) => {
-    const scheme = dark ? DARK_THEME : LIGHT_THEME
+  const createTheme = (theme) => {
+    const scheme = darkTheme  ? DARK_THEME : LIGHT_THEME
     const { tuning0, tuning1, text } = scheme
-    const shade1 = toHex(tuning0, dark)
-    const shade2 = toHex(tuning1, dark)
-    const t = toHex(text, dark)
     return {
       ...theme.colors,
-      primary: shade1,
-      primary25: shade2,
-      primary50: shade2,
-      neutral0: shade1,
-      neutral5: shade2,
-      neutral10: shade2,
-      neutral20: shade2,
-      neutral30: t,
-      neutral40: t,
-      neutral50: t,
-      neutral60: t,
-      neutral70: t,
-      neutral80: t,
-      neutral90: t,
+      primary: tuning0,
+      primary25: tuning1,
+      primary50: tuning1,
+      neutral0: tuning0,
+      neutral5: tuning1,
+      neutral10: tuning1,
+      neutral20: tuning1,
+      neutral30: text,
+      neutral40: text,
+      neutral50: text,
+      neutral60: text,
+      neutral70: text,
+      neutral80: text,
+      neutral90: text,
     }
   }
 
@@ -72,7 +69,7 @@ function TuningDropdown({ tuning, set, darkTheme }) {
       <Select
         theme={(theme) => ({
           ...theme,
-          colors: createTheme(theme, darkTheme),
+          colors: createTheme(theme),
         })}
         styles={{
           option: (styles) => ({

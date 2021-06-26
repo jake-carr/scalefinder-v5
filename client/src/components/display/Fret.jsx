@@ -33,13 +33,14 @@ function Fret({
   }
 
   return (
-    <div className={`w-16 h-12 rounded bg-${colorFret()} duration-300 mx-1`}>
+    <div className={`w-16 h-12 duration-300 rounded mx-1`} style={{backgroundColor: colorFret()}}>
       <div
-        className={`relative absolute top-0 left-1 h-0 text-sm text-${theme.tertiary1}`}
+        className={`relative absolute top-0 left-1 h-0 text-sm`}
+        style={{color: theme.tertiary1}}
       >
         {getDegree(currentScale.indexOf(note), degreeNotation)}
       </div>
-      <div className={`pt-3 text-center text-base text-${colorText()}`}>
+      <div className={`pt-3 text-center text-base`} style={{color: colorText()}}>
         {indexToString(note, sharps)}
       </div>
       {/* label bottom frets */}
