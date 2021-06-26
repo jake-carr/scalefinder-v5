@@ -17,7 +17,7 @@ function Fret({
   darkTheme,
 }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
-
+  // https://tailwindcss.com/docs/object-position use o-p for placing degrees/notes within
   const colorFret = () => {
     if (currentScale[0] === note && highlightRoots) {
       return theme.secondary0

@@ -2,6 +2,7 @@ import React from 'react'
 import Fret from './Fret'
 import { connect } from 'react-redux'
 import { parseNote } from '../../constants/utils'
+import Tuner from '../controls/Tuner'
 
 export default connect(mapStateToProps, null)(GuitarString)
 
@@ -22,7 +23,7 @@ function GuitarString({ stringIndex, frets, tuning }) {
 
   return (
     <div className="w-full flex flex-row justify-center my-1">
-      {/* <Tuner stringIndex={stringIndex}/> */}
+      <Tuner stringIndex={stringIndex} />
       {renderFrets()}
     </div>
   )
