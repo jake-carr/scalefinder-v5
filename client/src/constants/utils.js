@@ -15,4 +15,17 @@ export const indexToString = (index, isSharps) => {
   return isSharps ? sharps[index] : flats[index]
 }
 
-// TODO: degrees
+const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']
+const sargams = ['Sa', 'Re', 'Ga', 'Ma', 'Pa', 'Dha', 'Ni']
+
+export const getDegree = (i, type) => {
+  if (type === 'Numeric') {
+    return i + 1
+  }
+  if (type === 'Roman numeral') {
+    return numerals[i]
+  }
+  if (type === 'Indian sargams') {
+    return sargams[i]
+  }
+}

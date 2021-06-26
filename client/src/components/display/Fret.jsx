@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { indexToString } from '../../constants/utils'
+import { indexToString, getDegree } from '../../constants/utils'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
 export default connect(mapStateToProps, null)(Fret)
@@ -17,7 +17,7 @@ function Fret({
   darkTheme,
 }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
-  // https://tailwindcss.com/docs/object-position use o-p for placing degrees/notes within
+
   const colorFret = () => {
     if (currentScale[0] === note && highlightRoots) {
       return theme.secondary0
@@ -32,19 +32,17 @@ function Fret({
     return currentScale[0] === note && highlightRoots ? theme.bg0 : theme.text
   }
 
-  // const displayDegree = () => {
-  //   let i = currentScale.indexOf(note);
-  //   if (i >= 0) {
-  //     return getDegree(i, degreeNotation);
-  //   }
-  // };
-
   return (
-    <div
-      className={`w-16 h-12 pt-3 rounded text-center text-${colorText()} bg-${colorFret()} duration-300 mx-1`}
-    >
-      <span>{indexToString(note, sharps)}</span>
-      {/* degree and label logic */}
+    <div className={`w-16 h-12 rounded bg-${colorFret()} duration-300 mx-1`}>
+      <div
+        className={`relative absolute top-0 left-1 h-0 text-sm text-${theme.tertiary1}`}
+      >
+        {getDegree(currentScale.indexOf(note), degreeNotation)}
+      </div>
+      <div className={`pt-3 text-center text-base text-${colorText()}`}>
+        {indexToString(note, sharps)}
+      </div>
+      {/* label bottom frets */}
     </div>
   )
 }
