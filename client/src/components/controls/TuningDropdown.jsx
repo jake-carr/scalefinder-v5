@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Select from 'react-select'
 import { tunings } from '../../constants/tunings'
-import { LIGHT_THEME, DARK_THEME  } from '../../constants/themes'
+import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
 export default connect(mapStateToProps, mapDispatchToProps)(TuningDropdown)
 
@@ -24,7 +24,7 @@ function TuningDropdown({ tuning, set, darkTheme }) {
   }
 
   const createTheme = (theme) => {
-    const scheme = darkTheme  ? DARK_THEME : LIGHT_THEME
+    const scheme = darkTheme ? DARK_THEME : LIGHT_THEME
     const { tuning0, tuning1, text } = scheme
     return {
       ...theme.colors,
@@ -64,7 +64,10 @@ function TuningDropdown({ tuning, set, darkTheme }) {
   }, [selection])
 
   return (
-    <div className="w-48" onBlur={() => toggleOpen(false)}>
+    <div
+      className="w-48 flex flex-col justify-center align-center"
+      onBlur={() => toggleOpen(false)}
+    >
       <label htmlFor="tuning-dropdown">TUNING</label>
       <Select
         theme={(theme) => ({

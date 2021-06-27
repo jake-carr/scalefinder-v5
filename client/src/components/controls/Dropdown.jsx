@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
 import { listScales } from '../../constants/scales'
-import { LIGHT_THEME, DARK_THEME  } from '../../constants/themes'
+import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 import Select from 'react-select'
 
 export default connect(mapStateToProps, null)(Dropdown)
@@ -112,7 +112,10 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
   }
 
   return (
-    <div className={`${setWidth()} mx-2`} onBlur={() => toggleOpen(false)}>
+    <div
+      className={`${setWidth()} mx-2 flex flex-col justify-center align-center`}
+      onBlur={() => toggleOpen(false)}
+    >
       <label htmlFor={name}>{name.toUpperCase()}</label>
       <Select
         theme={(theme) => ({

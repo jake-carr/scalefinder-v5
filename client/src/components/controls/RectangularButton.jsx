@@ -8,6 +8,7 @@ function RectangularButton({ title, action, value, condition, darkTheme }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   const applyStyles = () => {
+    // change to style object not twcss strings
     if (value) {
       switch (condition) {
         case 'highlightRoots':
