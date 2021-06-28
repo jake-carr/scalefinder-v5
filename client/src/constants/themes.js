@@ -18,6 +18,7 @@ export const DARK_THEME = {
   tertiary1: colors.sky[200],
   tuning0: colors.pink[500],
   tuning1: colors.pink[400],
+  chord: colors.lime[400], // placeholder
 }
 
 // export const DARK_THEME = {

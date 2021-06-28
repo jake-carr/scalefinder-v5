@@ -31,9 +31,8 @@ export const getDegree = (i, type) => {
 }
 
 export const makeChord = (root, type, isSharps) => {
-  const notes = getAlteration(isSharps)
-  const result = []
   let triadsInKey
+  const result = []
   if (type === 'maj') {
     triadsInKey = [root, parseNote(root + 4), parseNote(root + 7)]
   }
@@ -50,7 +49,7 @@ export const makeChord = (root, type, isSharps) => {
     triadsInKey = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 10)]
   }
   for (let triad of triadsInKey) {
-    result.push(notes[triad])
+    result.push(triad)
   }
   return result
 }
