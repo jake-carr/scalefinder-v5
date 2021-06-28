@@ -31,25 +31,25 @@ export const getDegree = (i, type) => {
 }
 
 export const makeChord = (root, type, isSharps) => {
-  let triadsInKey
+  let intervals
   const result = []
   if (type === 'maj') {
-    triadsInKey = [root, parseNote(root + 4), parseNote(root + 7)]
+    intervals = [root, parseNote(root + 4), parseNote(root + 7)]
   }
   if (type === 'min') {
-    triadsInKey = [root, parseNote(root + 3), parseNote(root + 7)]
+    intervals = [root, parseNote(root + 3), parseNote(root + 7)]
   }
   if (type === 'maj7') {
-    triadsInKey = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 11)]
+    intervals = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 11)]
   }
   if (type === 'min7') {
-    triadsInKey = [root, parseNote(root + 3), parseNote(root + 7), parseNote(root + 10)]
+    intervals = [root, parseNote(root + 3), parseNote(root + 7), parseNote(root + 10)]
   }
   if (type === 'dom7') {
-    triadsInKey = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 10)]
+    intervals = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 10)]
   }
-  for (let triad of triadsInKey) {
-    result.push(triad)
+  for (let interval of intervals) {
+    result.push(interval)
   }
   return result
 }
