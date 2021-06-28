@@ -29,3 +29,28 @@ export const getDegree = (i, type) => {
     return sargams[i]
   }
 }
+
+export const makeChord = (root, type, isSharps) => {
+  const notes = getAlteration(isSharps)
+  const result = []
+  let triadsInKey
+  if (type === 'maj') {
+    triadsInKey = [root, parseNote(root + 4), parseNote(root + 7)]
+  }
+  if (type === 'min') {
+    triadsInKey = [root, parseNote(root + 3), parseNote(root + 7)]
+  }
+  if (type === 'maj7') {
+    triadsInKey = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 11)]
+  }
+  if (type === 'min7') {
+    triadsInKey = [root, parseNote(root + 3), parseNote(root + 7), parseNote(root + 10)]
+  }
+  if (type === 'dom7') {
+    triadsInKey = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 10)]
+  }
+  for (let triad of triadsInKey) {
+    result.push(notes[triad])
+  }
+  return result
+}
