@@ -9,6 +9,7 @@ import { getAlteration } from '../../constants/utils'
 import RoundButton from '../controls/RoundButton'
 import { tunings } from '../../constants/tunings'
 import Metronome from '../controls/Metronome'
+import InfoModal from '../display/InfoModal'
 import Checkbox from '../controls/Checkbox'
 import Dropdown from '../controls/Dropdown'
 import Stepper from '../controls/Stepper'
@@ -19,6 +20,7 @@ function Settings({
   darkTheme,
   rootIndex,
   scaleIndex,
+  infoModal,
   sharps,
   highlightRoots,
   labelAllNotes,
@@ -75,9 +77,10 @@ function Settings({
   }, [rootIndex, scaleIndex])
 
   return (
-    <main className={`w-full text-base h-1/4`} style={{color: theme.text}}>
+    <main className={`w-full text-base h-1/4`} style={{ color: theme.text }}>
       <div
-        className={`flex flex-row justify-around h-1/2 py-8 content-center items-center`} style={{backgroundColor: theme.bg0}}
+        className={`flex flex-row justify-around h-1/2 py-8 content-center items-center`}
+        style={{ backgroundColor: theme.bg0 }}
       >
         <div className="inline-flex flex-row justify-left">
           <RoundButton
@@ -127,7 +130,8 @@ function Settings({
         </div>
       </div>
       <div
-        className={`flex flex-row justify-around  h-1/2 py-8 content-center items-center`} style={{backgroundColor: theme.bg1}}
+        className={`flex flex-row justify-around  h-1/2 py-8 content-center items-center`}
+        style={{ backgroundColor: theme.bg1 }}
       >
         <div className="flex flex-row justify-left">
           <RoundButtonSmall
@@ -167,6 +171,7 @@ function Settings({
           <Metronome />
         </div>
       </div>
+      {infoModal ? <InfoModal /> : null}
     </main>
   )
 }

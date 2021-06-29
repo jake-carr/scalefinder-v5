@@ -17,6 +17,8 @@ const defaultSettings = {
   tempo: 120, // Metronome
   infoModal: false,
   currentScale: [],
+  showChord: false,
+  chordNotes: [],
 }
 
 const store = createStore(reducer, defaultSettings)

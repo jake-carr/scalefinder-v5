@@ -48,8 +48,43 @@ export const makeChord = (root, type, isSharps) => {
   if (type === 'dom7') {
     intervals = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 10)]
   }
+  // todo (type === 'min7b5')
+  //  while B minor seventh flat five consists of the notes, B – D – F – A. (key of C)
   for (let interval of intervals) {
     result.push(interval)
   }
   return result
+}
+
+// needs to acount for 7ths
+export const getChords = (scaleIndex, rootIndex, sharps) => {
+  let note = rootIndex
+  const parseNote = (n) => {
+    if (n >= 24) return n - 24
+    else if (n >= 12) return n - 12
+    else return n
+  }
+  const pattern = scales[scaleIndex].pattern
+  const chords = scales[scaleIndex].qualities.map((qual, i) => {
+    let chord
+    switch (qual) {
+      case 'min':
+        chord = `${indexToString(note, sharps)} Minor`
+        note = parseNote(note + pattern[i])
+        return chord
+      case 'maj':
+        chord = `${indexToString(note, sharps)} Major`
+        note = parseNote(note + pattern[i])
+        return chord
+      case 'dim':
+        chord = `${indexToString(note, sharps)} Diminished`
+        note = parseNote(note + pattern[i])
+        return chord
+      case 'aug':
+        chord = `${indexToString(note, sharps)} Minor`
+        note = parseNote(note + pattern[i])
+        return chord
+    }
+  })
+  return chords.join(', ')
 }
