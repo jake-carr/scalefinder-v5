@@ -1,3 +1,5 @@
+import { scales } from './scales'
+
 export const sharps = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
 export const flats = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab']
 
@@ -48,15 +50,20 @@ export const makeChord = (root, type, isSharps) => {
   if (type === 'dom7') {
     intervals = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 10)]
   }
-  // todo (type === 'min7b5')
-  //  while B minor seventh flat five consists of the notes, B – D – F – A. (key of C)
+  if (type === 'min7b5') {
+    intervals = [
+      parseNote(root - 1),
+      parseNote(root + 1),
+      parseNote(root + 3),
+      parseNote(root + 5),
+    ]
+  }
   for (let interval of intervals) {
     result.push(interval)
   }
   return result
 }
 
-// needs to acount for 7ths
 export const getChords = (scaleIndex, rootIndex, sharps) => {
   let note = rootIndex
   const parseNote = (n) => {
@@ -86,5 +93,30 @@ export const getChords = (scaleIndex, rootIndex, sharps) => {
         return chord
     }
   })
-  return chords.join(', ')
+  note = rootIndex
+  const seventhChords = scales[scaleIndex].sevenths.map((qual, i) => {
+    let chord
+    switch (qual) {
+      case 'min7':
+        chord = `${indexToString(note, sharps)} Minor Seventh`
+        note = parseNote(note + pattern[i])
+        return chord
+      case 'maj7':
+        chord = `${indexToString(note, sharps)} Major Seventh`
+        note = parseNote(note + pattern[i])
+        return chord
+      case 'dom7':
+        chord = `${indexToString(note, sharps)} Dominant Seventh`
+        note = parseNote(note + pattern[i])
+        return chord
+      case 'min7b5':
+        chord = `${indexToString(note, sharps)} Half-Diminished`
+        note = parseNote(note + pattern[i])
+        return chord
+    }
+  })
+  return {
+    basicChords: chords,
+    seventhChords: seventhChords,
+  }
 }
