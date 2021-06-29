@@ -77,9 +77,9 @@ function Settings({
   }, [rootIndex, scaleIndex])
 
   return (
-    <main className={`w-full text-base h-1/4`} style={{ color: theme.text }}>
+    <main className={`w-full text-base h-1/4 relative`} style={{ color: theme.text }}>
       <div
-        className={`flex flex-row justify-around h-1/2 py-8 content-center items-center`}
+        className={`flex flex-row justify-between h-1/2 py-8 content-center items-center`}
         style={{ backgroundColor: theme.bg0 }}
       >
         <div className="inline-flex flex-row justify-left">
@@ -120,6 +120,7 @@ function Settings({
             min={12}
             max={24}
           />
+          {infoModal ? <InfoModal /> : null}
         </div>
         <div className="flex flex-row justify-right py-2 px-2">
           <Checkbox />
@@ -130,7 +131,7 @@ function Settings({
         </div>
       </div>
       <div
-        className={`flex flex-row justify-around  h-1/2 py-8 content-center items-center`}
+        className={`flex flex-row justify-between  h-1/2 py-8 content-center items-center`}
         style={{ backgroundColor: theme.bg1 }}
       >
         <div className="flex flex-row justify-left">
@@ -171,7 +172,6 @@ function Settings({
           <Metronome />
         </div>
       </div>
-      {infoModal ? <InfoModal /> : null}
     </main>
   )
 }

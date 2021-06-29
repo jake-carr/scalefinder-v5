@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getAlteration, makeChord, indexToString, getChords } from '../../constants/utils'
 import { scales } from '../../constants/scales'
+import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
 export default connect(mapStateToProps, mapDispatchToProps)(InfoModal)
 
@@ -15,6 +16,7 @@ function InfoModal({
   set,
   toggle,
 }) {
+  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   // Displays information about the scale and chords in key (for at least 7 main modes)
   // Clicking on a chord will add a border to all notes on the fretboard that make up that chord; user can figure out all inversions/shapes from experimenting with them.
   // State will need 2 additional fields; 'showChord' and 'chordNotes' (from makeChord function)
@@ -24,58 +26,71 @@ function InfoModal({
   const [selectedChord, selectChord] = useState(null)
 
   useEffect(() => {
-    console.log(chordsInKey)
-  }, [chordsInKey])
-
-  useEffect(() => {
-    console.log('calling', scaleIndex)
-    const chords = getChords(scaleIndex, rootIndex, sharps)
-    console.log(chords)
-    setChordsInKey(chords)
+    if (scaleIndex < 7) {
+      const chords = getChords(scaleIndex, rootIndex, sharps)
+      setChordsInKey(chords)
+    }
   }, [scaleIndex, rootIndex, sharps])
 
   useEffect(() => {
-    // makeChord
-    // set('chordNotes', makeChord result)
+    // derive type from selectedChord
+    // const type = ''
+    // const chord = makeChord(rootIndex, type, sharps)
+    // set('chordNotes', chord)
   }, [selectedChord])
 
   // when any are clicked on, toggle showChord on and selectedChord to that, or off if clicking the already selectedChord. text should change to match.
   // when selected chord changes, recalculate chordNotes and update state accordingly with makechord function.
   // Frets will need to be updated to connect to showChord & chordNotes
 
+  // todo: change this to chordModal and only offer it for the seven major modes. offer infoModal as a smaller, text-based popup that fades out.
   return (
-    <>
+    <div
+      className="absolute top-1/8 left-1/2 border-2 flex flex-col justify-center text-center h-3/4 px-2"
+      style={{ backgroundColor: theme.bg0 }}
+    >
       {chordsInKey['basicChords'] && chordsInKey['seventhChords'] ? (
-        <div>
+        <>
+          <div className="text-lg absolute top-1 self-center">
+            <span style={{ color: theme.text }}>Chords in </span>
+            <span style={{ color: theme.secondary0 }}>
+              {indexToString(rootIndex, sharps)}{' '}
+            </span>
+            <span style={{ color: theme.primary1 }}>{scales[scaleIndex].name}</span>
+          </div>
+
           <div>
-            <span>{`Basic chords in key of ${indexToString(rootIndex, sharps)}:`}</span>
-            <span>
+            <span style={{ color: theme.tertiary0 }}>Basic chords</span>
+            <div>
               {chordsInKey.basicChords.map((chord, i) => {
                 return (
                   <span key={i} onClick={() => alert('selected')}>
                     {chord}
-                    <span className="mx-1">•</span>
+                    {i < 6 ? <span className="mx-1">•</span> : null}
                   </span>
                 )
               })}
-            </span>
+            </div>
           </div>
           <div>
-            <span>{`Seventh chords in key of ${indexToString(rootIndex, sharps)}:`}</span>
-            <span>
+            <span style={{ color: theme.tertiary1 }}>Seventh chords</span>
+            <div>
               {chordsInKey.seventhChords.map((chord, i) => {
                 return (
                   <span key={i} onClick={() => alert('selected')}>
                     {chord}
-                    <span className="mx-1">•</span>
+                    {i < 6 ? <span className="mx-1">•</span> : null}
                   </span>
                 )
               })}
-            </span>
+            </div>
           </div>
-        </div>
+        </>
       ) : null}
-    </>
+      <div className="text-sm absolute bottom-1 self-center">
+        Click a chord name to highlight its intervals on the fretboard.
+      </div>
+    </div>
   )
 }
 

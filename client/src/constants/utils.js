@@ -98,19 +98,19 @@ export const getChords = (scaleIndex, rootIndex, sharps) => {
     let chord
     switch (qual) {
       case 'min7':
-        chord = `${indexToString(note, sharps)} Minor Seventh`
+        chord = `${indexToString(note, sharps)} min7`
         note = parseNote(note + pattern[i])
         return chord
       case 'maj7':
-        chord = `${indexToString(note, sharps)} Major Seventh`
+        chord = `${indexToString(note, sharps)} maj7`
         note = parseNote(note + pattern[i])
         return chord
       case 'dom7':
-        chord = `${indexToString(note, sharps)} Dominant Seventh`
+        chord = `${indexToString(note, sharps)} dom7`
         note = parseNote(note + pattern[i])
         return chord
       case 'min7b5':
-        chord = `${indexToString(note, sharps)} Half-Diminished`
+        chord = `${indexToString(note, sharps)} min7b5`
         note = parseNote(note + pattern[i])
         return chord
     }

@@ -15,7 +15,7 @@ const defaultSettings = {
   tuning: tunings[0].values, // Standard
   frets: 12,
   tempo: 120, // Metronome
-  infoModal: false,
+  infoModal: true, //changebacktofalse
   currentScale: [],
   showChord: false,
   chordNotes: [],
