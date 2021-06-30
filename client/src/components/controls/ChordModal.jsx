@@ -46,7 +46,7 @@ function ChordModal({
   // todo: change this to C and only offer it for the seven major modes. offer chordModal as a smaller, text-based popup that fades out.
   return (
     <div
-      className="absolute top-1/8 left-1/2 border-2 flex flex-col justify-center text-center h-3/4 px-2"
+      className="absolute top-2 left-1/2 border-2 flex flex-col justify-center text-center h-3/4 px-2"
       style={{ backgroundColor: theme.bg0 }}
     >
       {chordsInKey['basicChords'] && chordsInKey['seventhChords'] ? (

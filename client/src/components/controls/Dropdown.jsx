@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
 import { listScales } from '../../constants/scales'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import InfoModal from '../display/InfoModal'
 import Select from 'react-select'
 
-export default connect(mapStateToProps, null)(Dropdown)
+export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
 
-function Dropdown({ options, action, val, name, sharps, darkTheme }) {
+function Dropdown({ options, action, val, name, sharps, darkTheme, infoModal, toggle }) {
   const [open, toggleOpen] = useState(false)
   const [selection, changeSelection] = useState('')
 
@@ -112,42 +113,62 @@ function Dropdown({ options, action, val, name, sharps, darkTheme }) {
   }
 
   return (
-    <div
-      className={`${setWidth()} mx-2 flex flex-col justify-center align-center`}
-      onBlur={() => toggleOpen(false)}
-    >
-      <label htmlFor={name}>{name.toUpperCase()}</label>
-      <Select
-        theme={(theme) => ({
-          ...theme,
-          colors: createTheme(theme),
-        })}
-        styles={{
-          menu: (provided) => ({
-            ...provided,
-            opacity: 1,
-          }),
-          option: (styles) => ({
-            ...styles,
-            cursor: 'pointer',
-          }),
-          control: (styles) => ({
-            ...styles,
-            cursor: 'pointer',
-          }),
-        }}
-        id={name}
-        name={name}
-        menuIsOpen={open}
-        onFocus={() => toggleOpen(true)}
-        blurInputOnSelect
-        onChange={(e) => handleSelect(e)}
-        options={opts}
-        value={{
-          value: displayValue(),
-          label: selection,
-        }}
-      />
+    <div className="h-full w-auto">
+      <div
+        className={`${setWidth()} mx-2 flex flex-col`}
+        onBlur={() => toggleOpen(false)}
+      >
+        <div className="flex flex-row h-full">
+          <label htmlFor={name}>{name.toUpperCase()}</label>
+          {name === 'Scale' ? (
+            <span>
+              <button
+                title="Information about this scale."
+                onClick={() => toggle('infoModal')}
+                className="rounded-full mx-1 flex items-center justify-center border-2"
+                style={{}}
+              >
+                <i className="fas fa-info-circle" />
+              </button>
+              {infoModal ? <InfoModal /> : null}
+            </span>
+          ) : null}
+        </div>
+        <Select
+          theme={(theme) => ({
+            ...theme,
+            colors: createTheme(theme),
+          })}
+          styles={{
+            menu: (provided) => ({
+              ...provided,
+              opacity: 1,
+            }),
+            option: (styles) => ({
+              ...styles,
+              cursor: 'pointer',
+            }),
+            control: (styles) => ({
+              ...styles,
+              cursor: 'pointer',
+            }),
+          }}
+          id={name}
+          name={name}
+          menuIsOpen={open}
+          onFocus={() => toggleOpen(true)}
+          blurInputOnSelect
+          onChange={(e) => handleSelect(e)}
+          options={opts}
+          value={{
+            value: displayValue(),
+            label: selection,
+          }}
+        />
+        {name === 'Scale' ? (
+          <button onClick={() => toggle('chordModal')}>chords</button>
+        ) : null}
+      </div>
     </div>
   )
 }
@@ -156,5 +177,12 @@ function mapStateToProps(state) {
   return {
     sharps: state.sharps,
     darkTheme: state.darkTheme,
+    infoModal: state.infoModal,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    toggle: (field) => dispatch({ type: 'TOGGLE', payload: field }),
   }
 }

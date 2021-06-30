@@ -79,7 +79,7 @@ function Settings({
   return (
     <main className={`w-full text-base h-1/4 relative`} style={{ color: theme.text }}>
       <div
-        className={`flex flex-row justify-between h-1/2 py-8 content-center items-center`}
+        className={`flex flex-row justify-between h-1/2`}
         style={{ backgroundColor: theme.bg0 }}
       >
         <div className="inline-flex flex-row justify-left">
@@ -115,7 +115,6 @@ function Settings({
             min={12}
             max={24}
           />
-          <button onClick={() => toggle('chordModal')}>click</button>
           {chordModal ? <ChordModal /> : null}
         </div>
         <div className="flex flex-row justify-right py-2 px-2">
@@ -127,7 +126,7 @@ function Settings({
         </div>
       </div>
       <div
-        className={`flex flex-row justify-between  h-1/2 py-8 content-center items-center`}
+        className={`flex flex-row justify-between h-1/2 content-center items-center`}
         style={{ backgroundColor: theme.bg1 }}
       >
         <div className="flex flex-row justify-left">

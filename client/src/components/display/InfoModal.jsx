@@ -9,7 +9,7 @@ function InfoModal({ darkTheme, scaleIndex }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   // should pop up and fade out; i button to open it should be placed next to scale label
-  return <div>{scales[scaleIndex].info}</div>
+  return <span>{scales[scaleIndex].info}</span>
 }
 
 function mapStateToProps(state) {
