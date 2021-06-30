@@ -6,19 +6,19 @@ export const LIGHT_THEME = {
 
 export const DARK_THEME = {
   text: colors.trueGray[50],
-  bg0: colors.trueGray[800],
-  bg1: colors.trueGray[700],
-  bg2: colors.trueGray[600],
-  bg3: colors.trueGray[500],
-  primary0: colors.purple[600],
-  primary1: colors.purple[500],
+  bg0: colors.trueGray[900],
+  bg1: colors.trueGray[800],
+  bg2: colors.trueGray[700],
+  bg3: colors.trueGray[600],
+  primary0: colors.purple[700],
+  primary1: colors.purple[600],
   secondary0: colors.green[500],
   secondary1: colors.green[400],
-  tertiary0: colors.sky[300],
-  tertiary1: colors.sky[200],
+  tertiary0: colors.blue[300],
+  tertiary1: colors.blue[200],
   tuning0: colors.pink[500],
   tuning1: colors.pink[400],
-  chord: colors.lime[400], // placeholder
+  chord: colors.amber[500],
 }
 
 // export const DARK_THEME = {

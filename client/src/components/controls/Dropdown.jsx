@@ -116,7 +116,7 @@ function Dropdown({
     if (name === 'Root') {
       return 'w-20'
     } else if (name === 'Degree Notation') {
-      return 'w-40'
+      return 'w-48'
     } else {
       return 'w-56'
     }
