@@ -53,13 +53,13 @@ function Fret({
       style={{ backgroundColor: colorFret(), border: colorBorder() }}
     >
       <div
-        className={`relative absolute top-0 left-1 h-0 text-sm`}
+        className={`relative absolute top-0 left-1 h-0 text-sm duration-300`}
         style={{ color: theme.tertiary1, opacity: degrees ? 1 : 0 }}
       >
         {showOrHideDegree()}
       </div>
       <div
-        className="pt-2 text-center text-lg"
+        className="pt-2 text-center text-lg duration-300"
         style={{
           color: colorText(),
           opacity: currentScale.includes(note) || labelAllNotes ? 1 : 0,
