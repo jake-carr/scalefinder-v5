@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { scales, createScale, listScales } from '../../constants/scales'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 import RectangularButton from '../controls/RectangularButton'
-import RoundButtonSmall from '../controls/RoundButtonSmall'
 import TuningDropdown from '../controls/TuningDropdown'
 import { getAlteration } from '../../constants/utils'
 import { tunings } from '../../constants/tunings'
@@ -130,11 +129,18 @@ function Settings({
         style={{ backgroundColor: theme.bg1 }}
       >
         <div className="flex flex-row justify-left">
-          <RoundButtonSmall
+          <button
             title="Toggle preferred alteration between sharps and flats."
-            action={() => toggle('sharps')}
-            margin={'my-2 mx-4'}
-          />
+            onClick={() => toggle('sharps')}
+            className="focus:outline-none rounded-full h-8 w-8 flex items-center justify-center my-2 mx-2"
+            style={{
+              border: `2px solid ${theme.bg0}`,
+              backgroundColor: theme.bg2,
+              color: theme.text,
+            }}
+          >
+            <span className="text-xl">{sharps ? '♭' : '♯'}</span>
+          </button>
           <RectangularButton
             title="Highlight root notes"
             action={() => toggle('highlightRoots')}

@@ -28,7 +28,12 @@ function RoundButton({ title, action, darkTheme, margin }) {
     <button
       title={title}
       onClick={() => action()}
-      className={`rounded-full h-9 w-9 flex items-center justify-center text-${theme.text} bg-${theme.primary0} border-1 border-${theme.primary0} ${margin}`}
+      className={`focus:outline-none rounded-full h-9 w-9 flex items-center justify-center ${margin}`}
+      style={{
+        backgroundColor: theme.primary0,
+        color: theme.text,
+        border: `2px solid ${theme.primary1}`,
+      }}
     >
       {mapTitleToIcon()}
     </button>
