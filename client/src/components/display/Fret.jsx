@@ -59,7 +59,7 @@ function Fret({
         {showOrHideDegree()}
       </div>
       <div
-        className={`pt-2 text-center text-lg`}
+        className="pt-2 text-center text-lg"
         style={{
           color: colorText(),
           opacity: currentScale.includes(note) || labelAllNotes ? 1 : 0,
@@ -67,7 +67,11 @@ function Fret({
       >
         {indexToString(note, sharps)}
       </div>
-      {/* label bottom frets */}
+      {label ? (
+        <div className="pt-3 text-center text-base" style={{ color: theme.text }}>
+          {String(label)}
+        </div>
+      ) : null}
     </div>
   )
 }
