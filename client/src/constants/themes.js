@@ -34,4 +34,6 @@ export const DARK_THEME = {
   tuning0: colors.pink[500],
   tuning1: colors.pink[400],
   chord: colors.amber[500],
+  hover0: 'purple-400',
+  hover1: 'coolGray-200',
 }

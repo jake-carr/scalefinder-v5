@@ -30,6 +30,8 @@ function Settings({
   frets,
   set,
 }) {
+  // todo - local storage (including for tempo on metronome class)
+
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   const noteOptions = getAlteration(sharps)
   const scaleOptions = listScales()

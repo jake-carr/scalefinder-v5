@@ -8,9 +8,9 @@ const defaultSettings = {
   rootIndex: 3,
   scaleIndex: 0,
   sharps: true,
-  highlightRoots: true,
+  highlightRoots: false,
   labelAllNotes: false,
-  degrees: true,
+  degrees: false,
   degreeNotation: 'Numeric',
   tuning: tunings[0].values, // Standard
   frets: 12,

@@ -8,7 +8,7 @@ export default connect(mapStateToProps, null)(InfoModal)
 function InfoModal({ darkTheme, scaleIndex }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
-  // should pop up and fade out; i button to open it should be placed next to scale label
+  // should pop up and fade out after some time or close onClick.
   return <span>{scales[scaleIndex].info}</span>
 }
 

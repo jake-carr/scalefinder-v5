@@ -37,6 +37,7 @@ function Tuner({ tuning, stringIndex, set, sharps }) {
   const Modal = () => {
     const notes = getAlteration(sharps)
     return (
+      // WIP
       <div className="relative bottom-5 right-5 border-2 border-solid grid grid-cols-4 grid-rows-3 gap-2">
         {notes.map((note, i) => {
           return (
