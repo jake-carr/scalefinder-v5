@@ -1,7 +1,22 @@
 const colors = require('tailwindcss/colors')
 
+// hover colors and shade adjustments todo
+
 export const LIGHT_THEME = {
-  // TODO
+  text: colors.blueGray[800],
+  bg0: colors.blueGray[50],
+  bg1: colors.blueGray[100],
+  bg2: colors.blueGray[200],
+  bg3: colors.blueGray[300],
+  primary0: colors.emerald[400],
+  primary1: colors.emerald[300],
+  secondary0: colors.sky[500],
+  secondary1: colors.sky[400],
+  tertiary0: colors.fuchsia[600],
+  tertiary1: colors.fuchsia[500],
+  tuning0: colors.yellow[500],
+  tuning1: colors.yellow[400],
+  chord: colors.rose[500],
 }
 
 export const DARK_THEME = {
@@ -20,22 +35,3 @@ export const DARK_THEME = {
   tuning1: colors.pink[400],
   chord: colors.amber[500],
 }
-
-// export const DARK_THEME = {
-//   // none of these are finalized
-//   text: 'gray-100',
-//   bg0: 'gray-900',
-//   bg1: 'gray-800',
-//   bg2: 'gray-600',
-//   bg3: 'gray-400',
-//   primary0: 'purple-600', // main selectors, large round buttons, frets
-//   primary1: 'purple-500',
-//   secondary0: 'green-400', // highlighted frets
-//   secondary1: 'green-300',
-//   tertiary0: 'blue-600', // degrees, degree notation selector
-//   tertiary1: 'blue-500',
-//   tuning0: 'pink-500', // tuning selector, indivdual tuners
-//   tuning1: 'pink-400',
-//   hover0: 'gray-700', // bg color on button hover
-//   hover1: 'coolGray-200', // text and border color on button hover
-// }
