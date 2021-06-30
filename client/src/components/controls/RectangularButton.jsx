@@ -6,26 +6,42 @@ export default connect(mapStateToProps, null)(RectangularButton)
 
 function RectangularButton({ title, action, value, condition, darkTheme }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
-
+  const { secondary0, secondary1, tertiary0, tertiary1, bg0, bg1, bg2, bg3, text } = theme
   const applyStyles = () => {
-    // change to style object not twcss strings
     if (value) {
       switch (condition) {
         case 'highlightRoots':
-          return `bg-${theme.secondary0} border-${theme.secondary1} text-${theme.bg0}`
+          return {
+            backgroundColor: secondary0,
+            border: `2px solid ${secondary1}`,
+            color: bg0,
+          }
         case 'degrees':
-          return `bg-${theme.tertiary0} border-${theme.tertiary1} text-${theme.text}`
+          return {
+            backgroundColor: tertiary0,
+            border: `2px solid ${tertiary1}`,
+            color: text,
+          }
         default:
-          return `bg-${theme.bg3} border-${theme.bg2} text-${theme.text}`
+          return {
+            backgroundColor: bg3,
+            border: `2px solid ${bg2}`,
+            color: text,
+          }
       }
     } else {
-      return `bg-${theme.bg0} border-${theme.bg1} text-${theme.text}`
+      return {
+        backgroundColor: bg0,
+        border: `2px solid ${bg1}`,
+        color: text,
+      }
     }
   }
 
   return (
     <button
-      className={`w-40 h-12 mx-2 border-solid border-2 rounded ${applyStyles()}`}
+      className="w-40 h-12 mx-2 rounded"
+      style={applyStyles()}
       title={title}
       onClick={() => action(!value)}
     >
