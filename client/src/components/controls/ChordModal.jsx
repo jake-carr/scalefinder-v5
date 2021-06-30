@@ -17,13 +17,9 @@ function ChordModal({
   toggle,
 }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
-  // Displays information about the scale and chords in key (for at least 7 main modes)
-  // Clicking on a chord will add a border to all notes on the fretboard that make up that chord; user can figure out all inversions/shapes from experimenting with them.
-  // State will need 2 additional fields; 'showChord' and 'chordNotes' (from makeChord function)
-  // Only one chord can be selected at a time. The chord selection and borders should persist even if the info modal is closed.
-  // render chords in key based on rootIndex, scaleIndex with function from old version.
+
   const [chordsInKey, setChordsInKey] = useState({})
-  const [selectedChord, selectChord] = useState(null)
+  const [selectedChord, selectChord] = useState('')
 
   useEffect(() => {
     if (scaleIndex < 7) {
@@ -33,17 +29,23 @@ function ChordModal({
   }, [scaleIndex, rootIndex, sharps])
 
   useEffect(() => {
-    // derive type from selectedChord
-    // const type = ''
-    // const chord = makeChord(rootIndex, type, sharps)
-    // set('chordNotes', chord)
+    if (selectedChord) {
+      let type = selectedChord.split(' ')[1]
+      if (type === 'Major') type = 'maj'
+      if (type === 'Minor') type = 'min'
+      if (type === 'Diminished') type = 'dim'
+      if (type === 'Augmented') type = 'aug'
+      const chord = makeChord(rootIndex, type, sharps)
+      if (selectedChord === chordNotes) set('showChords', false)
+      else {
+        set('chordNotes', chord)
+        set('showChords', true)
+      }
+    }
   }, [selectedChord])
 
-  // when any are clicked on, toggle showChord on and selectedChord to that, or off if clicking the already selectedChord. text should change to match.
-  // when selected chord changes, recalculate chordNotes and update state accordingly with makechord function.
-  // Frets will need to be updated to connect to showChord & chordNotes
+  // todo: when a chord is clicked on, toggle showChord on and selectedChord to that, or off if clicking the already selectedChord. text should change to match
 
-  // todo: change this to C and only offer it for the seven major modes. offer chordModal as a smaller, text-based popup that fades out.
   return (
     <div
       className="absolute top-2 left-1/2 border-2 flex flex-col justify-center text-center h-3/4 px-2"
@@ -64,8 +66,8 @@ function ChordModal({
             <div>
               {chordsInKey.basicChords.map((chord, i) => {
                 return (
-                  <span key={i} onClick={() => alert('selected')}>
-                    {chord}
+                  <span key={i} onClick={() => selectChord(chord)}>
+                    <span style={{}}>{chord}</span>
                     {i < 6 ? <span className="mx-1">•</span> : null}
                   </span>
                 )
@@ -77,8 +79,8 @@ function ChordModal({
             <div>
               {chordsInKey.seventhChords.map((chord, i) => {
                 return (
-                  <span key={i} onClick={() => alert('selected')}>
-                    {chord}
+                  <span key={i} onClick={() => selectChord(chord)}>
+                    <span style={{}}>{chord}</span>
                     {i < 6 ? <span className="mx-1">•</span> : null}
                   </span>
                 )

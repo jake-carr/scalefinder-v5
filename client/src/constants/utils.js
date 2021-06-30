@@ -47,6 +47,12 @@ export const makeChord = (root, type, isSharps) => {
   if (type === 'min7') {
     intervals = [root, parseNote(root + 3), parseNote(root + 7), parseNote(root + 10)]
   }
+  if (type === 'dim') {
+    intervals = [root, parseNote(root + 3), parseNote(root + 6)]
+  }
+  if (type === 'aug') {
+    intervals = [root, parseNote(root + 4), parseNote(root + 8)]
+  }
   if (type === 'dom7') {
     intervals = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 10)]
   }

@@ -17,7 +17,7 @@ const defaultSettings = {
   tempo: 120, // Metronome
   infoModal: false,
   currentScale: [],
-  chordModal: false,
+  chordModal: true,
   showChord: false,
   chordNotes: [],
 }

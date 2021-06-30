@@ -8,13 +8,15 @@ export default connect(mapStateToProps, null)(Fret)
 function Fret({
   note,
   sharps,
-  allNotes,
+  labelAllNotes,
   highlightRoots,
   degrees,
   degreeNotation,
   label,
   currentScale,
   darkTheme,
+  showChords,
+  chordNotes,
 }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
@@ -32,15 +34,29 @@ function Fret({
     return currentScale[0] === note && highlightRoots ? theme.bg0 : theme.text
   }
 
+  const showOrHideDegree = () => {
+    const degree = getDegree(currentScale.indexOf(note), degreeNotation)
+    return degree ? degree : ''
+  }
+
   return (
-    <div className={`w-16 h-12 duration-300 rounded mx-1`} style={{backgroundColor: colorFret()}}>
+    <div
+      className={`w-16 h-12 duration-300 rounded mx-1`}
+      style={{ backgroundColor: colorFret() }}
+    >
       <div
-        className={`relative absolute top-0 left-1 h-0 text-sm`}
-        style={{color: theme.tertiary1}}
+        className={`relative absolute top-0 left-1 h-0 text-sm transition duration-300`}
+        style={{ color: theme.tertiary1, opacity: degrees ? 1 : 0 }}
       >
-        {getDegree(currentScale.indexOf(note), degreeNotation)}
+        {showOrHideDegree()}
       </div>
-      <div className={`pt-3 text-center text-base`} style={{color: colorText()}}>
+      <div
+        className={`pt-3 text-center text-base transition duration-300`}
+        style={{
+          color: colorText(),
+          opacity: currentScale.includes(note) || labelAllNotes ? 1 : 0,
+        }}
+      >
         {indexToString(note, sharps)}
       </div>
       {/* label bottom frets */}
@@ -57,5 +73,7 @@ function mapStateToProps(state) {
     degreeNotation: state.degreeNotation,
     currentScale: state.currentScale,
     darkTheme: state.darkTheme,
+    showChords: state.showChords,
+    chordNotes: state.chordNotes,
   }
 }
