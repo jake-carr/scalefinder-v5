@@ -1,6 +1,6 @@
 const colors = require('tailwindcss/colors')
 
-// hover colors and shade adjustments todo
+// TODO; hover colors
 
 export const LIGHT_THEME = {
   text: colors.blueGray[800],
