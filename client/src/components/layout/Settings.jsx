@@ -6,10 +6,10 @@ import RectangularButton from '../controls/RectangularButton'
 import RoundButtonSmall from '../controls/RoundButtonSmall'
 import TuningDropdown from '../controls/TuningDropdown'
 import { getAlteration } from '../../constants/utils'
-import RoundButton from '../controls/RoundButton'
 import { tunings } from '../../constants/tunings'
+import RoundButton from '../controls/RoundButton'
+import ChordModal from '../controls/ChordModal'
 import Metronome from '../controls/Metronome'
-import InfoModal from '../display/InfoModal'
 import Checkbox from '../controls/Checkbox'
 import Dropdown from '../controls/Dropdown'
 import Stepper from '../controls/Stepper'
@@ -20,16 +20,16 @@ function Settings({
   darkTheme,
   rootIndex,
   scaleIndex,
-  infoModal,
-  sharps,
+  chordModal,
   highlightRoots,
   labelAllNotes,
-  degrees,
   degreeNotation,
+  degrees,
+  sharps,
   tuning,
+  toggle,
   frets,
   set,
-  toggle,
 }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   const noteOptions = getAlteration(sharps)
@@ -100,11 +100,6 @@ function Settings({
             val={scaleIndex}
             name={'Scale'}
           />
-          <RoundButtonSmall
-            title="Information about this scale."
-            action={() => toggle('infoModal')}
-            margin={'mx-1 my-7'}
-          />
           <TuningDropdown />
           <Stepper
             label="Strings"
@@ -120,7 +115,8 @@ function Settings({
             min={12}
             max={24}
           />
-          {infoModal ? <InfoModal /> : null}
+          <button onClick={() => toggle('chordModal')}>click</button>
+          {chordModal ? <ChordModal /> : null}
         </div>
         <div className="flex flex-row justify-right py-2 px-2">
           <Checkbox />
@@ -188,7 +184,7 @@ function mapStateToProps(state) {
     degreeNotation: state.degreeNotation,
     tuning: state.tuning,
     frets: state.frets,
-    infoModal: state.infoModal,
+    chordModal: state.chordModal,
     currentScale: state.currentScale,
   }
 }
