@@ -30,6 +30,14 @@ function Fret({
     }
   }
 
+  const colorBorder = () => {
+    if (showChords && chordNotes.includes(note)) {
+      return `2px solid ${theme.chord}`
+    } else {
+      return '2px solid transparent'
+    }
+  }
+
   const colorText = () => {
     return currentScale[0] === note && highlightRoots ? theme.bg0 : theme.text
   }
@@ -41,17 +49,17 @@ function Fret({
 
   return (
     <div
-      className={`w-16 h-12 duration-300 rounded mx-1`}
-      style={{ backgroundColor: colorFret() }}
+      className={`w-16 h-12 duration-300 rounded mx-1 border-box transition duration-300`}
+      style={{ backgroundColor: colorFret(), border: colorBorder() }}
     >
       <div
-        className={`relative absolute top-0 left-1 h-0 text-sm transition duration-300`}
+        className={`relative absolute top-0 left-1 h-0 text-sm`}
         style={{ color: theme.tertiary1, opacity: degrees ? 1 : 0 }}
       >
         {showOrHideDegree()}
       </div>
       <div
-        className={`pt-3 text-center text-base transition duration-300`}
+        className={`pt-2 text-center text-lg`}
         style={{
           color: colorText(),
           opacity: currentScale.includes(note) || labelAllNotes ? 1 : 0,

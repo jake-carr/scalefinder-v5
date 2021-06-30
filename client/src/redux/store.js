@@ -5,7 +5,7 @@ import { tunings } from '../constants/tunings'
 const defaultSettings = {
   darkTheme: true,
   rememberSettings: false,
-  rootIndex: 4,
+  rootIndex: 3,
   scaleIndex: 0,
   sharps: true,
   highlightRoots: false,

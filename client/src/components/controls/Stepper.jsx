@@ -20,7 +20,7 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
   }
 
   return (
-    <div className="flex flex-col mx-2 justify-center align-center pb-3">
+    <div className="flex flex-col mx-2">
       <label>{label.toUpperCase()}</label>
       <div className="flex flex-row">
         <button

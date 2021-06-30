@@ -8,7 +8,17 @@ import Select from 'react-select'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
 
-function Dropdown({ options, action, val, name, sharps, darkTheme, infoModal, toggle }) {
+function Dropdown({
+  options,
+  action,
+  val,
+  name,
+  sharps,
+  darkTheme,
+  infoModal,
+  toggle,
+  scaleIndex,
+}) {
   const [open, toggleOpen] = useState(false)
   const [selection, changeSelection] = useState('')
 
@@ -165,7 +175,7 @@ function Dropdown({ options, action, val, name, sharps, darkTheme, infoModal, to
             label: selection,
           }}
         />
-        {name === 'Scale' ? (
+        {name === 'Scale' && scaleIndex < 7 ? (
           <button onClick={() => toggle('chordModal')}>chords</button>
         ) : null}
       </div>
@@ -177,6 +187,7 @@ function mapStateToProps(state) {
   return {
     sharps: state.sharps,
     darkTheme: state.darkTheme,
+    scaleIndex: state.scaleIndex,
     infoModal: state.infoModal,
   }
 }

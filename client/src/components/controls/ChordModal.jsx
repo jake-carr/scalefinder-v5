@@ -17,34 +17,49 @@ function ChordModal({
   toggle,
 }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
-
   const [chordsInKey, setChordsInKey] = useState({})
   const [selectedChord, selectChord] = useState('')
+  const [prev, setPrev] = useState('')
 
   useEffect(() => {
+    // Currently only supports 7 major modes, not all scales
     if (scaleIndex < 7) {
       const chords = getChords(scaleIndex, rootIndex, sharps)
       setChordsInKey(chords)
+    } else {
+      selectChord('')
+      setChordsInKey({})
+      set('chordModal', false)
+      set('showChords', false)
     }
   }, [scaleIndex, rootIndex, sharps])
 
   useEffect(() => {
     if (selectedChord) {
+      let root = selectedChord.split(' ')[0]
       let type = selectedChord.split(' ')[1]
       if (type === 'Major') type = 'maj'
-      if (type === 'Minor') type = 'min'
-      if (type === 'Diminished') type = 'dim'
-      if (type === 'Augmented') type = 'aug'
-      const chord = makeChord(rootIndex, type, sharps)
-      if (selectedChord === chordNotes) set('showChords', false)
-      else {
-        set('chordNotes', chord)
-        set('showChords', true)
-      }
+      else if (type === 'Minor') type = 'min'
+      else if (type === 'Augmented') type = 'aug'
+      else if (type === 'Diminished') type = 'dim'
+      const ROOT_INDEX = getAlteration(sharps).indexOf(root)
+      const chord = makeChord(ROOT_INDEX, type, sharps)
+      setPrev(selectedChord)
+      set('chordNotes', chord)
+      set('showChords', true)
     }
   }, [selectedChord])
 
-  // todo: when a chord is clicked on, toggle showChord on and selectedChord to that, or off if clicking the already selectedChord. text should change to match
+  const handleSelectChord = (chord) => {
+    if (chord == prev) {
+      set('chordNotes', [])
+      set('showChords', false)
+      selectChord('')
+      setPrev('')
+    } else {
+      selectChord(chord)
+    }
+  }
 
   return (
     <div
@@ -66,8 +81,14 @@ function ChordModal({
             <div>
               {chordsInKey.basicChords.map((chord, i) => {
                 return (
-                  <span key={i} onClick={() => selectChord(chord)}>
-                    <span style={{}}>{chord}</span>
+                  <span key={i} onClick={() => handleSelectChord(chord)}>
+                    <span
+                      style={{
+                        color: chord === selectedChord ? theme.chord : theme.text,
+                      }}
+                    >
+                      {chord}
+                    </span>
                     {i < 6 ? <span className="mx-1">•</span> : null}
                   </span>
                 )
@@ -79,8 +100,14 @@ function ChordModal({
             <div>
               {chordsInKey.seventhChords.map((chord, i) => {
                 return (
-                  <span key={i} onClick={() => selectChord(chord)}>
-                    <span style={{}}>{chord}</span>
+                  <span key={i} onClick={() => handleSelectChord(chord)}>
+                    <span
+                      style={{
+                        color: chord === selectedChord ? theme.chord : theme.text,
+                      }}
+                    >
+                      {chord}
+                    </span>
                     {i < 6 ? <span className="mx-1">•</span> : null}
                   </span>
                 )
