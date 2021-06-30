@@ -164,7 +164,7 @@ function Settings({
           )}
         </div>
         <div className="flex flex-row justify-right">
-          <Metronome />
+          <Metronome darkTheme={darkTheme} />
         </div>
       </div>
     </main>
