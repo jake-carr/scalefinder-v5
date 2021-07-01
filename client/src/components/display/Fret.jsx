@@ -32,7 +32,11 @@ function Fret({
 
   const colorBorder = () => {
     if (showChords && chordNotes.includes(note)) {
-      return `2px solid ${theme.chord}`
+      const i = chordNotes.indexOf(note) // 0-3
+      if (i == 0) return `2px solid ${theme.chord0}`
+      else if (i == 1) return `2px solid ${theme.chord1}`
+      else if (i == 2) return `2px solid ${theme.chord2}`
+      else return `2px solid ${theme.chord3}`
     } else {
       return '2px solid transparent'
     }

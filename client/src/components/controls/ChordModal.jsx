@@ -61,6 +61,19 @@ function ChordModal({
     }
   }
 
+  const renderSquares = (fourth = false) => {
+    const squares = [1, 2, 3]
+    if (fourth) squares.push(4)
+    return squares.map((i) => {
+      let col
+      if (i == 1) col = theme.chord0
+      else if (i == 2) col = theme.chord1
+      else if (i == 3) col = theme.chord2
+      else col = theme.chord3
+      return <span className="rounded-sm h-4 w-4 mx-1" style={{ backgroundColor: col }} />
+    })
+  }
+
   return (
     <div
       className="absolute top-2 left-1/2 border-2 flex flex-col justify-center text-center h-3/4 px-2"
@@ -69,7 +82,6 @@ function ChordModal({
       {chordsInKey['basicChords'] && chordsInKey['seventhChords'] ? (
         <>
           <div className="text-lg absolute top-1 self-center">
-            <span style={{ color: theme.text }}>Chords in </span>
             <span style={{ color: theme.secondary0 }}>
               {indexToString(rootIndex, sharps)}{' '}
             </span>
@@ -77,14 +89,19 @@ function ChordModal({
           </div>
 
           <div>
-            <span style={{ color: theme.tertiary0 }}>Basic chords</span>
+            <span
+              className="flex flex-row justify-center items-center"
+              style={{ color: theme.chord0 }}
+            >
+              Basic chords {renderSquares()}
+            </span>
             <div>
               {chordsInKey.basicChords.map((chord, i) => {
                 return (
                   <span key={i} onClick={() => handleSelectChord(chord)}>
                     <span
                       style={{
-                        color: chord === selectedChord ? theme.chord : theme.text,
+                        color: chord === selectedChord ? theme.chord1 : theme.text,
                       }}
                     >
                       {chord}
@@ -96,14 +113,19 @@ function ChordModal({
             </div>
           </div>
           <div>
-            <span style={{ color: theme.tertiary1 }}>Seventh chords</span>
+            <span
+              className="flex flex-row justify-center items-center"
+              style={{ color: theme.chord3 }}
+            >
+              Seventh chords {renderSquares('four')}
+            </span>
             <div>
               {chordsInKey.seventhChords.map((chord, i) => {
                 return (
                   <span key={i} onClick={() => handleSelectChord(chord)}>
                     <span
                       style={{
-                        color: chord === selectedChord ? theme.chord : theme.text,
+                        color: chord === selectedChord ? theme.chord2 : theme.text,
                       }}
                     >
                       {chord}

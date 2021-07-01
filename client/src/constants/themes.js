@@ -16,7 +16,10 @@ export const LIGHT_THEME = {
   tertiary1: colors.fuchsia[500],
   tuning0: colors.yellow[500],
   tuning1: colors.yellow[400],
-  chord: colors.rose[500],
+  chord0: colors.rose[600],
+  chord1: colors.rose[500],
+  chord2: colors.rose[400],
+  chord3: colors.rose[300],
 }
 
 export const DARK_THEME = {
@@ -33,7 +36,10 @@ export const DARK_THEME = {
   tertiary1: colors.blue[200],
   tuning0: colors.pink[500],
   tuning1: colors.pink[400],
-  chord: colors.amber[500],
+  chord0: colors.amber[600],
+  chord1: colors.amber[500],
+  chord2: colors.amber[400],
+  chord3: colors.amber[300],
   hover0: 'purple-400',
   hover1: 'coolGray-200',
 }
