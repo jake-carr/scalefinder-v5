@@ -1,26 +1,38 @@
 import { createStore } from 'redux'
 import { reducer } from './reducer'
 import { tunings } from '../constants/tunings'
+import { createScale, scales } from '../constants/scales'
+import { retrieveLocalStorage } from '../constants/storage'
 
 const defaultSettings = {
+  // App
   darkTheme: true,
   rememberSettings: false,
+  tempo: 120, // Metronome
+  // Main
   rootIndex: 3,
   scaleIndex: 0,
+  tuning: tunings[0].values, // Standard
+  currentScale: createScale(3, scales[0].pattern),
+  // Fretboard
+  frets: 12,
   sharps: true,
-  highlightRoots: false,
-  labelAllNotes: false,
   degrees: false,
   degreeNotation: 'Numeric',
-  tuning: tunings[0].values, // Standard
-  frets: 12,
-  tempo: 120, // Metronome
+  highlightRoots: false,
+  labelAllNotes: false,
+  // Modals
   infoModal: false,
-  currentScale: [],
   chordModal: true,
-  showChord: false,
+  // Chords
+  showChords: false,
   chordNotes: [],
 }
 
-const store = createStore(reducer, defaultSettings)
+let store
+const storage = retrieveLocalStorage()
+
+if (storage.rememberSettings) store = createStore(reducer, storage)
+else store = createStore(reducer, defaultSettings)
+
 export default store

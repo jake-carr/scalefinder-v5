@@ -13,21 +13,22 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
   }
 
   useEffect(() => {
-    if (!rememberSettings) saveInLocalStorage('saveSettings', false)
+    const save = rememberSettings ? true : false
+    saveInLocalStorage('rememberSettings', save)
   }, [rememberSettings])
 
   return (
-    // className todo
+    // styling todo
     <div>
       <input
-        name="saveSettings"
+        name="rememberSettings"
         type="checkbox"
         checked={rememberSettings}
         onChange={() => handleToggle()}
       />
       <label
         className={`text-${theme.text}`}
-        htmlFor="saveSettings"
+        htmlFor="rememberSettings"
         onClick={() => handleToggle()}
       >
         Remember my settings

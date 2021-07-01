@@ -6,7 +6,7 @@ export default class Metronome extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tempo: 120, // 30-300
+      tempo: this.props.tempoSetting || 120, // 30-300
       audioContext: null,
       currentQuarterNote: 0,
       lookahead: 25, // How frequently to call scheduling function (in milliseconds)
@@ -106,6 +106,7 @@ export default class Metronome extends Component {
   handleTempoChange(tempo, wasJustPlaying) {
     this.stop()
     this.setState({ tempo }, () => {
+      this.props.set('tempo', tempo)
       if (wasJustPlaying) this.start()
     })
   }

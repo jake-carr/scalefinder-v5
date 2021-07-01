@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { scales, createScale, listScales } from '../../constants/scales'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 import RectangularButton from '../controls/RectangularButton'
+import { saveInLocalStorage } from '../../constants/storage'
 import TuningDropdown from '../controls/TuningDropdown'
 import { getAlteration } from '../../constants/utils'
 import { tunings } from '../../constants/tunings'
@@ -17,20 +18,50 @@ export default connect(mapStateToProps, mapDispatchToProps)(Settings)
 
 function Settings({
   darkTheme,
+  rememberSettings,
+  currentScale,
+  tempo,
   rootIndex,
   scaleIndex,
-  chordModal,
+  tuning,
   highlightRoots,
   labelAllNotes,
   degreeNotation,
   degrees,
-  sharps,
-  tuning,
-  toggle,
   frets,
+  sharps,
+  toggle,
   set,
+  chordModal,
+  showChords,
+  chordNotes,
 }) {
-  // todo - local storage (including for tempo on metronome class)
+  const settings = {
+    darkTheme,
+    rememberSettings,
+    tempo,
+    rootIndex,
+    scaleIndex,
+    currentScale,
+    tuning,
+    highlightRoots,
+    labelAllNotes,
+    degreeNotation,
+    degrees,
+    frets,
+    sharps,
+    chordModal,
+    showChords,
+    chordNotes,
+  }
+  // Local Storage
+  useEffect(() => {
+    if (rememberSettings) {
+      for (let key in settings) {
+        if (key != 'rememberSettings') saveInLocalStorage(`${key}`, settings[key])
+      }
+    }
+  }, [settings])
 
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   const noteOptions = getAlteration(sharps)
@@ -172,7 +203,7 @@ function Settings({
           )}
         </div>
         <div className="flex flex-row justify-right">
-          <Metronome darkTheme={darkTheme} />
+          <Metronome darkTheme={darkTheme} tempoSetting={tempo} set={set} />
         </div>
       </div>
     </main>
@@ -193,6 +224,11 @@ function mapStateToProps(state) {
     frets: state.frets,
     chordModal: state.chordModal,
     currentScale: state.currentScale,
+    rememberSettings: state.rememberSettings,
+    chordModal: state.chordModal,
+    showChords: state.showChords,
+    chordNotes: state.chordNotes,
+    tempo: state.tempo,
   }
 }
 

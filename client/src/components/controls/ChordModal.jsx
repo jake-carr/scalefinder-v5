@@ -9,7 +9,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(ChordModal)
 function ChordModal({
   rootIndex,
   scaleIndex,
-  showChord,
+  showChords,
   chordNotes,
   darkTheme,
   sharps,
@@ -30,7 +30,7 @@ function ChordModal({
       selectChord('')
       setChordsInKey({})
       set('chordModal', false)
-      set('showChords', false)
+      if (showChords) toggle('showChords')
     }
   }, [scaleIndex, rootIndex, sharps])
 
@@ -46,16 +46,16 @@ function ChordModal({
       const chord = makeChord(ROOT_INDEX, type, sharps)
       setPrev(selectedChord)
       set('chordNotes', chord)
-      set('showChords', true)
+      if (!showChords) toggle('showChords')
     }
   }, [selectedChord])
 
   const handleSelectChord = (chord) => {
     if (chord == prev) {
       set('chordNotes', [])
-      set('showChords', false)
       selectChord('')
       setPrev('')
+      if (showChords) toggle('showChords')
     } else {
       selectChord(chord)
     }
@@ -125,7 +125,7 @@ function ChordModal({
 
 function mapStateToProps(state) {
   return {
-    showChord: state.showChord,
+    showChords: state.showChords,
     rootIndex: state.rootIndex,
     scaleIndex: state.scaleIndex,
     chordNotes: state.chordNotes,

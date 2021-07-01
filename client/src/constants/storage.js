@@ -11,9 +11,9 @@ export const retrieveLocalStorage = () => {
     i = keys.length
   while (i--) {
     let item = localStorage.getItem(keys[i])
-    if (keys[i] === 'tuning') {
+    if (keys[i] === 'tuning' || keys[i] === 'chordNotes' || keys[i] === 'currentScale') {
       values[keys[i]] = parseTuning(item) // convert to numeric array
-    } else if (keys[i] === 'theme' || keys[i] === 'degreeNotation') {
+    } else if (keys[i] === 'degreeNotation') {
       values[keys[i]] = item // leave as string
     } else {
       values[keys[i]] = JSON.parse(item) // JSON.parse bools & nums
