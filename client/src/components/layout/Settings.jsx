@@ -165,7 +165,7 @@ function Settings({
           <button
             title="Toggle preferred alteration between sharps and flats."
             onClick={() => toggle('sharps')}
-            className="focus:outline-none rounded-full h-8 w-8 flex items-center justify-center my-2 mx-2"
+            className="focus:outline-none rounded-full h-8 w-8 flex items-center justify-center my-2 mx-2 transition duration-300"
             style={{
               border: `2px solid ${theme.bg0}`,
               backgroundColor: theme.bg2,

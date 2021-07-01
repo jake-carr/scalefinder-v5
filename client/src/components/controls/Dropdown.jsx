@@ -21,9 +21,9 @@ function Dropdown({
 }) {
   const [open, toggleOpen] = useState(false)
   const [selection, changeSelection] = useState('')
+  const scheme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   const createTheme = (theme) => {
-    const scheme = darkTheme ? DARK_THEME : LIGHT_THEME
     const { primary0, primary1, text, tertiary0, tertiary1 } = scheme
     if (name === 'Degree Notation') {
       return {
@@ -135,8 +135,20 @@ function Dropdown({
               <button
                 title="Information about this scale."
                 onClick={() => toggle('infoModal')}
-                className="rounded-full mx-1 flex items-center justify-center border-2"
-                style={{}}
+                className="rounded-full mx-1 flex items-center justify-center border-2 transition duration-300 focus:outline-none"
+                style={
+                  infoModal
+                    ? {
+                        backgroundColor: scheme.secondary0,
+                        border: `2px solid ${scheme.secondary1}`,
+                        color: scheme.bg3,
+                      }
+                    : {
+                        backgroundColor: scheme.bg3,
+                        border: `2px solid ${scheme.bg0}`,
+                        color: scheme.text,
+                      }
+                }
               >
                 <i className="fas fa-info-circle" />
               </button>

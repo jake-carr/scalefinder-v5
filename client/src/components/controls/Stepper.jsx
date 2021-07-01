@@ -24,7 +24,7 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
       <label>{label.toUpperCase()}</label>
       <div className="flex flex-row">
         <button
-          className="px-2 h-5 w-5 flex items-center justify-center"
+          className="px-2 h-5 w-5 flex items-center justify-center focus:outline-none"
           onClick={decrement}
         >
           -
@@ -36,7 +36,7 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
           {value}
         </div>
         <button
-          className="px-2 h-5 w-5 flex items-center justify-center"
+          className="px-2 h-5 w-5 flex items-center justify-center focus:outline-none"
           onClick={increment}
         >
           +

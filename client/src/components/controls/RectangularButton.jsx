@@ -40,7 +40,7 @@ function RectangularButton({ title, action, value, condition, darkTheme }) {
 
   return (
     <button
-      className={`w-40 h-12 mx-2 rounded focus:outline-none`}
+      className={`w-40 h-12 mx-2 rounded focus:outline-none transition duration-300`}
       style={applyStyles()} // style object overwrites hover effect; find workaround
       title={title}
       onClick={() => action(!value)}
