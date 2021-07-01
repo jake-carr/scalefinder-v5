@@ -10,6 +10,7 @@ import { tunings } from '../../constants/tunings'
 import RoundButton from '../controls/RoundButton'
 import ChordModal from '../controls/ChordModal'
 import Metronome from '../controls/Metronome'
+import InfoModal from '../display/InfoModal'
 import Checkbox from '../controls/Checkbox'
 import Dropdown from '../controls/Dropdown'
 import Stepper from '../controls/Stepper'
@@ -35,6 +36,7 @@ function Settings({
   chordModal,
   showChords,
   chordNotes,
+  infoModal,
 }) {
   const settings = {
     darkTheme,
@@ -53,6 +55,7 @@ function Settings({
     chordModal,
     showChords,
     chordNotes,
+    infoModal,
   }
   // Local Storage
   useEffect(() => {
@@ -109,12 +112,13 @@ function Settings({
   }, [rootIndex, scaleIndex])
 
   return (
-    <main className={`w-full text-base h-1/4 relative`} style={{ color: theme.text }}>
+    <main className="w-full text-base h-1/4 relative z-10" style={{ color: theme.text }}>
       <div
-        className={`flex flex-row justify-between h-1/2`}
+        className="relative flex flex-row justify-between h-1/2"
         style={{ backgroundColor: theme.bg0 }}
       >
         <div className="inline-flex flex-row justify-left">
+          <InfoModal />
           <RoundButton
             title="Randomize root and scale."
             action={randomize}
@@ -149,7 +153,7 @@ function Settings({
           />
           {chordModal ? <ChordModal /> : null}
         </div>
-        <div className="flex flex-row justify-right py-2 px-2">
+        <div className="relative flex flex-row justify-right py-2 px-2">
           <Checkbox />
           <RoundButton
             title="Toggle between light and dark theme."
@@ -158,14 +162,14 @@ function Settings({
         </div>
       </div>
       <div
-        className={`flex flex-row justify-between h-1/2 content-center items-center`}
+        className={`relative flex flex-row justify-between h-1/2 content-center items-center`}
         style={{ backgroundColor: theme.bg1 }}
       >
-        <div className="flex flex-row justify-left">
+        <div className="flex flex-row justify-left pl-2">
           <button
             title="Toggle preferred alteration between sharps and flats."
             onClick={() => toggle('sharps')}
-            className="focus:outline-none rounded-full h-8 w-8 flex items-center justify-center my-2 mx-2 transition duration-300"
+            className="focus:outline-none rounded-full h-8 w-8 flex items-center justify-center my-2 transition duration-300"
             style={{
               border: `2px solid ${theme.bg0}`,
               backgroundColor: theme.bg2,
@@ -225,6 +229,7 @@ function mapStateToProps(state) {
     chordModal: state.chordModal,
     currentScale: state.currentScale,
     rememberSettings: state.rememberSettings,
+    infoModal: state.infoModal,
     chordModal: state.chordModal,
     showChords: state.showChords,
     chordNotes: state.chordNotes,

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
 import { listScales } from '../../constants/scales'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
-import InfoModal from '../display/InfoModal'
 import Select from 'react-select'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
@@ -141,7 +140,7 @@ function Dropdown({
                     ? {
                         backgroundColor: scheme.secondary0,
                         border: `2px solid ${scheme.secondary1}`,
-                        color: scheme.bg3,
+                        color: scheme.bg2,
                       }
                     : {
                         backgroundColor: scheme.bg3,
@@ -152,7 +151,6 @@ function Dropdown({
               >
                 <i className="fas fa-info-circle" />
               </button>
-              {infoModal ? <InfoModal /> : null}
             </span>
           ) : null}
         </div>
