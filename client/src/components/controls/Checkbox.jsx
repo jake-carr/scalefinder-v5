@@ -18,22 +18,19 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
   }, [rememberSettings])
 
   return (
-    // styling todo
-    <div>
+    <span className="absolute bottom-1 right-2 w-80 flex flex-row-reverse transition duration-300">
       <input
         name="rememberSettings"
+        className="float-right self-center"
         type="checkbox"
         checked={rememberSettings}
         onChange={() => handleToggle()}
+        // style={/*todo*/}
       />
-      <label
-        className={`text-${theme.text}`}
-        htmlFor="rememberSettings"
-        onClick={() => handleToggle()}
-      >
+      <label className="mx-2" htmlFor="rememberSettings" onClick={() => handleToggle()}>
         Remember my settings
       </label>
-    </div>
+    </span>
   )
 }
 

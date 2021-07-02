@@ -174,13 +174,17 @@ function Settings({
             min={12}
             max={24}
           />
-          <ChordModal />
+          <>
+            {/*TODO: Make a responsive container for remaining space to put chordModal into*/}
+            <ChordModal />
+          </>
         </div>
         <div className="relative flex flex-row justify-right py-2 px-2">
           <Checkbox />
           <RoundButton
             title="Toggle between light and dark theme."
             action={() => toggle('darkTheme')}
+            margin={'mx-1 my-1'}
           />
         </div>
       </div>
