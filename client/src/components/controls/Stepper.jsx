@@ -20,23 +20,33 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
   }
 
   return (
-    <div className="flex flex-col mx-2">
-      <label>{label.toUpperCase()}</label>
-      <div className="flex flex-row">
+    <div className="flex flex-col mx-2 relative">
+      <label className="relative bottom-8 h-0 ">{label.toUpperCase()}</label>
+      <div className="flex flex-row justify-center items-center">
         <button
-          className="px-2 h-5 w-5 flex items-center justify-center focus:outline-none"
+          className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
+          style={{
+            color: theme.text,
+            border: `1px solid ${theme.text}`,
+            borderRadius: '50%',
+          }}
           onClick={decrement}
         >
           -
         </button>
         <div
-          className="h-5 w-5 text-center transition duration-300"
+          className="px-1 h-6 w-8 text-lg text-center transition duration-300"
           style={{ color: theme.tertiary0 }}
         >
           {value}
         </div>
         <button
-          className="px-2 h-5 w-5 flex items-center justify-center focus:outline-none"
+          className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
+          style={{
+            color: theme.text,
+            border: `1px solid ${theme.text}`,
+            borderRadius: '50%',
+          }}
           onClick={increment}
         >
           +

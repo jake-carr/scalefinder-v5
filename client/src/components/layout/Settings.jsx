@@ -112,12 +112,12 @@ function Settings({
   }, [rootIndex, scaleIndex])
 
   return (
-    <main className="w-full text-base h-1/4 relative z-10" style={{ color: theme.text }}>
+    <main className="w-full text-base h-1/3 relative z-10" style={{ color: theme.text }}>
       <div
         className="relative flex flex-row justify-between h-1/2"
         style={{ backgroundColor: theme.bg0 }}
       >
-        <div className="inline-flex flex-row justify-left">
+        <div className="inline-flex flex-row justify-left items-center">
           <InfoModal />
           <RoundButton
             title="Randomize root and scale."
@@ -162,10 +162,10 @@ function Settings({
         </div>
       </div>
       <div
-        className={`relative flex flex-row justify-between h-1/2 content-center items-center`}
+        className="relative flex flex-row justify-between h-1/2 items-center"
         style={{ backgroundColor: theme.bg1 }}
       >
-        <div className="flex flex-row justify-left pl-2">
+        <div className="flex flex-row justify-left pl-2 items-center">
           <button
             title="Toggle preferred alteration between sharps and flats."
             onClick={() => toggle('sharps')}
@@ -206,7 +206,7 @@ function Settings({
             <div>placeholder</div>
           )}
         </div>
-        <div className="flex flex-row justify-right">
+        <div className="flex flex-row justify-right px-4">
           <Metronome darkTheme={darkTheme} tempoSetting={tempo} set={set} />
         </div>
       </div>

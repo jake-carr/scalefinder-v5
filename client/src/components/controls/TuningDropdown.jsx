@@ -64,8 +64,10 @@ function TuningDropdown({ tuning, set, darkTheme }) {
   }, [selection])
 
   return (
-    <div className="w-48 flex flex-col" onBlur={() => toggleOpen(false)}>
-      <label htmlFor="tuning-dropdown">TUNING</label>
+    <div className="w-48 flex flex-col relative" onBlur={() => toggleOpen(false)}>
+      <label className="relative bottom-6 h-0" htmlFor="tuning-dropdown">
+        TUNING
+      </label>
       <Select
         theme={(theme) => ({
           ...theme,
