@@ -37,11 +37,13 @@ function Settings({
   showChords,
   chordNotes,
   infoModal,
+  hz,
 }) {
   const settings = {
     darkTheme,
     rememberSettings,
     tempo,
+    hz,
     rootIndex,
     scaleIndex,
     currentScale,
@@ -225,7 +227,12 @@ function Settings({
           ) : null}
         </div>
         <div className="flex flex-row justify-right px-4">
-          <Metronome darkTheme={darkTheme} tempoSetting={tempo} set={set} />
+          <Metronome
+            darkTheme={darkTheme}
+            tempoSetting={tempo}
+            hzSetting={hz}
+            set={set}
+          />
         </div>
       </div>
     </main>
@@ -252,6 +259,7 @@ function mapStateToProps(state) {
     showChords: state.showChords,
     chordNotes: state.chordNotes,
     tempo: state.tempo,
+    hz: state.hz,
   }
 }
 

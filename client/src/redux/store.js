@@ -8,7 +8,9 @@ const defaultSettings = {
   // App
   darkTheme: true,
   rememberSettings: false,
-  tempo: 120, // Metronome
+  // Metronome
+  tempo: 120,
+  hz: 440,
   // Main
   rootIndex: 3,
   scaleIndex: 0,
