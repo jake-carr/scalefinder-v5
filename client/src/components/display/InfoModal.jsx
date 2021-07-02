@@ -9,7 +9,7 @@ function InfoModal({ darkTheme, scaleIndex, infoModal }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   return (
     <span
-      className="absolute bottom-1 left-2 w-auto flex flex-row flex-nowrap transition duration-300"
+      className="transition duration-300"
       style={{ color: theme.secondary0, opacity: infoModal ? 1 : 0 }}
     >
       {scales[scaleIndex].info}

@@ -184,9 +184,6 @@ function Dropdown({
           label: selection,
         }}
       />
-      {name === 'Scale' && scaleIndex < 7 ? (
-        <button onClick={() => toggle('chordModal')}>chords</button>
-      ) : null}
     </div>
   )
 }

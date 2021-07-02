@@ -9,12 +9,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(ChordModal)
 function ChordModal({
   rootIndex,
   scaleIndex,
+  chordModal,
   showChords,
   chordNotes,
   darkTheme,
   sharps,
-  set,
   toggle,
+  set,
 }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   const [chordsInKey, setChordsInKey] = useState({})
@@ -75,78 +76,83 @@ function ChordModal({
   }
 
   return (
-    <div
-      className="absolute top-2 left-1/2 border-2 flex flex-col justify-center text-center h-3/4 px-2"
-      style={{ backgroundColor: theme.bg0 }}
-    >
-      {chordsInKey['basicChords'] && chordsInKey['seventhChords'] ? (
-        <>
-          <div className="text-lg absolute top-1 self-center">
-            <span style={{ color: theme.secondary0 }}>
-              {indexToString(rootIndex, sharps)}{' '}
-            </span>
-            <span style={{ color: theme.primary1 }}>{scales[scaleIndex].name}</span>
-          </div>
+    <>
+      {chordModal ? (
+        <div
+          className="absolute top-2 left-1/2 border-2 rounded flex flex-col justify-center text-center h-3/4 px-2"
+          style={{ backgroundColor: theme.bg0 }}
+        >
+          {chordsInKey['basicChords'] && chordsInKey['seventhChords'] ? (
+            <>
+              <div className="text-lg self-center">
+                <span style={{ color: theme.secondary0 }}>
+                  {indexToString(rootIndex, sharps)}{' '}
+                </span>
+                <span style={{ color: theme.primary1 }}>{scales[scaleIndex].name}</span>
+              </div>
 
-          <div>
-            <span
-              className="flex flex-row justify-center items-center"
-              style={{ color: theme.chord0 }}
-            >
-              Basic chords {renderSquares()}
-            </span>
-            <div>
-              {chordsInKey.basicChords.map((chord, i) => {
-                return (
-                  <span key={i} onClick={() => handleSelectChord(chord)}>
-                    <span
-                      style={{
-                        color: chord === selectedChord ? theme.chord1 : theme.text,
-                      }}
-                    >
-                      {chord}
-                    </span>
-                    {i < 6 ? <span className="mx-1">•</span> : null}
-                  </span>
-                )
-              })}
-            </div>
+              <div>
+                <span
+                  className="flex flex-row justify-center items-center"
+                  style={{ color: theme.chord0 }}
+                >
+                  Basic chords {renderSquares()}
+                </span>
+                <div>
+                  {chordsInKey.basicChords.map((chord, i) => {
+                    return (
+                      <span key={i} onClick={() => handleSelectChord(chord)}>
+                        <span
+                          style={{
+                            color: chord === selectedChord ? theme.chord1 : theme.text,
+                          }}
+                        >
+                          {chord}
+                        </span>
+                        {i < 6 ? <span className="mx-1">•</span> : null}
+                      </span>
+                    )
+                  })}
+                </div>
+              </div>
+              <div>
+                <span
+                  className="flex flex-row justify-center items-center"
+                  style={{ color: theme.chord3 }}
+                >
+                  Seventh chords {renderSquares('four')}
+                </span>
+                <div>
+                  {chordsInKey.seventhChords.map((chord, i) => {
+                    return (
+                      <span key={i} onClick={() => handleSelectChord(chord)}>
+                        <span
+                          style={{
+                            color: chord === selectedChord ? theme.chord2 : theme.text,
+                          }}
+                        >
+                          {chord}
+                        </span>
+                        {i < 6 ? <span className="mx-1">•</span> : null}
+                      </span>
+                    )
+                  })}
+                </div>
+              </div>
+            </>
+          ) : null}
+          <div className="text-sm absolute bottom-1 self-center">
+            Click a chord name to highlight its intervals on the fretboard.
           </div>
-          <div>
-            <span
-              className="flex flex-row justify-center items-center"
-              style={{ color: theme.chord3 }}
-            >
-              Seventh chords {renderSquares('four')}
-            </span>
-            <div>
-              {chordsInKey.seventhChords.map((chord, i) => {
-                return (
-                  <span key={i} onClick={() => handleSelectChord(chord)}>
-                    <span
-                      style={{
-                        color: chord === selectedChord ? theme.chord2 : theme.text,
-                      }}
-                    >
-                      {chord}
-                    </span>
-                    {i < 6 ? <span className="mx-1">•</span> : null}
-                  </span>
-                )
-              })}
-            </div>
-          </div>
-        </>
+        </div>
       ) : null}
-      <div className="text-sm absolute bottom-1 self-center">
-        Click a chord name to highlight its intervals on the fretboard.
-      </div>
-    </div>
+    </>
   )
 }
 
 function mapStateToProps(state) {
   return {
+    chordModal: state.chordModal,
     showChords: state.showChords,
     rootIndex: state.rootIndex,
     scaleIndex: state.scaleIndex,

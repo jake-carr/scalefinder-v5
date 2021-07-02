@@ -118,7 +118,9 @@ function Settings({
         style={{ backgroundColor: theme.bg0 }}
       >
         <div className="inline-flex flex-row justify-left items-center">
-          <InfoModal />
+          <span className="absolute bottom-1 left-2 w-auto flex flex-row flex-nowrap transition duration-300">
+            <InfoModal />
+          </span>
           <RoundButton
             title="Randomize root and scale."
             action={randomize}
@@ -130,12 +132,31 @@ function Settings({
             val={rootIndex}
             name={'Root'}
           />
-          <Dropdown
-            options={scaleOptions}
-            action={selectScale}
-            val={scaleIndex}
-            name={'Scale'}
-          />
+          <span className="flex flex-row flex-nowrap relative">
+            <Dropdown
+              options={scaleOptions}
+              action={selectScale}
+              val={scaleIndex}
+              name={'Scale'}
+            />
+            {scaleIndex < 7 ? (
+              <button
+                className="absolute bottom-12 right-1 w-20 h-8 mx-1 rounded focus:outline-none transition duration-300"
+                style={
+                  chordModal
+                    ? {
+                        backgroundColor: theme.chord0,
+                      }
+                    : { backgroundColor: theme.bg2 }
+                }
+                title="Chords"
+                onClick={() => toggle('chordModal')}
+              >
+                Chords
+              </button>
+            ) : null}
+          </span>
+
           <TuningDropdown />
           <Stepper
             label="Strings"
@@ -151,7 +172,7 @@ function Settings({
             min={12}
             max={24}
           />
-          {chordModal ? <ChordModal /> : null}
+          <ChordModal />
         </div>
         <div className="relative flex flex-row justify-right py-2 px-2">
           <Checkbox />
@@ -171,7 +192,6 @@ function Settings({
             onClick={() => toggle('sharps')}
             className="focus:outline-none rounded-full h-8 w-8 flex items-center justify-center my-2 transition duration-300"
             style={{
-              border: `2px solid ${theme.bg0}`,
               backgroundColor: theme.bg2,
               color: theme.text,
             }}
@@ -202,9 +222,7 @@ function Settings({
               val={degreeNotation}
               name={'Degree Notation'}
             />
-          ) : (
-            <div>placeholder</div>
-          )}
+          ) : null}
         </div>
         <div className="flex flex-row justify-right px-4">
           <Metronome darkTheme={darkTheme} tempoSetting={tempo} set={set} />

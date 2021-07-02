@@ -32,7 +32,6 @@ function RoundButton({ title, action, darkTheme, margin }) {
       style={{
         backgroundColor: theme.primary0,
         color: theme.text,
-        border: `2px solid ${theme.primary1}`,
       }}
     >
       {mapTitleToIcon()}

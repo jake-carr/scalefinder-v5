@@ -13,26 +13,22 @@ function RectangularButton({ title, action, value, condition, darkTheme }) {
         case 'highlightRoots':
           return {
             backgroundColor: secondary0,
-            border: `2px solid ${secondary1}`,
             color: bg0,
           }
         case 'degrees':
           return {
             backgroundColor: tertiary0,
-            border: `2px solid ${tertiary1}`,
             color: bg0,
           }
         default:
           return {
             backgroundColor: bg3,
-            border: `2px solid ${bg2}`,
             color: text,
           }
       }
     } else {
       return {
         backgroundColor: bg0,
-        border: `2px solid ${bg1}`,
         color: text,
       }
     }
