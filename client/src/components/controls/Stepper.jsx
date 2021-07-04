@@ -20,8 +20,8 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
   }
 
   return (
-    <div className="flex flex-col mx-2 relative">
-      <label className="relative bottom-8 h-0 ">{label.toUpperCase()}</label>
+    <div className="flex flex-col ml-2 relative">
+      <label className="relative bottom-6 h-0 text-sm">{label.toUpperCase()}</label>
       <div className="flex flex-row justify-center items-center">
         <button
           className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
@@ -34,12 +34,9 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
         >
           -
         </button>
-        <div
-          className="px-1 h-6 w-8 text-lg text-center transition duration-300"
-          style={{ color: theme.tertiary0 }}
-        >
+        <span className="mx-1 transition duration-300" style={{ color: theme.tertiary0 }}>
           {value}
-        </div>
+        </span>
         <button
           className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
           style={{
