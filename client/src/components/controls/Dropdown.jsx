@@ -23,13 +23,13 @@ function Dropdown({
   const scheme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   const createTheme = (theme) => {
-    const { primary0, primary1, text, tertiary0, tertiary1 } = scheme
+    const { secondary0, primary0, primary1, text, tertiary0, tertiary1, bg0 } = scheme
     if (name === 'Degree Notation') {
       return {
         ...theme.colors,
         primary: tertiary0,
         primary25: tertiary1,
-        primary50: text,
+        primary50: primary1,
         primary75: tertiary1,
         neutral0: tertiary0,
         neutral5: tertiary0,
@@ -48,7 +48,7 @@ function Dropdown({
         ...theme.colors,
         primary: primary0,
         primary25: primary1,
-        primary50: text,
+        primary50: secondary0,
         primary75: primary1,
         neutral0: primary0,
         neutral5: primary0,
