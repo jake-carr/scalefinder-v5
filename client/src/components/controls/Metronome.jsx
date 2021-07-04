@@ -129,11 +129,11 @@ export default class Metronome extends Component {
               METRONOME
             </label>
             <button
-              className="self-center rounded-full mx-2 h-6 w-6 focus:outline-none"
+              className="self-center rounded-full ml-1 h-6 w-6 focus:outline-none"
               aria-label="metronome-play-pause-button"
               style={{
-                background: theme.secondary0,
-                color: theme.bg0,
+                background: 'none',
+                color: theme.secondary0,
               }}
               onClick={() => this.startStop()}
             >
@@ -157,17 +157,17 @@ export default class Metronome extends Component {
                 backgroundColor: theme.bg3,
               },
               active: {
-                backgroundColor: theme.tertiary0,
+                backgroundColor: theme.secondary1,
               },
             }}
           />
           <label
             className="my-1 text-sm"
             htmlFor="bpm-slider"
-            style={{ color: theme.tertiary0 }}
+            style={{ color: theme.secondary1 }}
           >
             <span style={{ color: theme.text }}>BPM </span>
-            <span style={{ color: theme.tertiary0 }}>{this.state.tempo}</span>
+            <span style={{ color: theme.secondary1 }}>{this.state.tempo}</span>
           </label>
           <Slider
             name="hz-slider"
@@ -181,13 +181,13 @@ export default class Metronome extends Component {
                 backgroundColor: theme.bg3,
               },
               active: {
-                backgroundColor: theme.tertiary1,
+                backgroundColor: theme.secondary0,
               },
             }}
           />
           <label className="my-1 text-sm" htmlFor="hz-slider">
             <span style={{ color: theme.text }}>TONE </span>
-            <span style={{ color: theme.tertiary1 }}>{this.state.hz}Hz</span>
+            <span style={{ color: theme.secondary0 }}>{this.state.hz}Hz</span>
           </label>
         </div>
       </div>
