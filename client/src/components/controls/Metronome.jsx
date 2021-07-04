@@ -123,32 +123,28 @@ export default class Metronome extends Component {
     const theme = this.props.darkTheme ? DARK_THEME : LIGHT_THEME
     return (
       <div className="flex justify-center">
-        <button
-          className="self-center rounded-full mx-4 h-10 w-10 focus:outline-none"
-          aria-label="metronome-play-pause-button"
-          style={{
-            background: theme.primary0,
-            color: theme.text,
-          }}
-          onClick={() => this.startStop()}
-        >
-          <i
-            id="play-pause-icon"
-            className={`self-center ${
-              this.state.isPlaying ? 'fas fa-pause' : 'fas fa-play'
-            }`}
-          />
-        </button>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
-        >
-          <label className="my-1" htmlFor="bpm-slider" style={{ color: theme.text }}>
-            METRONOME
-          </label>
+        <div className="flex flex-col justify-center">
+          <div className="flex flex-row flex-nowrap h-8">
+            <label className="my-1" htmlFor="bpm-slider" style={{ color: theme.text }}>
+              METRONOME
+            </label>
+            <button
+              className="self-center rounded-full mx-2 h-6 w-6 focus:outline-none"
+              aria-label="metronome-play-pause-button"
+              style={{
+                background: theme.primary0,
+                color: theme.text,
+              }}
+              onClick={() => this.startStop()}
+            >
+              <i
+                id="play-pause-icon"
+                className={`text-sm ${
+                  this.state.isPlaying ? 'fas fa-pause' : 'fas fa-play'
+                }`}
+              />
+            </button>
+          </div>
           <Slider
             name="bpm-slider"
             axis="x"

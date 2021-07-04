@@ -18,7 +18,7 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
   }, [rememberSettings])
 
   return (
-    <span className="absolute bottom-1 right-2 w-80 flex flex-row-reverse transition duration-300">
+    <span className="absolute top-0 left-1 w-60 flex flex-row text-center transition duration-300">
       <input
         name="rememberSettings"
         className="float-right self-center"
@@ -27,7 +27,11 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
         onChange={() => handleToggle()}
         // style={/*todo*/}
       />
-      <label className="mx-2" htmlFor="rememberSettings" onClick={() => handleToggle()}>
+      <label
+        className="mx-2 text-xs"
+        htmlFor="rememberSettings"
+        onClick={() => handleToggle()}
+      >
         Remember my settings
       </label>
     </span>
