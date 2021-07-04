@@ -27,7 +27,6 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
           className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
           style={{
             color: theme.text,
-            border: `1px solid ${theme.text}`,
             borderRadius: '50%',
           }}
           onClick={decrement}
@@ -41,7 +40,6 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
           className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
           style={{
             color: theme.text,
-            border: `1px solid ${theme.text}`,
             borderRadius: '50%',
           }}
           onClick={increment}

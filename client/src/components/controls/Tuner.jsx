@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { indexToString, getAlteration } from '../../constants/utils'
+import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tuner)
 
-function Tuner({ tuning, stringIndex, set, sharps }) {
+function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
   const [modal, toggleModal] = useState(false)
+  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   const parseDown = (n) => {
     return n === 0 ? 11 : n - 1
@@ -28,20 +30,41 @@ function Tuner({ tuning, stringIndex, set, sharps }) {
   }
 
   const handleNoteSelect = (noteIndex) => {
-    let update = [...tuning]
-    update[stringIndex] = noteIndex
-    set('tuning', update)
-    toggleModal(false)
+    if (modal) {
+      let update = [...tuning]
+      update[stringIndex] = noteIndex
+      set('tuning', update)
+      toggleModal(false)
+    }
   }
 
   const Modal = () => {
     const notes = getAlteration(sharps)
     return (
-      // WIP
-      <div className="relative bottom-5 right-5 border-2 border-solid grid grid-cols-4 grid-rows-3 gap-2">
+      <div
+        className="absolute bottom-10 flex flex-row duration-300"
+        style={{ opacity: modal ? 1 : 0 }}
+      >
         {notes.map((note, i) => {
           return (
-            <button className="rounded-full border-1" onClick={() => handleNoteSelect(i)}>
+            <button
+              className={`focus:outline-none rounded-full text-xs h-5 w-5 flex items-center justify-center mx-1 ${
+                modal ? 'cursor-pointer' : 'cursor-default'
+              }`}
+              style={
+                tuning[stringIndex] === i
+                  ? {
+                      backgroundColor: theme.tuning1,
+                      color: theme.bg0,
+                      opactiy: 0.75,
+                    }
+                  : {
+                      backgroundColor: theme.tuning0,
+                      color: theme.text,
+                    }
+              }
+              onClick={() => handleNoteSelect(i)}
+            >
               {note}
             </button>
           )
@@ -51,18 +74,38 @@ function Tuner({ tuning, stringIndex, set, sharps }) {
   }
 
   return (
-    // styling todo
-    <div className="flex justify-center align-center text-lg">
-      <button className="" onClick={() => tuneDown()}>
+    <div className="relative flex justify-center align-center items-center text-lg">
+      <button
+        className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
+        style={{
+          color: theme.text,
+          borderRadius: '50%',
+        }}
+        onClick={() => tuneDown()}
+      >
         -
       </button>
-      <button className="" onClick={() => toggleModal(!modal)}>
+      <button
+        className="focus:outline-none rounded-full text-sm h-7 w-7 flex items-center justify-center mx-1"
+        style={{
+          backgroundColor: theme.tuning0,
+          color: theme.text,
+        }}
+        onClick={() => toggleModal(!modal)}
+      >
         {indexToString(tuning[stringIndex], sharps)}
       </button>
-      <button className="" onClick={() => tuneUp()}>
+      <button
+        className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
+        style={{
+          color: theme.text,
+          borderRadius: '50%',
+        }}
+        onClick={() => tuneUp()}
+      >
         +
       </button>
-      {modal ? Modal() : null}
+      {Modal()}
     </div>
   )
 }
@@ -71,6 +114,7 @@ function mapStateToProps(state) {
   return {
     tuning: state.tuning,
     sharps: state.sharps,
+    darkTheme: state.darkTheme,
   }
 }
 
