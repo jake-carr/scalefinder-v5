@@ -132,8 +132,8 @@ export default class Metronome extends Component {
               className="self-center rounded-full mx-2 h-6 w-6 focus:outline-none"
               aria-label="metronome-play-pause-button"
               style={{
-                background: theme.primary0,
-                color: theme.text,
+                background: theme.secondary0,
+                color: theme.bg0,
               }}
               onClick={() => this.startStop()}
             >
@@ -154,7 +154,7 @@ export default class Metronome extends Component {
             onChange={({ x }) => this.handleTempoChange(x, this.state.isPlaying)}
             styles={{
               track: {
-                backgroundColor: theme.tuning0,
+                backgroundColor: theme.bg3,
               },
               active: {
                 backgroundColor: theme.tertiary0,
@@ -178,7 +178,7 @@ export default class Metronome extends Component {
             onChange={({ x }) => this.handleFrequencyChange(x)}
             styles={{
               track: {
-                backgroundColor: theme.tuning1,
+                backgroundColor: theme.bg3,
               },
               active: {
                 backgroundColor: theme.tertiary1,
