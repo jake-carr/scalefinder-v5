@@ -119,7 +119,6 @@ function Settings({
         className="relative flex flex-row justify-between h-1/2"
         style={{ backgroundColor: theme.bg0 }}
       >
-        <Checkbox />
         <div className="inline-flex flex-row justify-left items-center">
           <span className="absolute bottom-1 left-2 w-auto flex flex-row flex-nowrap transition duration-300">
             <InfoModal />
@@ -176,6 +175,9 @@ function Settings({
             max={24}
           />
         </div>
+        <div className="w-full h-full">
+          <ChordModal />
+        </div>
         <div className="relative flex flex-row justify-right py-2 px-2">
           <RoundButton
             title="Toggle between light and dark theme."
@@ -188,6 +190,7 @@ function Settings({
         className="relative flex flex-row justify-between h-1/2 items-center"
         style={{ backgroundColor: theme.bg1 }}
       >
+        <Checkbox />
         <div className="flex flex-row justify-left pl-2 items-center">
           <button
             title="Toggle preferred alteration between sharps and flats."
@@ -225,9 +228,6 @@ function Settings({
               name={'Degree Notation'}
             />
           ) : null}
-        </div>
-        <div className="w-full h-full">
-          <ChordModal />
         </div>
         <div className="flex flex-row justify-right pr-2">
           <Metronome

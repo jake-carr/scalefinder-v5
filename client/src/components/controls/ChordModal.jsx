@@ -85,14 +85,14 @@ function ChordModal({
     <>
       <div
         className="p-1 h-full w-full transition duration-300 flex flex-col text-left lg:text-center justify-left lg:justify-center items-center"
-        style={{ backgroundColor: theme.bg1, opacity: chordModal ? 1 : 0 }}
+        style={{ backgroundColor: theme.bg0, opacity: chordModal ? 1 : 0 }}
       >
-        <span className="text-sm mx-1" style={{ color: theme.bg3 }}>
+        <span className="text-xs mx-1" style={{ color: theme.bg3 }}>
           Click a chord name to highlight its intervals on the fretboard.
         </span>
         {chordsInKey['basicChords'] && chordsInKey['seventhChords'] ? (
           <>
-            <div>
+            <div className="text-sm">
               <span
                 className="flex flex-row flex-nowrap items-center"
                 style={{ color: theme.chord0 }}
@@ -120,7 +120,7 @@ function ChordModal({
                 </span>
               </span>
             </div>
-            <div>
+            <div className="text-sm">
               <span
                 className="flex flex-row justify-left items-center"
                 style={{ color: theme.chord3 }}
