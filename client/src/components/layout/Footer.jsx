@@ -9,7 +9,7 @@ function Footer({ darkTheme }) {
   return (
     <div
       className="absolute bottom-0 h-10 w-full text-lg flex flex-row justify-center items-center"
-      style={{ backgroundColor: theme.bg3, color: theme.text }}
+      style={{ backgroundColor: theme.bg3, color: theme.tertiary1 }}
     >
       <a
         className="mx-1"
