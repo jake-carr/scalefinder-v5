@@ -24,7 +24,7 @@ function ChordModal({
 
   useEffect(() => {
     // Currently only supports 7 major modes, not all scales
-    if (scaleIndex < 7) {
+    if (scaleIndex < 7 && rootIndex && sharps) {
       const chords = getChords(scaleIndex, rootIndex, sharps)
       setChordsInKey(chords)
     } else {
@@ -34,6 +34,30 @@ function ChordModal({
       if (showChords) toggle('showChords')
     }
   }, [scaleIndex, rootIndex, sharps])
+
+  useEffect(() => {
+    // Persists highlighted chord selection between sessions when rememberSettings is enabled.
+    if (chordNotes.length && showChords) {
+      const chords = getChords(scaleIndex, rootIndex, sharps)
+      let options = chords.basicChords
+      if (chordNotes.length == 4) options = chords.seventhChords
+      for (let chord of options) {
+        let root = chord.split(' ')[0]
+        let type = chord.split(' ')[1]
+        if (type === 'Major') type = 'maj'
+        else if (type === 'Minor') type = 'min'
+        else if (type === 'Augmented') type = 'aug'
+        else if (type === 'Diminished') type = 'dim'
+        const ROOT_INDEX = getAlteration(sharps).indexOf(root)
+        const comparison = makeChord(ROOT_INDEX, type, sharps)
+        let match = true
+        for (let i = 0; i < chordNotes.length; i++) {
+          if (chordNotes[i] !== comparison[i]) match = false
+        }
+        if (match) handleSelectChord(chord)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     if (selectedChord) {
