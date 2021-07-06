@@ -143,7 +143,7 @@ function Settings({
             />
             {scaleIndex < 7 ? (
               <button
-                className="absolute bottom-12 right-1 w-20 h-6 mx-1 rounded focus:outline-none transition duration-300"
+                className="absolute bottom-12 right-2 w-auto h-6 px-1 text-center rounded focus:outline-none transition duration-300"
                 style={
                   chordModal
                     ? {

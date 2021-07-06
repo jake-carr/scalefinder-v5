@@ -126,31 +126,29 @@ function Dropdown({
       className={`${setWidth()} mx-2 flex flex-col relative`}
       onBlur={() => toggleOpen(false)}
     >
-      <div className="relative bottom-6 flex flex-row h-0">
+      <div className="relative text-sm bottom-5 flex flex-row h-0">
         <label htmlFor={name}>{name.toUpperCase()}</label>
         {name === 'Scale' ? (
-          <span>
-            <button
-              title="Information about this scale."
-              onClick={() => toggle('infoModal')}
-              className="rounded-full h-5 w-5 mx-2 flex items-center justify-center transition duration-300 focus:outline-none"
-              style={
-                infoModal
-                  ? {
-                      backgroundColor: scheme.secondary0,
-                      border: `2px solid ${scheme.secondary1}`,
-                      color: scheme.bg2,
-                    }
-                  : {
-                      backgroundColor: scheme.bg3,
-                      border: `2px solid ${scheme.bg0}`,
-                      color: scheme.text,
-                    }
-              }
-            >
-              <i className="fas fa-info-circle" />
-            </button>
-          </span>
+          <button
+            title="Information about this scale."
+            onClick={() => toggle('infoModal')}
+            className="rounded-full h-4 w-4 mx-1 border-box flex items-center justify-center transition duration-300 focus:outline-none"
+            style={
+              infoModal
+                ? {
+                    backgroundColor: scheme.secondary0,
+                    border: `1px solid ${scheme.secondary1}`,
+                    color: scheme.bg2,
+                  }
+                : {
+                    backgroundColor: scheme.bg3,
+                    border: `1px solid ${scheme.bg0}`,
+                    color: scheme.text,
+                  }
+            }
+          >
+            <i className="fas fa-info-circle" />
+          </button>
         ) : null}
       </div>
       <Select
