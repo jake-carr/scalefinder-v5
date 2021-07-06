@@ -56,8 +56,4 @@ export const tunings = [
     name: 'Standard (8 String)',
     values: [7, 2, 10, 5, 0, 7, 2, 9],
   },
-  {
-    name: 'Standard (12 String)',
-    values: [7, 7, 2, 2, 10, 10, 5, 5, 0, 0, 7, 7],
-  },
 ]

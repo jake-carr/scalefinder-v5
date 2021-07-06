@@ -53,20 +53,19 @@ function Fret({
 
   return (
     <div
-      className={`w-16 h-12 duration-300 rounded mx-1 border-box transition duration-300`}
+      className="w-12 h-full rounded mx-1 duration-300 borxer-box flex items-center justify-center relative"
       style={{ backgroundColor: colorFret(), border: colorBorder() }}
     >
       <div
-        className={`relative absolute top-0 left-1 h-0 ${
-          degreeNotation == 'Numeric' ? 'text-sm' : ' text-xs'
-        } duration-300`}
+        className="absolute top-0 left-1 text-xs duration-300 "
         style={{ color: theme.tertiary1, opacity: degrees ? 1 : 0 }}
       >
-        {showOrHideDegree()}
+        <span>{showOrHideDegree()}</span>
       </div>
       <div
-        className="pt-2 text-center text-lg duration-300"
+        className="self-center align-center text-center text-sm duration-300"
         style={{
+          fontWeight: 'bold',
           color: colorText(),
           opacity: currentScale.includes(note) || labelAllNotes ? 1 : 0,
         }}
@@ -74,7 +73,7 @@ function Fret({
         {indexToString(note, sharps)}
       </div>
       {label ? (
-        <div className="pt-3 text-center text-base" style={{ color: theme.text }}>
+        <div className="absolute top-10 text-base" style={{ color: theme.text }}>
           {String(label)}
         </div>
       ) : null}

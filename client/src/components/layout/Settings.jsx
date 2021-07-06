@@ -114,7 +114,7 @@ function Settings({
   }, [rootIndex, scaleIndex])
 
   return (
-    <main className="w-full text-base h-1/3 relative z-10" style={{ color: theme.text }}>
+    <main className="w-full text-base h-full relative" style={{ color: theme.text }}>
       <div
         className="relative flex flex-row justify-between h-1/2"
         style={{ backgroundColor: theme.bg0 }}
@@ -158,14 +158,13 @@ function Settings({
               </button>
             ) : null}
           </span>
-
           <TuningDropdown />
           <Stepper
             label="Strings"
             value={tuning.length}
             action={changeStringCount}
             min={4}
-            max={12}
+            max={8}
           />
           <Stepper
             label="Frets"

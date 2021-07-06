@@ -22,7 +22,7 @@ function GuitarString({ stringIndex, frets, tuning }) {
   }
 
   return (
-    <div className="w-full flex flex-row justify-center my-1">
+    <div className="w-full h-10 flex flex-row justify-center my-1">
       <Tuner stringIndex={stringIndex} />
       {renderFrets()}
     </div>

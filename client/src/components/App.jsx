@@ -5,9 +5,13 @@ import Footer from './layout/Footer'
 
 export default function App() {
   return (
-    <div className="w-screen h-screen">
-      <Settings />
-      <Fretboard />
+    <div className="relative w-full h-screen">
+      <div className="h-1/3">
+        <Settings />
+      </div>
+      <div className="h-2/3">
+        <Fretboard />
+      </div>
       <Footer />
     </div>
   )
