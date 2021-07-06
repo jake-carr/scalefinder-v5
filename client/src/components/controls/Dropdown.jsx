@@ -123,7 +123,7 @@ function Dropdown({
 
   return (
     <div
-      className={`${setWidth()} mx-2 flex flex-col relative`}
+      className={`${setWidth()} mx-2 flex flex-col relative duration-300`}
       onBlur={() => toggleOpen(false)}
     >
       <div className="relative text-sm bottom-5 flex flex-row h-0">

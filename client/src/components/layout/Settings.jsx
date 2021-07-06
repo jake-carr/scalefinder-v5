@@ -114,13 +114,16 @@ function Settings({
   }, [rootIndex, scaleIndex])
 
   return (
-    <main className="w-full text-base h-full relative" style={{ color: theme.text }}>
+    <main
+      className="w-full text-base h-full relative duration-300"
+      style={{ color: theme.text }}
+    >
       <div
-        className="relative flex flex-row justify-between h-1/2"
+        className="relative flex flex-row justify-between h-1/2 duration-300"
         style={{ backgroundColor: theme.bg0 }}
       >
-        <div className="inline-flex flex-row justify-left items-center">
-          <span className="absolute bottom-1 left-2 w-auto flex flex-row flex-nowrap transition duration-300">
+        <div className="inline-flex flex-row justify-left items-center duration-300">
+          <span className="absolute bottom-1 left-2 w-auto flex flex-row flex-nowrap duration-300">
             <InfoModal />
           </span>
           <RoundButton
@@ -143,7 +146,7 @@ function Settings({
             />
             {scaleIndex < 7 ? (
               <button
-                className="absolute bottom-12 right-2 w-auto h-6 px-1 text-center rounded focus:outline-none transition duration-300"
+                className="absolute bottom-12 right-2 w-auto h-6 px-1 text-center rounded focus:outline-none duration-300"
                 style={
                   chordModal
                     ? {
@@ -174,10 +177,10 @@ function Settings({
             max={24}
           />
         </div>
-        <div className="w-full h-full">
+        <div className="w-full h-full duration-300">
           <ChordModal />
         </div>
-        <div className="relative flex flex-row justify-right py-2 px-2">
+        <div className="relative flex flex-row justify-right py-2 px-2 duration-300">
           <RoundButton
             title="Toggle between light and dark theme."
             action={() => toggle('darkTheme')}
@@ -186,15 +189,15 @@ function Settings({
         </div>
       </div>
       <div
-        className="relative flex flex-row justify-between h-1/2 items-center"
+        className="relative flex flex-row justify-between h-1/2 items-center duration-300"
         style={{ backgroundColor: theme.bg1 }}
       >
         <Checkbox />
-        <div className="flex flex-row justify-left pl-2 items-center">
+        <div className="flex flex-row justify-left pl-2 items-center duration-300">
           <button
             title="Toggle preferred alteration between sharps and flats."
             onClick={() => toggle('sharps')}
-            className="focus:outline-none rounded-full h-8 w-8 flex items-center justify-center my-2 transition duration-300"
+            className="focus:outline-none rounded-full h-8 w-8 flex items-center justify-center my-2  duration-300"
             style={{
               backgroundColor: theme.bg2,
               color: theme.text,
@@ -228,7 +231,7 @@ function Settings({
             />
           ) : null}
         </div>
-        <div className="flex flex-row justify-right pr-2">
+        <div className="flex flex-row justify-right pr-2 duration-300">
           <Metronome
             darkTheme={darkTheme}
             tempoSetting={tempo}
