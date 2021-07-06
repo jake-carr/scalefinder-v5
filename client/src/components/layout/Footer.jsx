@@ -8,7 +8,7 @@ function Footer({ darkTheme }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   return (
     <div
-      className="absolute bottom-0 h-10 w-full text-lg flex flex-row justify-center items-center"
+      className="h-10 w-full text-lg flex flex-row justify-center items-center"
       style={{ backgroundColor: theme.bg3, color: theme.tertiary1 }}
     >
       <a

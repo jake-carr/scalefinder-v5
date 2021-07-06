@@ -115,10 +115,10 @@ function Settings({
 
   return (
     <main
-      className="w-full text-base h-full relative duration-300"
+      className="w-full text-base h-1/4 relative duration-300 borxer-box border-2 border-red-500"
       style={{ color: theme.text }}
     >
-      <div
+      {/* <div
         className="relative flex flex-row justify-between h-1/2 duration-300"
         style={{ backgroundColor: theme.bg0 }}
       >
@@ -239,7 +239,7 @@ function Settings({
             set={set}
           />
         </div>
-      </div>
+      </div> */}
     </main>
   )
 }

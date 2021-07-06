@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import GuitarString from '../display/GuitarString.jsx'
 import { DARK_THEME, LIGHT_THEME } from '../../constants/themes'
+import Footer from './Footer'
 
 export default connect(mapStateToProps, null)(Fretboard)
 
@@ -19,8 +20,15 @@ function Fretboard({ tuning, darkTheme }) {
   }
 
   return (
-    <div className="h-full flex flex-col p-2" style={{ backgroundColor: theme.bg2 }}>
-      {renderGuitarStrings()}
+    <div
+      className="h-3/4 flex flex-col justify-between"
+      style={{ backgroundColor: theme.bg2 }}
+    >
+      <div />
+      <div className="flex flex-col justify-center align-center self-center">
+        {renderGuitarStrings()}
+      </div>
+      <Footer />
     </div>
   )
 }
