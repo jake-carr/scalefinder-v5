@@ -18,11 +18,11 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
   }, [rememberSettings])
 
   return (
-    <span className="absolute top-1 left-2 w-60 flex flex-row text-center transition duration-300">
+    <span className="pl-1 w-60 flex flex-row flex-nowrap text-center transition duration-300">
       <input
         name="rememberSettings"
-        className="float-right self-center"
         type="checkbox"
+        className="mt-1"
         checked={rememberSettings}
         onChange={() => handleToggle()}
         style={{
