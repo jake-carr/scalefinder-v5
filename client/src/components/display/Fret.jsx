@@ -17,6 +17,7 @@ function Fret({
   darkTheme,
   showChords,
   chordNotes,
+  frets,
 }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
@@ -46,6 +47,16 @@ function Fret({
     return currentScale[0] === note && highlightRoots ? theme.bg0 : theme.text
   }
 
+  const setFretWidth = () => {
+    if (frets == 24) return '3rem'
+    else if (frets >= 22) return '3.1rem'
+    else if (frets >= 20) return '3.2rem'
+    else if (frets >= 18) return '3.3rem'
+    else if (frets >= 16) return '3.5rem'
+    else if (frets >= 14) return '3.75rem'
+    else return '4rem'
+  }
+
   const showOrHideDegree = () => {
     const degree = getDegree(currentScale.indexOf(note), degreeNotation)
     return degree ? degree : ''
@@ -53,8 +64,12 @@ function Fret({
 
   return (
     <div
-      className="w-12 h-full rounded mx-1 duration-300 borxer-box flex items-center justify-center relative"
-      style={{ backgroundColor: colorFret(), border: colorBorder() }}
+      className="h-full rounded mx-1 duration-300 border-box flex items-center justify-center relative"
+      style={{
+        backgroundColor: colorFret(),
+        border: colorBorder(),
+        width: setFretWidth(),
+      }}
     >
       <div
         className="absolute top-0 left-1 text-xs duration-300 "
@@ -92,5 +107,6 @@ function mapStateToProps(state) {
     darkTheme: state.darkTheme,
     showChords: state.showChords,
     chordNotes: state.chordNotes,
+    frets: state.frets,
   }
 }
