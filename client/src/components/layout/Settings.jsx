@@ -236,7 +236,10 @@ function Settings({
           />
         </div>
       </div>
-      <div className="h-full border-box border-2 border-pink-500 w-2/6"></div>
+      <div className="h-full w-2/6">
+        {/* <InfoModal /> */}
+        <ChordModal />
+      </div>
       {/* <div
         className="relative flex flex-row justify-between h-1/2 duration-300"
         style={{ backgroundColor: theme.bg0 }}
