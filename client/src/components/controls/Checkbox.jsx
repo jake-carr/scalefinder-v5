@@ -18,27 +18,28 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
   }, [rememberSettings])
 
   return (
-    <span className="pl-1 w-60 flex flex-row flex-nowrap text-center transition duration-300">
+    <span
+      className="ml-1 mb-1 w-60 flex flex-row flex-nowrap justify-left duration-300"
+      style={{ opacity: rememberSettings ? 1 : 0.5 }}
+    >
       <input
         name="rememberSettings"
         type="checkbox"
-        className="mt-1"
+        className="rounded-lg"
         checked={rememberSettings}
         onChange={() => handleToggle()}
         style={{
-          display: 'inline-flex',
-          cursor: 'pointer',
-          position: 'relative',
-          alignItems: 'center',
-          // color todo
+          border: `2px solid ${rememberSettings ? theme.secondary0 : theme.primary0}`,
+          backgroundColor: rememberSettings ? theme.secondary1 : theme.primary1,
         }}
       />
       <label
-        className="mx-1 text-sm cursor-pointer"
+        className="mx-1 text-xs cursor-pointer duration-300"
+        style={{ color: theme.text }}
         htmlFor="rememberSettings"
         onClick={() => handleToggle()}
       >
-        Remember my settings
+        remember my settings
       </label>
     </span>
   )

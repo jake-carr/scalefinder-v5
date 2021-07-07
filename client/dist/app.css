@@ -1,0 +1,18 @@
+.tooltip {
+  z-index: 1000 !important;
+  opacity: 1 !important;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+}
+
+input[type='checkbox']:focus {
+  outline: none !important;
+}

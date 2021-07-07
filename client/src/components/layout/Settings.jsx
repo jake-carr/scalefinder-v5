@@ -170,7 +170,7 @@ function Settings({
             ) : (
               <button
                 className="w-16 h-full mx-1 text-sm text-center rounded focus:outline-none duration-300 cursor-default"
-                style={{ opacity: 0 }}
+                style={{ opacity: 0, backgroundColor: theme.bg2 }}
                 onClick={() => {
                   return null
                 }}
@@ -182,13 +182,13 @@ function Settings({
           <button
             title="Toggle preferred alteration between sharps and flats."
             onClick={() => toggle('sharps')}
-            className="focus:outline-none rounded-full h-8 w-8 my-1 mx-1 flex items-center justify-center duration-300"
+            className="focus:outline-none rounded-full h-8 w-8 my-1 mx-1 duration-300"
             style={{
               backgroundColor: theme.bg2,
               color: theme.text,
             }}
           >
-            <span className="text-xl">{sharps ? '♭' : '♯'}</span>
+            <span className="text-xl self-center">{sharps ? '♭' : '♯'}</span>
           </button>
           <RectangularButton
             title="Highlight root notes"
