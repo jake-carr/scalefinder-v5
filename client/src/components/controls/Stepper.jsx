@@ -21,7 +21,7 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
 
   return (
     <div className="flex flex-col ml-2 relative">
-      <label className="relative bottom-6 h-0 text-sm">{label.toUpperCase()}</label>
+      <label className="relative bottom-5 h-0 text-sm">{label.toUpperCase()}</label>
       <div className="flex flex-row justify-center items-center">
         <button
           className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"

@@ -135,7 +135,7 @@ function Settings({
         <Checkbox />
       </div>
       <div className="h-full w-3/6 flex flex-col justify-around">
-        <div className="pt-2 flex flex-row flex-nowrap justify-center">
+        <div className="pt-4 flex flex-row flex-nowrap justify-center">
           <TuningDropdown />
           <RoundButton
             title="Randomize root and scale."
@@ -185,7 +185,7 @@ function Settings({
           <button
             title="Toggle preferred alteration between sharps and flats."
             onClick={() => toggle('sharps')}
-            className="focus:outline-none rounded-full h-8 w-8 my-1 flex items-center justify-center duration-300"
+            className="focus:outline-none rounded-full h-8 w-8 my-1 mx-1 flex items-center justify-center duration-300"
             style={{
               backgroundColor: theme.bg2,
               color: theme.text,
@@ -219,7 +219,7 @@ function Settings({
             />
           ) : null}
         </div>
-        <div className="pt-1 flex flex-row flex-nowrap justify-center">
+        <div className="pt-2 flex flex-row flex-nowrap justify-center">
           <Stepper
             label="Strings"
             value={tuning.length}
@@ -240,128 +240,6 @@ function Settings({
         {/* <InfoModal /> */}
         <ChordModal />
       </div>
-      {/* <div
-        className="relative flex flex-row justify-between h-1/2 duration-300"
-        style={{ backgroundColor: theme.bg0 }}
-      >
-        <div className="inline-flex flex-row justify-left items-center duration-300">
-          <span className="absolute bottom-1 left-2 w-auto flex flex-row flex-nowrap duration-300">
-            <InfoModal />
-          </span>
-          <RoundButton
-            title="Randomize root and scale."
-            action={randomize}
-            margin={'my-6 ml-2'}
-          />
-          <Dropdown
-            options={noteOptions}
-            action={selectNote}
-            val={rootIndex}
-            name={'Root'}
-          />
-          <span className="flex flex-row flex-nowrap relative">
-            <Dropdown
-              options={scaleOptions}
-              action={selectScale}
-              val={scaleIndex}
-              name={'Scale'}
-            />
-            {scaleIndex < 7 ? (
-              <button
-                className="absolute bottom-12 right-2 w-auto h-6 px-1 text-center rounded focus:outline-none duration-300"
-                style={
-                  chordModal
-                    ? {
-                        backgroundColor: theme.chord0,
-                      }
-                    : { backgroundColor: theme.bg2 }
-                }
-                title="Chords"
-                onClick={() => toggle('chordModal')}
-              >
-                Chords
-              </button>
-            ) : null}
-          </span>
-          <TuningDropdown />
-          <Stepper
-            label="Strings"
-            value={tuning.length}
-            action={changeStringCount}
-            min={4}
-            max={8}
-          />
-          <Stepper
-            label="Frets"
-            value={frets}
-            action={changeFretCount}
-            min={12}
-            max={24}
-          />
-        </div>
-        <div className="w-full h-full duration-300">
-          <ChordModal />
-        </div>
-        <div className="relative flex flex-row justify-right py-2 px-2 duration-300">
-          <RoundButton
-            title="Toggle between light and dark theme."
-            action={() => toggle('darkTheme')}
-            margin={'mx-1 my-1'}
-          />
-        </div>
-      </div>
-      <div
-        className="relative flex flex-row justify-between h-1/2 items-center duration-300"
-        style={{ backgroundColor: theme.bg1 }}
-      >
-        <Checkbox />
-        <div className="flex flex-row justify-left pl-2 items-center duration-300">
-          <button
-            title="Toggle preferred alteration between sharps and flats."
-            onClick={() => toggle('sharps')}
-            className="focus:outline-none rounded-full h-8 w-8 flex items-center justify-center my-2  duration-300"
-            style={{
-              backgroundColor: theme.bg2,
-              color: theme.text,
-            }}
-          >
-            <span className="text-xl">{sharps ? '♭' : '♯'}</span>
-          </button>
-          <RectangularButton
-            title="Highlight root notes"
-            action={() => toggle('highlightRoots')}
-            value={highlightRoots}
-            condition={'highlightRoots'}
-          />
-          <RectangularButton
-            title={labelAllNotes ? 'Label scale only' : 'Label all notes'}
-            action={() => toggle('labelAllNotes')}
-            value={labelAllNotes}
-          />
-          <RectangularButton
-            title={degrees ? 'Hide scale degrees' : 'Show scale degrees'}
-            action={() => toggle('degrees')}
-            value={degrees}
-            condition={'degrees'}
-          />
-          {degrees ? (
-            <Dropdown
-              options={degreeOptions}
-              action={selectDegreeNotation}
-              val={degreeNotation}
-              name={'Degree Notation'}
-            />
-          ) : null}
-        </div>
-        <div className="flex flex-row justify-right pr-2 duration-300">
-          <Metronome
-            darkTheme={darkTheme}
-            tempoSetting={tempo}
-            hzSetting={hz}
-            set={set}
-          />
-        </div>
-      </div> */}
     </main>
   )
 }
