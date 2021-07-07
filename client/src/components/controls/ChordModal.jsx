@@ -24,7 +24,7 @@ function ChordModal({
 
   useEffect(() => {
     // Currently only supports 7 major modes, not all scales
-    if (scaleIndex < 7 && rootIndex && sharps) {
+    if (scaleIndex < 7 && rootIndex) {
       const chords = getChords(scaleIndex, rootIndex, sharps)
       setChordsInKey(chords)
     } else {
