@@ -29,6 +29,7 @@
     "react-input-slider": "^6.0.0",
     "react-redux": "^7.2.4",
     "react-select": "^4.3.1",
+    "react-tooltip": "^4.2.21",
     "tailwindcss": "^2.2.2",
     "webpack": "^5.39.1",
     "webpack-cli": "^4.7.2"

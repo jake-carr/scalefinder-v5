@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
-import { listScales } from '../../constants/scales'
+import { scales, listScales } from '../../constants/scales'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 import Select from 'react-select'
+import ReactTooltip from 'react-tooltip'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
 
@@ -121,6 +122,16 @@ function Dropdown({
     }
   }
 
+  const multiline = (str) => {
+    // Add break tags to long info strings for use with React-tooltip
+    str = str.split(' ')
+    const len = str.length
+    for (let i = 1; i < len; i += 4) {
+      str[i] += `<br />`
+    }
+    return str.join(' ')
+  }
+
   return (
     <div
       className={`${setWidth()} mx-2 flex flex-col relative duration-300`}
@@ -129,26 +140,23 @@ function Dropdown({
       <div className="relative text-sm bottom-5 flex flex-row h-0">
         <label htmlFor={name}>{name.toUpperCase()}</label>
         {name === 'Scale' ? (
-          <button
-            title="Information about this scale."
-            onClick={() => toggle('infoModal')}
-            className="rounded-full h-4 w-4 mx-1 border-box flex items-center justify-center transition duration-300 focus:outline-none"
-            style={
-              infoModal
-                ? {
-                    backgroundColor: scheme.secondary0,
-                    border: `1px solid ${scheme.secondary1}`,
-                    color: scheme.bg2,
-                  }
-                : {
-                    backgroundColor: scheme.bg3,
-                    border: `1px solid ${scheme.bg0}`,
-                    color: scheme.text,
-                  }
-            }
-          >
-            <i className="fas fa-info-circle" />
-          </button>
+          <>
+            <a
+              className="rounded-full h-4 w-4 mx-1 border-box flex items-center justify-center transition duration-300 focus:outline-none"
+              data-tip={multiline(scales[scaleIndex].info)}
+            >
+              <i className="fas fa-info-circle" />
+            </a>
+            <ReactTooltip
+              place="bottom"
+              className="tooltip"
+              border={true}
+              borderColor={scheme.secondary0}
+              multiline={true}
+              type={darkTheme ? 'dark' : 'light'}
+              effect="float"
+            />
+          </>
         ) : null}
       </div>
       <Select

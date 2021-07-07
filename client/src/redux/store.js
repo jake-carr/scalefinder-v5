@@ -8,14 +8,11 @@ const defaultSettings = {
   // App
   darkTheme: true,
   rememberSettings: false,
-  // Metronome
-  tempo: 120,
-  hz: 440,
   // Main
   rootIndex: 3,
   scaleIndex: 0,
   tuning: tunings[0].values, // Standard
-  currentScale: createScale(3, scales[0].pattern),
+  currentScale: createScale(3, scales[0].pattern), // C Major
   // Fretboard
   frets: 12,
   sharps: true,
@@ -23,12 +20,13 @@ const defaultSettings = {
   degreeNotation: 'Numeric',
   highlightRoots: false,
   labelAllNotes: false,
-  // Modals
-  infoModal: false,
-  chordModal: true,
   // Chords
+  chordModal: true,
   showChords: false,
   chordNotes: [],
+  // Metronome
+  tempo: 120,
+  hz: 440,
 }
 
 let store

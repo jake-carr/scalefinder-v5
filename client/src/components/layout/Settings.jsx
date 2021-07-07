@@ -10,7 +10,6 @@ import { tunings } from '../../constants/tunings'
 import RoundButton from '../controls/RoundButton'
 import ChordModal from '../controls/ChordModal'
 import Metronome from '../controls/Metronome'
-import InfoModal from '../display/InfoModal'
 import Checkbox from '../controls/Checkbox'
 import Dropdown from '../controls/Dropdown'
 import Stepper from '../controls/Stepper'
@@ -36,7 +35,6 @@ function Settings({
   chordModal,
   showChords,
   chordNotes,
-  infoModal,
   hz,
 }) {
   const settings = {
@@ -57,7 +55,6 @@ function Settings({
     chordModal,
     showChords,
     chordNotes,
-    infoModal,
   }
   // Local Storage
   useEffect(() => {
@@ -237,7 +234,6 @@ function Settings({
         </div>
       </div>
       <div className="h-full w-2/6">
-        {/* <InfoModal /> */}
         <ChordModal />
       </div>
     </main>
@@ -259,7 +255,6 @@ function mapStateToProps(state) {
     chordModal: state.chordModal,
     currentScale: state.currentScale,
     rememberSettings: state.rememberSettings,
-    infoModal: state.infoModal,
     chordModal: state.chordModal,
     showChords: state.showChords,
     chordNotes: state.chordNotes,
