@@ -137,7 +137,11 @@ function Dropdown({
       className={`${setWidth()} mx-2 flex flex-col relative duration-300`}
       onBlur={() => toggleOpen(false)}
     >
-      <div className="relative text-sm bottom-5 flex flex-row h-0">
+      <div
+        className={`relative flex flex-row h-0 ${
+          name === 'Degree Notation' ? 'text-xs bottom-4' : 'text-sm bottom-5'
+        }  `}
+      >
         <label htmlFor={name}>{name.toUpperCase()}</label>
         {name === 'Scale' ? (
           <>
