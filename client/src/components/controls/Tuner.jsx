@@ -6,7 +6,7 @@ import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 export default connect(mapStateToProps, mapDispatchToProps)(Tuner)
 
 function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
-  const [modal, toggleModal] = useState(false)
+  // const [modal, toggleModal] = useState(false)
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   const parseDown = (n) => {
@@ -38,41 +38,6 @@ function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
     }
   }
 
-  const Modal = () => {
-    const notes = getAlteration(sharps)
-    return (
-      <div
-        className="absolute bottom-10 flex flex-row duration-300"
-        style={{ opacity: modal ? 1 : 0 }}
-      >
-        {notes.map((note, i) => {
-          return (
-            <button
-              className={`focus:outline-none rounded-full text-xs h-5 w-5 flex items-center justify-center mx-1 ${
-                modal ? 'cursor-pointer' : 'cursor-default'
-              }`}
-              style={
-                tuning[stringIndex] === i
-                  ? {
-                      backgroundColor: theme.tuning1,
-                      color: theme.bg0,
-                      opactiy: 0.75,
-                    }
-                  : {
-                      backgroundColor: theme.tuning0,
-                      color: theme.text,
-                    }
-              }
-              onClick={() => handleNoteSelect(i)}
-            >
-              {note}
-            </button>
-          )
-        })}
-      </div>
-    )
-  }
-
   return (
     <div className="relative flex justify-center align-center items-center text-lg">
       <button
@@ -86,12 +51,12 @@ function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
         -
       </button>
       <button
-        className="focus:outline-none rounded-full text-sm h-7 w-7 flex items-center justify-center mx-1"
+        className="focus:outline-none rounded-full text-sm h-7 w-7 flex items-center justify-center cursor-auto"
         style={{
           backgroundColor: theme.tuning0,
           color: theme.text,
         }}
-        onClick={() => toggleModal(!modal)}
+        // onClick={() => toggleModal(!modal)}
       >
         {indexToString(tuning[stringIndex], sharps)}
       </button>
@@ -105,7 +70,6 @@ function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
       >
         +
       </button>
-      {Modal()}
     </div>
   )
 }
