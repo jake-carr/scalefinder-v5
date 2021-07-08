@@ -197,7 +197,7 @@ function ChordModal({
               </div>
               <span
                 className="text-xs my-2 2xl:text-sm"
-                style={{ color: theme.bg3 }}
+                style={{ color: darkTheme ? theme.bg3 : theme.text }}
               >
                 Click a chord name to highlight its intervals on the fretboard.
               </span>

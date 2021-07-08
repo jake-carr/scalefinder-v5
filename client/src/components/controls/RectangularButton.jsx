@@ -28,7 +28,7 @@ function RectangularButton({ title, action, value, condition, darkTheme }) {
         case 'degrees':
           return {
             backgroundColor: tertiary0,
-            color: bg0,
+            color: text,
           }
         default:
           return {

@@ -42,7 +42,7 @@ function TunerModal({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
         style={{
           backgroundColor:
             tuning[stringIndex] == i ? theme.tuning1 : theme.tuning0,
-          color: tuning[stringIndex] == i ? theme.bg0 : theme.text,
+          color: theme.text,
         }}
       >
         {indexToString(i, sharps)}

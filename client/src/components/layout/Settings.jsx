@@ -107,6 +107,11 @@ function Settings({
     set('tuning', update)
   }
 
+  // Update page (overscroll) background color on theme change
+  useEffect(() => {
+    if (theme) document.body.style.backgroundColor = theme.primary0
+  }, [theme])
+
   useEffect(() => {
     set('currentScale', createScale(rootIndex, scales[scaleIndex].pattern))
   }, [rootIndex, scaleIndex])

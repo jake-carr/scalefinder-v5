@@ -36,7 +36,7 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
           -
         </button>
         <span
-          className="mx-1 w-6 text-center transition duration-300"
+          className="mx-1 w-6 text-center font-bold transition duration-300"
           style={{ color: theme.tertiary0 }}
         >
           {value}

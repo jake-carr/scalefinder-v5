@@ -1,25 +1,23 @@
 const colors = require('tailwindcss/colors')
 
-// TODO; hover colors
-
 export const LIGHT_THEME = {
-  text: colors.blueGray[800],
-  bg0: colors.blueGray[50],
-  bg1: colors.blueGray[100],
-  bg2: colors.blueGray[200],
-  bg3: colors.blueGray[300],
-  primary0: colors.emerald[400],
-  primary1: colors.emerald[300],
-  secondary0: colors.sky[500],
-  secondary1: colors.sky[400],
-  tertiary0: colors.fuchsia[600],
-  tertiary1: colors.fuchsia[500],
-  tuning0: colors.yellow[500],
-  tuning1: colors.yellow[400],
-  chord0: colors.rose[600],
-  chord1: colors.rose[500],
-  chord2: colors.rose[400],
-  chord3: colors.rose[300],
+  text: colors.blueGray[900],
+  bg0: colors.blueGray[300],
+  bg1: colors.blueGray[200],
+  bg2: colors.blueGray[100],
+  bg3: colors.blueGray[50],
+  primary0: colors.teal[300],
+  primary1: colors.teal[400],
+  secondary0: colors.rose[500],
+  secondary1: colors.rose[600],
+  tertiary0: colors.violet[400],
+  tertiary1: colors.violet[500],
+  tuning0: colors.indigo[300],
+  tuning1: colors.indigo[200],
+  chord0: colors.yellow[300],
+  chord1: colors.yellow[200],
+  chord2: colors.yellow[100],
+  chord3: colors.yellow[50],
 }
 
 export const DARK_THEME = {
@@ -36,10 +34,8 @@ export const DARK_THEME = {
   tertiary1: colors.blue[300],
   tuning0: colors.pink[500],
   tuning1: colors.pink[400],
-  chord0: colors.amber[500],
-  chord1: colors.amber[400],
-  chord2: colors.amber[300],
-  chord3: colors.amber[200],
-  hover0: 'purple-400',
-  hover1: 'coolGray-200',
+  chord0: colors.amber[600],
+  chord1: colors.amber[500],
+  chord2: colors.amber[400],
+  chord3: colors.amber[300],
 }

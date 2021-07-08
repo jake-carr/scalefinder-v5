@@ -38,7 +38,7 @@ export const scales = [
     name: 'Mixolydian',
     pattern: [2, 2, 1, 2, 2, 1],
     qualities: ['maj', 'min', 'dim', 'maj', 'min', 'min', 'maj'],
-    sevenths: ['dom7', 'dim7', 'min7b5', 'maj7', 'min7', 'min7', 'maj7'],
+    sevenths: ['dom7', 'min7', 'min7b5', 'maj7', 'min7', 'min7', 'maj7'],
     info: 'Fifth mode of major scale.',
   },
   {
