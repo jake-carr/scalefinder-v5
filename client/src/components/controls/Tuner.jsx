@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { indexToString, getAlteration } from '../../constants/utils'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
+import TunerModal from './TunerModal'
+
 export default connect(mapStateToProps, mapDispatchToProps)(Tuner)
 
 function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
-  // const [modal, toggleModal] = useState(false)
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   const parseDown = (n) => {
@@ -50,16 +51,7 @@ function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
       >
         -
       </button>
-      <button
-        className="focus:outline-none rounded-full text-sm h-7 w-7 flex items-center justify-center cursor-auto"
-        style={{
-          backgroundColor: theme.tuning0,
-          color: theme.text,
-        }}
-        // onClick={() => toggleModal(!modal)}
-      >
-        {indexToString(tuning[stringIndex], sharps)}
-      </button>
+      <TunerModal stringIndex={stringIndex} />
       <button
         className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
         style={{

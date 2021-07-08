@@ -4,7 +4,7 @@ import Fretboard from './layout/Fretboard'
 
 export default function App() {
   return (
-    <div className="relative w-full h-screen">
+    <div className="app-main relative">
       <Settings />
       <Fretboard />
     </div>

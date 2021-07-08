@@ -20,8 +20,9 @@ const defaultSettings = {
   degreeNotation: 'Numeric',
   highlightRoots: false,
   labelAllNotes: false,
+  tuners: 0,
   // Chords
-  chordModal: true,
+  chordModal: false,
   showChords: false,
   chordNotes: [],
   // Metronome

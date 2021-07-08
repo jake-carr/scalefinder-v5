@@ -1,3 +1,15 @@
+.app-main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
 .tooltip {
   z-index: 1000 !important;
   opacity: 1 !important;
@@ -15,4 +27,80 @@ input[type='checkbox'] {
 
 input[type='checkbox']:focus {
   outline: none !important;
+}
+
+.note-picker {
+  position: relative;
+  cursor: pointer;
+}
+.note-picker .trigger {
+  height: 1.75em;
+  width: 1.75em;
+  line-height: 1.75em;
+  border-radius: 50%;
+  text-align: center;
+}
+.note-picker .outer .svg-container {
+  height: 35px;
+  position: relative;
+  width: 35px;
+}
+
+.expanded-container {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
+.expanded-container .boxes {
+  pointer-events: none;
+  width: 100px;
+}
+.expanded-container .box {
+  margin: 0;
+  width: 0px;
+  text-align: center;
+  line-height: 44px;
+}
+.expanded-container.active {
+  opacity: 1;
+}
+.expanded-container.active .boxes {
+  pointer-events: auto;
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  transform: translate(35%, -100%);
+  transition: 0.4s ease width;
+  z-index: 999;
+}
+
+.expanded-container.active .box {
+  height: 1.5em;
+  width: 1.5em;
+  line-height: 1.5em;
+  display: flex;
+  justify-content: center;
+  margin: 0.25em;
+  transition: 0.4s ease margin, 0.1s ease width, 0.1s ease transform;
+  border-radius: 50%;
+}
+
+.expanded-container.active .box:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 14px rgba(28, 28, 28, 0.5);
+  transition: 0.2s ease all;
+  cursor: pointer;
+}
+.dimmer {
+  opacity: 0;
+}
+.dimmer.active {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgb(28, 28, 28);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease opacity;
 }

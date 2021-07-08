@@ -60,7 +60,8 @@ function Settings({
   useEffect(() => {
     if (rememberSettings) {
       for (let key in settings) {
-        if (key != 'rememberSettings') saveInLocalStorage(`${key}`, settings[key])
+        if (key != 'rememberSettings')
+          saveInLocalStorage(`${key}`, settings[key])
       }
     }
   }, [settings])
@@ -109,6 +110,11 @@ function Settings({
   useEffect(() => {
     set('currentScale', createScale(rootIndex, scales[scaleIndex].pattern))
   }, [rootIndex, scaleIndex])
+
+  useEffect(() => {
+    // On mount, reset state logic for only allowing one tuner modal to be open at a time
+    set('tuners', 0)
+  }, [])
 
   return (
     <main
