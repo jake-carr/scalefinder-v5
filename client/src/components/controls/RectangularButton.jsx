@@ -6,7 +6,17 @@ export default connect(mapStateToProps, null)(RectangularButton)
 
 function RectangularButton({ title, action, value, condition, darkTheme }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
-  const { secondary0, secondary1, tertiary0, tertiary1, bg0, bg1, bg2, bg3, text } = theme
+  const {
+    secondary0,
+    secondary1,
+    tertiary0,
+    tertiary1,
+    bg0,
+    bg1,
+    bg2,
+    bg3,
+    text,
+  } = theme
   const applyStyles = () => {
     if (value) {
       switch (condition) {
@@ -36,8 +46,8 @@ function RectangularButton({ title, action, value, condition, darkTheme }) {
 
   return (
     <button
-      className={`w-40 h-10 mx-1 rounded focus:outline-none transition duration-300`}
-      style={applyStyles()} // style object overwrites hover effect; find workaround
+      className={`w-40 h-10 mx-1 rounded border-box border-2 border-transparent focus:outline-none transition duration-300`}
+      style={applyStyles()}
       title={title}
       onClick={() => action(!value)}
     >

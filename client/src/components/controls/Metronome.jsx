@@ -73,7 +73,8 @@ export default class Metronome extends Component {
     if (this.state.isPlaying) return
 
     if (this.state.audioContext == null) {
-      let audioContext = new (window.AudioContext || window.webkitAudioContext)()
+      let audioContext = new (window.AudioContext ||
+        window.webkitAudioContext)()
       this.setState({ audioContext }, () => {
         this.setState({
           isPlaying: true,
@@ -125,24 +126,36 @@ export default class Metronome extends Component {
       <div className="flex justify-center">
         <div className="flex flex-col justify-center">
           <div className="flex flex-row flex-nowrap h-8">
-            <label className="my-1" htmlFor="bpm-slider" style={{ color: theme.text }}>
+            <label
+              className="my-1"
+              htmlFor="bpm-slider"
+              style={{ color: theme.text }}
+            >
               METRONOME
             </label>
             <button
-              className="self-center rounded-full ml-1 h-6 w-6 focus:outline-none"
+              className="self-center ml-2 leading-6 h-6 w-6 flex text-sm items-center text-center border-box border-2 border-transparent duration-300 justify-center focus:outline-none"
               aria-label="metronome-play-pause-button"
               style={{
                 background: 'none',
                 color: theme.secondary0,
+                borderRadius: '50%',
+                marginBottom: '0.1em',
               }}
               onClick={() => this.startStop()}
             >
-              <i
-                id="play-pause-icon"
-                className={`text-sm ${
-                  this.state.isPlaying ? 'fas fa-pause' : 'fas fa-play'
-                }`}
-              />
+              {this.state.isPlaying ? (
+                <span className="text-lg" id="pause-symbol">
+                  =
+                </span>
+              ) : (
+                <span
+                  className="text-sm"
+                  style={{ paddingTop: '0.1em', paddingLeft: '0.1em' }}
+                >
+                  &#9658;
+                </span>
+              )}
             </button>
           </div>
           <Slider
@@ -151,7 +164,9 @@ export default class Metronome extends Component {
             x={this.state.tempo}
             xmin={30}
             xmax={300}
-            onChange={({ x }) => this.handleTempoChange(x, this.state.isPlaying)}
+            onChange={({ x }) =>
+              this.handleTempoChange(x, this.state.isPlaying)
+            }
             styles={{
               track: {
                 backgroundColor: theme.bg3,

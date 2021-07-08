@@ -24,7 +24,8 @@ function Dropdown({
   const scheme = darkTheme ? DARK_THEME : LIGHT_THEME
 
   const createTheme = (theme) => {
-    const { secondary0, primary0, primary1, text, tertiary0, tertiary1, bg0 } = scheme
+    const { secondary0, primary0, primary1, text, tertiary0, tertiary1, bg0 } =
+      scheme
     if (name === 'Degree Notation') {
       return {
         ...theme.colors,
@@ -149,7 +150,7 @@ function Dropdown({
               className="rounded-full h-4 w-4 mx-1 border-box flex items-center justify-center transition duration-300 focus:outline-none"
               data-tip={multiline(scales[scaleIndex].info)}
             >
-              <i className="fas fa-info-circle" />
+              <i className="fas fa-info-circle cursor-pointer" />
             </a>
             <ReactTooltip
               place="bottom"

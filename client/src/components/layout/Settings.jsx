@@ -160,7 +160,7 @@ function Settings({
             />
             {scaleIndex < 7 ? (
               <button
-                className="w-16 h-full mx-1 text-sm text-center rounded focus:outline-none duration-300 opacity-1"
+                className="w-16 h-full mx-1 text-sm text-center rounded focus:outline-none duration-300 opacity-1 border-box border-2 border-transparent"
                 style={
                   chordModal
                     ? {
@@ -188,7 +188,7 @@ function Settings({
           <button
             title="Toggle preferred alteration between sharps and flats."
             onClick={() => toggle('sharps')}
-            className="focus:outline-none rounded-full h-8 w-8 my-1 mx-1 duration-300"
+            className="focus:outline-none border-box border-2 border-transparent rounded-full h-8 w-8 my-1 mx-1 duration-300"
             style={{
               backgroundColor: theme.bg2,
               color: theme.text,

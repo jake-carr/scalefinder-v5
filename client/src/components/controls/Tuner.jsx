@@ -42,7 +42,7 @@ function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
   return (
     <div className="relative flex justify-center align-center items-center text-lg">
       <button
-        className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
+        className="border-box border-2 border-transparent duration-200 px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
         style={{
           color: theme.text,
           borderRadius: '50%',
@@ -53,7 +53,7 @@ function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
       </button>
       <TunerModal stringIndex={stringIndex} />
       <button
-        className="px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
+        className="border-box border-2 border-transparent duration-200 px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
         style={{
           color: theme.text,
           borderRadius: '50%',

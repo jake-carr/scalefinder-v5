@@ -38,11 +38,11 @@ function TunerModal({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
       <div
         key={i}
         onClick={() => handleSelect(i)}
-        className="box text-sm"
+        className="box text-xs"
         style={{
           backgroundColor:
             tuning[stringIndex] == i ? theme.tuning1 : theme.tuning0,
-          color: tuning[stringIndex] == i ? theme.text : theme.bg0,
+          color: tuning[stringIndex] == i ? theme.bg0 : theme.text,
         }}
       >
         {indexToString(i, sharps)}
@@ -55,7 +55,7 @@ function TunerModal({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
       <div className="note-picker">
         <div className="outer" onClick={() => open()}>
           <div
-            className="trigger"
+            className="trigger focus:outline-none border-box border-2 border-transparent rounded-full h-6 w-6 my-1 mx-1 text-sm font-bold text-center"
             style={{ backgroundColor: theme.tuning0, color: theme.text }}
           >
             {indexToString(tuning[stringIndex], sharps)}
@@ -67,7 +67,15 @@ function TunerModal({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
         className={`rounded-lg dimmer ${isOpen && 'active'}`}
       ></div>
       <div className={`expanded-container ${isOpen && 'active'}`}>
-        <div className="boxes">{renderNoteOptions(getAlteration(sharps))}</div>
+        <div
+          className="boxes border-box rounded-sm"
+          style={{
+            backgroundColor: theme.bg1,
+            border: `2px solid ${theme.tuning1}`,
+          }}
+        >
+          {renderNoteOptions(getAlteration(sharps))}
+        </div>
       </div>
     </>
   )

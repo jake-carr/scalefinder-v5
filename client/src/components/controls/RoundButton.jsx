@@ -28,7 +28,7 @@ function RoundButton({ title, action, darkTheme, margin }) {
     <button
       title={title}
       onClick={() => action()}
-      className={`focus:outline-none rounded-full h-9 w-9 flex items-center justify-center ${margin}`}
+      className={`focus:outline-none border-box border-2 border-transparent rounded-full h-9 w-9 flex items-center justify-center ${margin}`}
       style={{
         backgroundColor: theme.primary0,
         color: theme.text,
