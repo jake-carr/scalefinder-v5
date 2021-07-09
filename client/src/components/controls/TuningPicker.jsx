@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { indexToString, getAlteration } from '../../constants/utils'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
-export default connect(mapStateToProps, mapDispatchToProps)(TunerModal)
+export default connect(mapStateToProps, mapDispatchToProps)(TuningPicker)
 
-function TunerModal({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
+function TuningPicker({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
   const [isOpen, toggle] = useState(false)
   const [tunerID, setID] = useState(0)
 
@@ -64,7 +64,7 @@ function TunerModal({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
       </div>
       <div
         onClick={() => close()}
-        className={`rounded-lg dimmer ${isOpen && 'active'}`}
+        className={`rounded dimmer ${isOpen && 'active'}`}
       ></div>
       <div className={`expanded-container ${isOpen && 'active'}`}>
         <div

@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { indexToString, getAlteration } from '../../constants/utils'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
-
-import TunerModal from './TunerModal'
+import TuningPicker from './TuningPicker'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tuner)
 
@@ -51,7 +50,7 @@ function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
       >
         -
       </button>
-      <TunerModal stringIndex={stringIndex} />
+      <TuningPicker stringIndex={stringIndex} />
       <button
         className="border-box border-2 border-transparent duration-200 px-2 h-6 w-6 flex text-sm items-center text-center justify-center focus:outline-none"
         style={{
