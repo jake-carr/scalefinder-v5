@@ -69,27 +69,32 @@ export const scales = [
   {
     name: 'Major Hexatonic',
     pattern: [2, 2, 1, 2, 2],
+    qualities: ['maj', 'min', 'min', 'maj', 'maj', 'min'],
     info: 'Major (Ionian) scale with the 7th removed.',
   },
   {
     name: 'Minor Hexatonic',
     pattern: [2, 1, 2, 2, 3],
+    qualities: ['min', 'dim', 'maj', 'min', 'min', 'maj'],
     info: 'Minor (Aeolian) scale with the 6th removed.',
   },
   {
     name: 'Major Pentatonic',
     pattern: [2, 2, 3, 2],
+    qualities: ['maj', 'min', 'min', 'maj', 'min'],
     info: 'Gapped Ionian (Major) scale, omitting the 4th and 7th.',
   },
   {
     name: 'Minor Pentatonic',
     pattern: [3, 2, 2, 3],
+    qualities: ['min', 'maj', 'min', 'min', 'maj'],
     info: 'Gapped Aeolian (Minor) scale, omitting the 2nd and 6th.',
   },
   {
     name: 'Egyptian Pentatonic',
     pattern: [2, 3, 2, 3],
     info: 'Gapped Dorian scale, omitting the 3rd and 6th.',
+    qualities: ['min', 'min', 'maj', 'min', 'maj'],
   },
   {
     name: 'Phrygian Dominant',
