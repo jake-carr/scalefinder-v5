@@ -19,7 +19,7 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
 
   return (
     <span
-      className="ml-1 mb-1 w-60 flex flex-row flex-nowrap justify-left duration-300"
+      className="ml-1 mt-2 w-50 flex flex-row flex-nowrap justify-left duration-300"
       style={{ opacity: rememberSettings ? 1 : 0.5 }}
     >
       <input
@@ -29,7 +29,9 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
         checked={rememberSettings}
         onChange={() => handleToggle()}
         style={{
-          border: `2px solid ${rememberSettings ? theme.secondary0 : theme.primary0}`,
+          border: `2px solid ${
+            rememberSettings ? theme.secondary0 : theme.primary0
+          }`,
           backgroundColor: rememberSettings ? theme.secondary1 : theme.primary1,
         }}
       />

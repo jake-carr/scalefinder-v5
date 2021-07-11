@@ -127,11 +127,6 @@ function Settings({
       style={{ color: theme.text, backgroundColor: theme.bg1 }}
     >
       <div className="h-full w-1/6 flex flex-col justify-between">
-        <RoundButton
-          title="Toggle between light and dark theme."
-          action={() => toggle('darkTheme')}
-          margin={'mx-2 my-2'}
-        />
         <div>
           <Metronome
             darkTheme={darkTheme}
@@ -140,7 +135,16 @@ function Settings({
             set={set}
           />
         </div>
-        <Checkbox />
+        <div className="flex flex-row w-full justify-between h-8">
+          <Checkbox />
+          <i
+            className="not-italic text-2xl cursor-pointer"
+            title={'Toggle between light and dark theme.'}
+            onClick={() => toggle('darkTheme')}
+          >
+            {darkTheme ? `🌞` : `🌚`}
+          </i>
+        </div>
       </div>
       <div className="h-full w-3/6 flex flex-col justify-around">
         <div className="pt-4 flex flex-row flex-nowrap justify-center">
