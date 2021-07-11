@@ -31,6 +31,12 @@ function ChordModal({
     if (scales[scaleIndex].qualities || scales[scaleIndex].sevenths) {
       const chords = getChords(scaleIndex, rootIndex, sharps)
       setChordsInKey(chords)
+      if (
+        !chords.basicChords.includes(prev) &&
+        (!chords['seventhChords'] || !chords.seventhChords.includes(prev))
+      ) {
+        if (showChords && chordModal) selectChord(chords.basicChords[0])
+      }
     } else {
       selectChord('')
       setChordsInKey({})
@@ -156,7 +162,9 @@ function ChordModal({
                       >
                         {trimChordName(chord)}
                       </span>
-                      {i < 6 ? <span className="mx-1">•</span> : null}
+                      {i < chordsInKey.basicChords.length - 1 ? (
+                        <span className="mx-1">•</span>
+                      ) : null}
                     </span>
                   )
                 })}
@@ -185,7 +193,9 @@ function ChordModal({
                       >
                         {chord}
                       </span>
-                      {i < 6 ? <span className="mx-1">•</span> : null}
+                      {i < chordsInKey.seventhChords.length - 1 ? (
+                        <span className="mx-1">•</span>
+                      ) : null}
                     </span>
                   )
                 })}
