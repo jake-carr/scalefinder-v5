@@ -1,7 +1,33 @@
 import { scales } from './scales'
 
-export const sharps = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
-export const flats = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab']
+export const sharps = [
+  'A',
+  'A#',
+  'B',
+  'C',
+  'C#',
+  'D',
+  'D#',
+  'E',
+  'F',
+  'F#',
+  'G',
+  'G#',
+]
+export const flats = [
+  'A',
+  'Bb',
+  'B',
+  'C',
+  'Db',
+  'D',
+  'Eb',
+  'E',
+  'F',
+  'Gb',
+  'G',
+  'Ab',
+]
 
 export const parseNote = (n) => {
   if (n >= 24) return n - 24
@@ -42,10 +68,20 @@ export const makeChord = (root, type, isSharps) => {
     intervals = [root, parseNote(root + 3), parseNote(root + 7)]
   }
   if (type === 'maj7') {
-    intervals = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 11)]
+    intervals = [
+      root,
+      parseNote(root + 4),
+      parseNote(root + 7),
+      parseNote(root + 11),
+    ]
   }
   if (type === 'min7') {
-    intervals = [root, parseNote(root + 3), parseNote(root + 7), parseNote(root + 10)]
+    intervals = [
+      root,
+      parseNote(root + 3),
+      parseNote(root + 7),
+      parseNote(root + 10),
+    ]
   }
   if (type === 'dim') {
     intervals = [root, parseNote(root + 3), parseNote(root + 6)]
@@ -54,7 +90,12 @@ export const makeChord = (root, type, isSharps) => {
     intervals = [root, parseNote(root + 4), parseNote(root + 8)]
   }
   if (type === 'dom7') {
-    intervals = [root, parseNote(root + 4), parseNote(root + 7), parseNote(root + 10)]
+    intervals = [
+      root,
+      parseNote(root + 4),
+      parseNote(root + 7),
+      parseNote(root + 10),
+    ]
   }
   if (type === 'min7b5') {
     intervals = [
@@ -99,28 +140,32 @@ export const getChords = (scaleIndex, rootIndex, sharps) => {
         return chord
     }
   })
-  note = rootIndex
-  const seventhChords = scales[scaleIndex].sevenths.map((qual, i) => {
-    let chord
-    switch (qual) {
-      case 'min7':
-        chord = `${indexToString(note, sharps)} min7`
-        note = parseNote(note + pattern[i])
-        return chord
-      case 'maj7':
-        chord = `${indexToString(note, sharps)} maj7`
-        note = parseNote(note + pattern[i])
-        return chord
-      case 'dom7':
-        chord = `${indexToString(note, sharps)} dom7`
-        note = parseNote(note + pattern[i])
-        return chord
-      case 'min7b5':
-        chord = `${indexToString(note, sharps)} min7b5`
-        note = parseNote(note + pattern[i])
-        return chord
-    }
-  })
+  let seventhChords = null
+  if (scales[scaleIndex].sevenths) {
+    note = rootIndex
+    seventhChords = scales[scaleIndex].sevenths.map((qual, i) => {
+      let chord
+      switch (qual) {
+        case 'min7':
+          chord = `${indexToString(note, sharps)} min7`
+          note = parseNote(note + pattern[i])
+          return chord
+        case 'maj7':
+          chord = `${indexToString(note, sharps)} maj7`
+          note = parseNote(note + pattern[i])
+          return chord
+        case 'dom7':
+          chord = `${indexToString(note, sharps)} dom7`
+          note = parseNote(note + pattern[i])
+          return chord
+        case 'min7b5':
+          chord = `${indexToString(note, sharps)} min7b5`
+          note = parseNote(note + pattern[i])
+          return chord
+      }
+    })
+  }
+
   return {
     basicChords: chords,
     seventhChords: seventhChords,

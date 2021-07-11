@@ -28,8 +28,7 @@ function ChordModal({
   const [prev, setPrev] = useState('')
 
   useEffect(() => {
-    // Currently only supports 7 major modes, not all scales
-    if (scaleIndex < 7) {
+    if (scales[scaleIndex].qualities || scales[scaleIndex].sevenths) {
       const chords = getChords(scaleIndex, rootIndex, sharps)
       setChordsInKey(chords)
     } else {
@@ -136,80 +135,76 @@ function ChordModal({
         className="p-1 h-full w-full transition duration-300 flex flex-col justify-center text-center"
         style={{ backgroundColor: theme.bg0, opacity: chordModal ? 1 : 0 }}
       >
-        {chordsInKey['basicChords'] && chordsInKey['seventhChords'] ? (
-          <>
-            <div
-              className="text-sm flex flex-col 2xl:text-base"
-              style={{ color: theme.chord1 }}
-            >
-              <span>Basic chords</span>
-              <div className="flex flex-row flex-nowrap justify-center">
-                <span>
-                  {chordsInKey.basicChords.map((chord, i) => {
-                    return (
-                      <span key={i}>
-                        <span
-                          className="focus:outline-none cursor-pointer"
-                          onClick={() => handleSelectChord(chord)}
-                          style={{
-                            color:
-                              chord === selectedChord
-                                ? theme.chord1
-                                : theme.text,
-                          }}
-                        >
-                          {trimChordName(chord)}
-                        </span>
-                        {i < 6 ? <span className="mx-1">•</span> : null}
+        {chordsInKey['basicChords'] ? (
+          <div
+            className="text-sm flex flex-col 2xl:text-base"
+            style={{ color: theme.chord1 }}
+          >
+            <span>Basic chords</span>
+            <div className="flex flex-row flex-nowrap justify-center">
+              <span>
+                {chordsInKey.basicChords.map((chord, i) => {
+                  return (
+                    <span key={i}>
+                      <span
+                        className="focus:outline-none cursor-pointer"
+                        onClick={() => handleSelectChord(chord)}
+                        style={{
+                          color:
+                            chord === selectedChord ? theme.chord1 : theme.text,
+                        }}
+                      >
+                        {trimChordName(chord)}
                       </span>
-                    )
-                  })}
-                </span>
-              </div>
-            </div>
-            <div
-              className="text-sm mt-2 flex flex-col 2xl:text-base"
-              style={{ color: theme.chord3 }}
-            >
-              <span>Seventh chords</span>
-              <div className="flex flex-row flex-nowrap justify-center">
-                <span>
-                  {chordsInKey.seventhChords.map((chord, i) => {
-                    return (
-                      <span key={i}>
-                        <span
-                          className="focus:outline-none cursor-pointer"
-                          onClick={() => handleSelectChord(chord)}
-                          style={{
-                            color:
-                              chord === selectedChord
-                                ? theme.chord3
-                                : theme.text,
-                          }}
-                        >
-                          {chord}
-                        </span>
-                        {i < 6 ? <span className="mx-1">•</span> : null}
-                      </span>
-                    )
-                  })}
-                </span>
-              </div>
-              <span
-                className="text-xs my-2 2xl:text-sm"
-                style={{ color: darkTheme ? theme.bg3 : theme.text }}
-              >
-                Click a chord name to highlight its intervals on the fretboard.
+                      {i < 6 ? <span className="mx-1">•</span> : null}
+                    </span>
+                  )
+                })}
               </span>
-              <div
-                className="flex flex-row justify-center items-center"
-                style={{ color: theme.text }}
-              >
-                {circles()}
-              </div>
             </div>
-          </>
+          </div>
         ) : null}
+        {chordsInKey['seventhChords'] ? (
+          <div
+            className="text-sm mt-2 flex flex-col 2xl:text-base"
+            style={{ color: theme.chord3 }}
+          >
+            <span>Seventh chords</span>
+            <div className="flex flex-row flex-nowrap justify-center">
+              <span>
+                {chordsInKey.seventhChords.map((chord, i) => {
+                  return (
+                    <span key={i}>
+                      <span
+                        className="focus:outline-none cursor-pointer"
+                        onClick={() => handleSelectChord(chord)}
+                        style={{
+                          color:
+                            chord === selectedChord ? theme.chord3 : theme.text,
+                        }}
+                      >
+                        {chord}
+                      </span>
+                      {i < 6 ? <span className="mx-1">•</span> : null}
+                    </span>
+                  )
+                })}
+              </span>
+            </div>
+          </div>
+        ) : null}
+        <span
+          className="text-xs my-2 2xl:text-sm"
+          style={{ color: darkTheme ? theme.bg3 : theme.text }}
+        >
+          Click a chord name to highlight its intervals on the fretboard.
+        </span>
+        <div
+          className="flex flex-row justify-center items-center"
+          style={{ color: theme.text }}
+        >
+          {circles()}
+        </div>
       </div>
     </>
   )

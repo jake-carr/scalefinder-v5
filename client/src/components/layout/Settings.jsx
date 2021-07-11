@@ -163,7 +163,7 @@ function Settings({
               val={scaleIndex}
               name={'Scale'}
             />
-            {scaleIndex < 7 ? (
+            {scales[scaleIndex].qualities || scales[scaleIndex].sevenths ? (
               <button
                 className="w-16 h-full mx-1 text-sm text-center rounded focus:outline-none duration-300 opacity-1 border-box border-2 border-transparent"
                 style={
