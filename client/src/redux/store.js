@@ -30,10 +30,11 @@ const defaultSettings = {
   hz: 440,
 }
 
-let store
 const storage = retrieveLocalStorage()
 
-if (storage.rememberSettings) store = createStore(reducer, storage)
-else store = createStore(reducer, defaultSettings)
+const store = createStore(
+  reducer,
+  storage.rememberSettings ? storage : defaultSettings,
+)
 
 export default store
