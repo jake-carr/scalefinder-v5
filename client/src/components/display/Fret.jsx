@@ -18,6 +18,7 @@ function Fret({
   showChords,
   chordNotes,
   frets,
+  strings,
 }) {
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
 
@@ -57,6 +58,12 @@ function Fret({
     else return '4rem'
   }
 
+  const setLabelDistance = () => {
+    if (strings >= 7) return '11'
+    else if (strings >= 5) return '12'
+    else return '14'
+  }
+
   const showOrHideDegree = () => {
     const degree = getDegree(currentScale.indexOf(note), degreeNotation)
     return degree ? degree : ''
@@ -88,7 +95,10 @@ function Fret({
         {indexToString(note, sharps)}
       </div>
       {label ? (
-        <div className="absolute top-10 text-base" style={{ color: theme.text }}>
+        <div
+          className={`absolute top-${setLabelDistance()} self-center text-base`}
+          style={{ color: theme.text }}
+        >
           {String(label)}
         </div>
       ) : null}

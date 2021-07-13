@@ -14,15 +14,27 @@ function GuitarString({ stringIndex, frets, tuning }) {
       const fretNumber = i + 1
       let note = parseNote(root + fretNumber)
       let label = null
-      if (fretLabels.includes(fretNumber) && stringIndex === tuning.length - 1) {
+      if (
+        fretLabels.includes(fretNumber) &&
+        stringIndex === tuning.length - 1
+      ) {
         label = fretNumber
       }
-      return <Fret key={i} note={note} label={label} />
+      return <Fret key={i} note={note} label={label} strings={tuning.length} />
     })
   }
 
+  const setStringHeight = () => {
+    const strings = tuning.length
+    if (strings >= 7) return 'h-11'
+    else if (strings >= 5) return 'h-12'
+    else return 'h-14'
+  }
+
   return (
-    <div className="w-full h-10 flex flex-row justify-center my-1">
+    <div
+      className={`${setStringHeight()} w-full flex flex-row justify-center my-1 duration-300`}
+    >
       <Tuner stringIndex={stringIndex} />
       {renderFrets()}
     </div>
