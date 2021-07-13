@@ -127,7 +127,7 @@ function Settings({
       style={{ color: theme.text, backgroundColor: theme.bg1 }}
     >
       <div className="h-full w-1/6 flex flex-col justify-between">
-        <div>
+        <div className="flex justify-left pl-2">
           <Metronome
             darkTheme={darkTheme}
             tempoSetting={tempo}
@@ -135,15 +135,8 @@ function Settings({
             set={set}
           />
         </div>
-        <div className="flex flex-row w-full justify-between h-8">
+        <div className="flex flex-row w-full justify-left h-8">
           <Checkbox />
-          <i
-            className="not-italic text-2xl cursor-pointer"
-            title={'Toggle between light and dark theme.'}
-            onClick={() => toggle('darkTheme')}
-          >
-            {darkTheme ? `🌞` : `🌚`}
-          </i>
         </div>
       </div>
       <div className="h-full w-3/6 flex flex-col justify-around">
@@ -232,6 +225,13 @@ function Settings({
           ) : null}
         </div>
         <div className="pt-2 flex flex-row flex-nowrap justify-center">
+          <button
+            className="px-4 h-6 w-6 flex text-3xl items-center text-center border-box border-2 border-transparent duration-100 justify-center focus:outline-none hover:border-transparent"
+            title={'Toggle between light and dark theme.'}
+            onClick={() => toggle('darkTheme')}
+          >
+            {darkTheme ? `🌞` : `🌚`}
+          </button>
           <Stepper
             label="Strings"
             value={tuning.length}
