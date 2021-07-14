@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
 import { scales, listScales } from '../../constants/scales'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import { ThemeContext } from '../App'
 import Select from 'react-select'
-import ReactTooltip from 'react-tooltip' // only needed on Scale dropdown - change to dynamic import
+import ReactTooltip from 'react-tooltip'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
 
 function Dropdown({
+  scaleIndex,
+  infoModal,
   options,
   action,
-  val,
-  name,
   sharps,
-  darkTheme,
-  infoModal,
   toggle,
-  scaleIndex,
+  name,
+  val,
 }) {
   const [open, toggleOpen] = useState(false)
   const [selection, changeSelection] = useState('')
-  const scheme = darkTheme ? DARK_THEME : LIGHT_THEME
+  const scheme = useContext(ThemeContext) // Theme keyword reserved for react-select
 
   const createTheme = (theme) => {
     const { secondary0, primary0, primary1, text, tertiary0, tertiary1, bg0 } =
@@ -158,7 +157,7 @@ function Dropdown({
               border={true}
               borderColor={scheme.secondary0}
               multiline={true}
-              type={darkTheme ? 'dark' : 'light'}
+              type={scheme.ref == 'dark' ? 'dark' : 'light'}
               effect="float"
             />
           </>
@@ -202,9 +201,8 @@ function Dropdown({
 function mapStateToProps(state) {
   return {
     sharps: state.sharps,
-    darkTheme: state.darkTheme,
-    scaleIndex: state.scaleIndex,
     infoModal: state.infoModal,
+    scaleIndex: state.scaleIndex,
   }
 }
 

@@ -1,9 +1,23 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react'
+import React, {
+  useEffect,
+  useState,
+  lazy,
+  Suspense,
+  createContext,
+} from 'react'
+import { connect } from 'react-redux'
+import { DARK_THEME, LIGHT_THEME } from '../constants/themes'
 
-export default function App() {
+export const ThemeContext = createContext(DARK_THEME)
+
+const { Provider } = ThemeContext
+
+export default connect(mapStateToProps, null)(App)
+
+function App({ darkTheme }) {
   const [layout, setLayout] = useState(null)
 
-  // dynamically import the components needed
+  // Load mobile or desktop layout
   useEffect(() => {
     if (/Mobi/.test(navigator.userAgent)) {
       async function loadMobileLayout() {
@@ -32,11 +46,17 @@ export default function App() {
     }
   }, [])
 
-  // TODO: move ThemeContext.Provider between Suspense and app-main
-
   return (
     <Suspense fallback={<div>HANG ON (this should be a spinner)</div>}>
-      <div className="app-main relative">{layout ? layout : null}</div>
+      <Provider value={darkTheme ? DARK_THEME : LIGHT_THEME}>
+        <div className="app-main relative">{layout ? layout : null}</div>
+      </Provider>
     </Suspense>
   )
+}
+
+function mapStateToProps(state) {
+  return {
+    darkTheme: state.darkTheme,
+  }
 }

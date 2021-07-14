@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { saveInLocalStorage } from '../../constants/storage'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import { ThemeContext } from '../App'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checkbox)
 
-function Checkbox({ rememberSettings, toggle, darkTheme }) {
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+function Checkbox({ rememberSettings, toggle }) {
+  const theme = useContext(ThemeContext)
 
   const handleToggle = () => {
     toggle('rememberSettings')
@@ -50,7 +50,6 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
 function mapStateToProps(state) {
   return {
     rememberSettings: state.rememberSettings,
-    darkTheme: state.darkTheme,
   }
 }
 

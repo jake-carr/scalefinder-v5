@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { connect } from 'react-redux'
 import { indexToString, getAlteration } from '../../constants/utils'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import { ThemeContext } from '../App'
 import TuningPicker from './TuningPicker'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tuner)
 
-function Tuner({ tuning, stringIndex, set, sharps, darkTheme }) {
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+function Tuner({ tuning, stringIndex, set, sharps }) {
+  const theme = useContext(ThemeContext)
 
   const parseDown = (n) => {
     return n === 0 ? 11 : n - 1
@@ -69,7 +69,6 @@ function mapStateToProps(state) {
   return {
     tuning: state.tuning,
     sharps: state.sharps,
-    darkTheme: state.darkTheme,
   }
 }
 

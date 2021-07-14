@@ -1,11 +1,8 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../App'
 
-export default connect(mapStateToProps, null)(Stepper)
-
-function Stepper({ label, value, action, min, max, darkTheme }) {
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+export default function Stepper({ label, value, action, min, max }) {
+  const theme = useContext(ThemeContext)
 
   const decrement = () => {
     if (value > min) {
@@ -54,10 +51,4 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
       </div>
     </div>
   )
-}
-
-function mapStateToProps(state) {
-  return {
-    darkTheme: state.darkTheme,
-  }
 }

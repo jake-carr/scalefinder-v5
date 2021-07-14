@@ -1,26 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { connect } from 'react-redux'
 import { indexToString, getDegree } from '../../constants/utils'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import { ThemeContext } from '../App'
 
 export default connect(mapStateToProps, null)(Fret)
 
 function Fret({
-  note,
-  sharps,
-  labelAllNotes,
   highlightRoots,
-  degrees,
   degreeNotation,
-  label,
+  labelAllNotes,
   currentScale,
-  darkTheme,
   showChords,
   chordNotes,
-  frets,
+  degrees,
   strings,
+  sharps,
+  label,
+  frets,
+  note,
 }) {
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+  const theme = useContext(ThemeContext)
 
   const colorFret = () => {
     if (currentScale[0] === note && highlightRoots) {
@@ -114,7 +113,6 @@ function mapStateToProps(state) {
     degrees: state.degrees,
     degreeNotation: state.degreeNotation,
     currentScale: state.currentScale,
-    darkTheme: state.darkTheme,
     showChords: state.showChords,
     chordNotes: state.chordNotes,
     frets: state.frets,

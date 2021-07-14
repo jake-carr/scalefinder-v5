@@ -1,8 +1,8 @@
 import React from 'react'
-import Fret from './Fret'
 import { connect } from 'react-redux'
 import { parseNote } from '../../constants/utils'
 import Tuner from '../controls/Tuner'
+import Fret from './Fret'
 
 export default connect(mapStateToProps, null)(GuitarString)
 

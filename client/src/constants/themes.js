@@ -18,6 +18,7 @@ export const LIGHT_THEME = {
   chord1: colors.yellow[200],
   chord2: colors.yellow[100],
   chord3: colors.yellow[50],
+  ref: 'light',
 }
 
 export const DARK_THEME = {
@@ -38,4 +39,5 @@ export const DARK_THEME = {
   chord1: colors.amber[500],
   chord2: colors.amber[400],
   chord3: colors.amber[300],
+  ref: 'dark',
 }

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { connect } from 'react-redux'
-import Select from 'react-select'
+import { ThemeContext } from '../App'
 import { tunings } from '../../constants/tunings'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import Select from 'react-select'
 
 export default connect(mapStateToProps, mapDispatchToProps)(TuningDropdown)
 
-function TuningDropdown({ tuning, set, darkTheme }) {
+function TuningDropdown({ tuning, set }) {
   const [open, toggleOpen] = useState(false)
   const [selection, changeSelection] = useState('')
+  const scheme = useContext(ThemeContext) // Theme keyword reserved for react-select
 
   const tuningOptions = tunings.map((option) => {
     return { value: option.values, label: option.name }
@@ -24,7 +25,6 @@ function TuningDropdown({ tuning, set, darkTheme }) {
   }
 
   const createTheme = (theme) => {
-    const scheme = darkTheme ? DARK_THEME : LIGHT_THEME
     const { tuning0, tuning1, text } = scheme
     return {
       ...theme.colors,
@@ -64,8 +64,14 @@ function TuningDropdown({ tuning, set, darkTheme }) {
   }, [selection])
 
   return (
-    <div className="w-48 flex flex-col relative" onBlur={() => toggleOpen(false)}>
-      <label className="relative text-sm bottom-5 h-0" htmlFor="tuning-dropdown">
+    <div
+      className="w-48 flex flex-col relative"
+      onBlur={() => toggleOpen(false)}
+    >
+      <label
+        className="relative text-sm bottom-5 h-0"
+        htmlFor="tuning-dropdown"
+      >
         TUNING
       </label>
       <Select
@@ -97,7 +103,6 @@ function TuningDropdown({ tuning, set, darkTheme }) {
 
 function mapStateToProps(state) {
   return {
-    darkTheme: state.darkTheme,
     tuning: state.tuning,
   }
 }

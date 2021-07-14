@@ -1,28 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { connect } from 'react-redux'
+import { scales } from '../../constants/scales'
+import { ThemeContext } from '../App'
 import {
   getAlteration,
   makeChord,
   indexToString,
   getChords,
 } from '../../constants/utils'
-import { scales } from '../../constants/scales'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChordModal)
 
 function ChordModal({
-  rootIndex,
   scaleIndex,
   chordModal,
   showChords,
   chordNotes,
-  darkTheme,
+  rootIndex,
   sharps,
   toggle,
   set,
 }) {
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+  const theme = useContext(ThemeContext)
   const [chordsInKey, setChordsInKey] = useState({})
   const [selectedChord, selectChord] = useState('')
   const [prev, setPrev] = useState('')
@@ -205,7 +204,7 @@ function ChordModal({
         ) : null}
         <span
           className="text-xs my-2 2xl:text-sm"
-          style={{ color: darkTheme ? theme.bg3 : theme.text }}
+          style={{ color: theme.ref == 'dark' ? theme.bg3 : theme.text }}
         >
           Click a chord name to highlight its intervals on the fretboard.
         </span>
@@ -227,7 +226,6 @@ function mapStateToProps(state) {
     rootIndex: state.rootIndex,
     scaleIndex: state.scaleIndex,
     chordNotes: state.chordNotes,
-    darkTheme: state.darkTheme,
     sharps: state.sharps,
   }
 }

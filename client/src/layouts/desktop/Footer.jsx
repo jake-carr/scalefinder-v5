@@ -1,11 +1,9 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { DARK_THEME, LIGHT_THEME } from '../../constants/themes'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../components/App'
 
-export default connect(mapStateToProps, null)(Footer)
+export default function Footer({ darkTheme }) {
+  const theme = useContext(ThemeContext)
 
-function Footer({ darkTheme }) {
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   return (
     <div
       className="h-10 w-full text-lg flex flex-row justify-center items-center"
@@ -30,10 +28,4 @@ function Footer({ darkTheme }) {
       </a>
     </div>
   )
-}
-
-function mapStateToProps(state) {
-  return {
-    darkTheme: state.darkTheme,
-  }
 }

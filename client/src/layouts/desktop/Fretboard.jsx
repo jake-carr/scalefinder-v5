@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { connect } from 'react-redux'
+import { ThemeContext } from '../../components/App'
 import GuitarString from '../../components/display/GuitarString.jsx'
-import { DARK_THEME, LIGHT_THEME } from '../../constants/themes'
 import Footer from './Footer'
 
 export default connect(mapStateToProps, null)(Fretboard)
 
 function Fretboard({ tuning, darkTheme }) {
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+  const theme = useContext(ThemeContext)
+
   const renderGuitarStrings = () => {
     return tuning.map((note, i) => {
       return (

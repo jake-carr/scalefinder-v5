@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { connect } from 'react-redux'
 import RectangularButton from '../../components/controls/RectangularButton'
 import TuningDropdown from '../../components/controls/TuningDropdown'
-import RoundButton from '../../components/controls/RoundButton'
 import ChordModal from '../../components/controls/ChordModal'
 import Metronome from '../../components/controls/Metronome'
 import Checkbox from '../../components/controls/Checkbox'
 import Dropdown from '../../components/controls/Dropdown'
 import Stepper from '../../components/controls/Stepper'
 import { scales, createScale, listScales } from '../../constants/scales'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 import { saveInLocalStorage } from '../../constants/storage'
 import { getAlteration } from '../../constants/utils'
+import { ThemeContext } from '../../components/App'
 import { tunings } from '../../constants/tunings'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)
@@ -66,7 +65,7 @@ function Settings({
     }
   }, [settings])
 
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+  const theme = useContext(ThemeContext)
   const noteOptions = getAlteration(sharps)
   const scaleOptions = listScales()
   const degreeOptions = ['Numeric', 'Roman numeral', 'Indian swaras']
@@ -142,11 +141,17 @@ function Settings({
       <div className="h-full w-3/6 flex flex-col justify-around">
         <div className="pt-4 flex flex-row flex-nowrap justify-center">
           <TuningDropdown />
-          <RoundButton
+          <button
             title="Randomize root and scale."
-            action={randomize}
-            margin={'ml-2'}
-          />
+            onClick={() => randomize()}
+            className="border-box border-2 border-transparent rounded-full h-9 w-9 flex items-center justify-center ml-2 outline-none focus:outline-none"
+            style={{
+              backgroundColor: theme.primary0,
+              color: theme.text,
+            }}
+          >
+            <i className="fas fa-dice" />
+          </button>
           <Dropdown
             options={noteOptions}
             action={selectNote}
@@ -226,11 +231,11 @@ function Settings({
         </div>
         <div className="pt-2 flex flex-row flex-nowrap justify-center">
           <button
-            className="px-4 h-6 w-6 flex text-3xl items-center text-center border-box border-2 border-transparent duration-100 justify-center focus:outline-none hover:border-transparent"
+            className="px-4 h-6 w-6 flex text-3xl items-center text-center border-box border-2 border-transparent duration-100 justify-center outline-none focus:outline-none hover:border-transparent"
             title={'Toggle between light and dark theme.'}
             onClick={() => toggle('darkTheme')}
           >
-            {darkTheme ? `🌞` : `🌚`}
+            {theme.ref == 'dark' ? `🌞` : `🌚`}
           </button>
           <Stepper
             label="Strings"

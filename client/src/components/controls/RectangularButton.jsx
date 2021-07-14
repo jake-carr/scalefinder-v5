@@ -1,11 +1,8 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../App'
 
-export default connect(mapStateToProps, null)(RectangularButton)
-
-function RectangularButton({ title, action, value, condition, darkTheme }) {
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+export default function RectangularButton({ title, action, value, condition }) {
+  const theme = useContext(ThemeContext)
   const {
     secondary0,
     secondary1,
@@ -17,6 +14,7 @@ function RectangularButton({ title, action, value, condition, darkTheme }) {
     bg3,
     text,
   } = theme
+
   const applyStyles = () => {
     if (value) {
       switch (condition) {
@@ -54,10 +52,4 @@ function RectangularButton({ title, action, value, condition, darkTheme }) {
       {title}
     </button>
   )
-}
-
-function mapStateToProps(state) {
-  return {
-    darkTheme: state.darkTheme,
-  }
 }

@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { connect } from 'react-redux'
 import { indexToString, getAlteration } from '../../constants/utils'
-import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
+import { ThemeContext } from '../App'
 
 export default connect(mapStateToProps, mapDispatchToProps)(TuningPicker)
 
-function TuningPicker({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
+function TuningPicker({ sharps, tuning, stringIndex, set, tuners }) {
   const [isOpen, toggle] = useState(false)
   const [tunerID, setID] = useState(0)
 
-  const theme = darkTheme ? DARK_THEME : LIGHT_THEME
+  const theme = useContext(ThemeContext)
 
   const open = () => {
     const id = tuners + 1
     setID(id)
-    set('tuners', id)
     toggle(true)
+    set('tuners', id)
   }
   const close = () => {
     toggle(false)
@@ -83,7 +83,6 @@ function TuningPicker({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
 
 function mapStateToProps(state) {
   return {
-    darkTheme: state.darkTheme,
     tuning: state.tuning,
     sharps: state.sharps,
     tuners: state.tuners,
