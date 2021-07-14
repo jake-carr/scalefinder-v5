@@ -25,7 +25,7 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
       <input
         name="rememberSettings"
         type="checkbox"
-        className="rounded-lg"
+        className="rounded-full"
         checked={rememberSettings}
         onChange={() => handleToggle()}
         style={{

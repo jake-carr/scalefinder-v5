@@ -26,7 +26,7 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
       </label>
       <div className="flex flex-row justify-center items-center">
         <button
-          className="px-2 h-6 w-6 flex text-sm items-center text-center border-box border-2 border-transparent duration-100 justify-center focus:outline-none"
+          className="px-2 h-6 w-6 flex text-sm items-center text-center border-box border-2 border-transparent duration-100 justify-center outline-none focus:outline-none"
           style={{
             color: theme.text,
             borderRadius: '50%',
@@ -42,7 +42,7 @@ function Stepper({ label, value, action, min, max, darkTheme }) {
           {value}
         </span>
         <button
-          className="px-2 h-6 w-6 flex text-sm items-center text-center border-box border-2 border-transparent duration-100 justify-center focus:outline-none"
+          className="px-2 h-6 w-6 flex text-sm items-center text-center border-box border-2 border-transparent duration-100 justify-center outline-none focus:outline-none"
           style={{
             color: theme.text,
             borderRadius: '50%',

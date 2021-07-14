@@ -55,7 +55,7 @@ function TuningPicker({ darkTheme, sharps, tuning, stringIndex, set, tuners }) {
       <div className="note-picker">
         <div className="outer" onClick={() => open()}>
           <div
-            className="trigger focus:outline-none border-box border-2 border-transparent rounded-full h-6 w-6 my-1 mx-1 text-sm font-bold text-center"
+            className="trigger outline-none border-box border-2 border-transparent rounded-full h-6 w-6 my-1 mx-1 text-sm font-bold text-center outline-none focus:outline-none"
             style={{ backgroundColor: theme.tuning0, color: theme.text }}
           >
             {indexToString(tuning[stringIndex], sharps)}
