@@ -19,7 +19,7 @@ function Checkbox({ rememberSettings, toggle, darkTheme }) {
 
   return (
     <span
-      className="ml-1 mt-2 w-50 flex flex-row flex-nowrap justify-left duration-300"
+      className="ml-1 mt-3 w-50 flex flex-row flex-nowrap justify-left duration-300"
       style={{ opacity: rememberSettings ? 1 : 0.5 }}
     >
       <input

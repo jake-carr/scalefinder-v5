@@ -4,7 +4,7 @@ import { indexToString } from '../../constants/utils'
 import { scales, listScales } from '../../constants/scales'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
 import Select from 'react-select'
-import ReactTooltip from 'react-tooltip'
+import ReactTooltip from 'react-tooltip' // only needed on Scale dropdown - change to dynamic import
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
 
