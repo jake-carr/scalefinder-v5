@@ -69,7 +69,7 @@ function Settings({
   const theme = darkTheme ? DARK_THEME : LIGHT_THEME
   const noteOptions = getAlteration(sharps)
   const scaleOptions = listScales()
-  const degreeOptions = ['Numeric', 'Roman numeral', 'Indian sargams']
+  const degreeOptions = ['Numeric', 'Roman numeral', 'Indian swaras']
 
   const randomize = () => {
     set('rootIndex', Math.floor(Math.random() * 12))

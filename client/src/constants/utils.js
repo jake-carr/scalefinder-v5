@@ -44,7 +44,7 @@ export const indexToString = (index, isSharps) => {
 }
 
 const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']
-const sargams = ['Sa', 'Re', 'Ga', 'Ma', 'Pa', 'Da', 'Ni']
+const swaras = ['Sa', 'Re', 'Ga', 'Ma', 'Pa', 'Da', 'Ni']
 
 export const getDegree = (i, type) => {
   if (type === 'Numeric') {
@@ -53,8 +53,8 @@ export const getDegree = (i, type) => {
   if (type === 'Roman numeral') {
     return numerals[i]
   }
-  if (type === 'Indian sargams') {
-    return sargams[i]
+  if (type === 'Indian swaras') {
+    return swaras[i]
   }
 }
 
