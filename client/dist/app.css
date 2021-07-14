@@ -61,13 +61,12 @@ input[type='checkbox']:focus {
 }
 .expanded-container .boxes {
   pointer-events: none;
-  width: 100px;
+  width: auto;
 }
 .expanded-container .box {
   margin: 0;
   width: 0px;
   text-align: center;
-  line-height: 44px;
 }
 .expanded-container.active {
   opacity: 1;
@@ -83,11 +82,12 @@ input[type='checkbox']:focus {
 }
 
 .expanded-container.active .box {
-  height: 1.5em;
-  width: 1.5em;
-  line-height: 1.5em;
+  height: 1.75em;
+  width: 1.75em;
+  line-height: 1.75em;
   display: flex;
   justify-content: center;
+  text-align: center;
   margin: 0.25em;
   transition: 0.4s ease margin, 0.1s ease width, 0.1s ease transform;
   border-radius: 50%;
