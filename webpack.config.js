@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: ['babel-polyfill', './client/src/index.jsx'], // remove and uninstall polyfill if async/await not used
+  entry: ['babel-polyfill', './client/src/index.jsx'],
   mode: 'development',
   module: {
     rules: [

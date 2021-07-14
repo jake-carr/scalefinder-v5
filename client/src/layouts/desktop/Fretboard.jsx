@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import GuitarString from '../display/GuitarString.jsx'
+import GuitarString from '../../components/display/GuitarString.jsx'
 import { DARK_THEME, LIGHT_THEME } from '../../constants/themes'
 import Footer from './Footer'
 
