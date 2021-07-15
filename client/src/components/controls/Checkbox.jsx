@@ -20,8 +20,7 @@ function Checkbox({ rememberSettings, toggle }) {
   return (
     <span
       className="ml-1 mt-3 w-50 flex flex-row flex-nowrap justify-left duration-300"
-      style={{ opacity: rememberSettings ? 1 : 0.5 }}
-    >
+      style={{ opacity: rememberSettings ? 1 : 0.5 }}>
       <input
         name="rememberSettings"
         type="checkbox"
@@ -39,8 +38,7 @@ function Checkbox({ rememberSettings, toggle }) {
         className="mx-1 text-xs cursor-pointer duration-300"
         style={{ color: theme.text }}
         htmlFor="rememberSettings"
-        onClick={() => handleToggle()}
-      >
+        onClick={() => handleToggle()}>
         remember my settings
       </label>
     </span>

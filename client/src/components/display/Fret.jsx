@@ -75,12 +75,10 @@ function Fret({
         backgroundColor: colorFret(),
         border: colorBorder(),
         width: setFretWidth(),
-      }}
-    >
+      }}>
       <div
         className="absolute top-0 left-1 text-xs duration-300 "
-        style={{ color: theme.tertiary1, opacity: degrees ? 1 : 0 }}
-      >
+        style={{ color: theme.tertiary1, opacity: degrees ? 1 : 0 }}>
         <span>{showOrHideDegree()}</span>
       </div>
       <div
@@ -89,15 +87,13 @@ function Fret({
           fontWeight: 'bold',
           color: colorText(),
           opacity: currentScale.includes(note) || labelAllNotes ? 1 : 0,
-        }}
-      >
+        }}>
         {indexToString(note, sharps)}
       </div>
       {label ? (
         <div
           className={`absolute top-${setLabelDistance()} self-center text-base`}
-          style={{ color: theme.text }}
-        >
+          style={{ color: theme.text }}>
           {String(label)}
         </div>
       ) : null}

@@ -135,20 +135,17 @@ function Dropdown({
   return (
     <div
       className={`${setWidth()} mx-2 flex flex-col relative duration-300`}
-      onBlur={() => toggleOpen(false)}
-    >
+      onBlur={() => toggleOpen(false)}>
       <div
         className={`relative flex flex-row h-0 ${
           name === 'Degree Notation' ? 'text-xs bottom-4' : 'text-sm bottom-5'
-        }  `}
-      >
+        }  `}>
         <label htmlFor={name}>{name.toUpperCase()}</label>
         {name === 'Scale' ? (
           <>
             <a
               className="rounded-full h-4 w-4 mx-1 border-box flex items-center justify-center transition duration-300 focus:outline-none"
-              data-tip={multiline(scales[scaleIndex].info)}
-            >
+              data-tip={multiline(scales[scaleIndex].info)}>
               <i className="fas fa-info-circle cursor-pointer" />
             </a>
             <ReactTooltip

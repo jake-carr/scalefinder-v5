@@ -123,8 +123,7 @@ function Settings({
   return (
     <main
       className="w-full text-base h-1/4 relative duration-300 flex flex-row flex-nowrap justify-center"
-      style={{ color: theme.text, backgroundColor: theme.bg1 }}
-    >
+      style={{ color: theme.text, backgroundColor: theme.bg1 }}>
       <div className="h-full w-1/6 flex flex-col justify-between">
         <div className="flex justify-left pl-2">
           <Metronome
@@ -148,8 +147,7 @@ function Settings({
             style={{
               backgroundColor: theme.primary0,
               color: theme.text,
-            }}
-          >
+            }}>
             <i className="fas fa-dice" />
           </button>
           <Dropdown
@@ -176,8 +174,7 @@ function Settings({
                     : { backgroundColor: theme.bg2 }
                 }
                 title="Chords"
-                onClick={() => toggle('chordModal')}
-              >
+                onClick={() => toggle('chordModal')}>
                 Chords
               </button>
             ) : (
@@ -199,8 +196,7 @@ function Settings({
             style={{
               backgroundColor: theme.bg2,
               color: theme.text,
-            }}
-          >
+            }}>
             <span className="text-xl self-center">{sharps ? '♭' : '♯'}</span>
           </button>
           <RectangularButton
@@ -233,8 +229,7 @@ function Settings({
           <button
             className="px-4 h-6 w-6 flex text-3xl items-center text-center border-box border-2 border-transparent duration-100 justify-center outline-none focus:outline-none hover:border-transparent"
             title={'Toggle between light and dark theme.'}
-            onClick={() => toggle('darkTheme')}
-          >
+            onClick={() => toggle('darkTheme')}>
             {theme.ref == 'dark' ? `🌞` : `🌚`}
           </button>
           <Stepper

@@ -43,8 +43,7 @@ function TuningPicker({ sharps, tuning, stringIndex, set, tuners }) {
           backgroundColor:
             tuning[stringIndex] == i ? theme.tuning1 : theme.tuning0,
           color: theme.text,
-        }}
-      >
+        }}>
         {indexToString(i, sharps)}
       </div>
     ))
@@ -56,24 +55,21 @@ function TuningPicker({ sharps, tuning, stringIndex, set, tuners }) {
         <div className="outer" onClick={() => open()}>
           <div
             className="trigger outline-none border-box border-2 border-transparent rounded-full h-8 w-8 my-1 mx-1 pt-1 text-sm font-bold text-center outline-none focus:outline-none"
-            style={{ backgroundColor: theme.tuning0, color: theme.text }}
-          >
+            style={{ backgroundColor: theme.tuning0, color: theme.text }}>
             {indexToString(tuning[stringIndex], sharps)}
           </div>
         </div>
       </div>
       <div
         onClick={() => close()}
-        className={`rounded dimmer ${isOpen && 'active'}`}
-      ></div>
+        className={`rounded dimmer ${isOpen && 'active'}`}></div>
       <div className={`expanded-container ${isOpen && 'active'}`}>
         <div
           className="boxes border-box rounded-sm"
           style={{
             backgroundColor: theme.bg1,
             border: `2px solid ${theme.tuning1}`,
-          }}
-        >
+          }}>
           {renderNoteOptions(getAlteration(sharps))}
         </div>
       </div>

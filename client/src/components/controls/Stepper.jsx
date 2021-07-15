@@ -28,14 +28,12 @@ export default function Stepper({ label, value, action, min, max }) {
             color: theme.text,
             borderRadius: '50%',
           }}
-          onClick={decrement}
-        >
+          onClick={decrement}>
           -
         </button>
         <span
           className="mx-1 w-6 text-center font-bold transition duration-300"
-          style={{ color: theme.tertiary0 }}
-        >
+          style={{ color: theme.tertiary0 }}>
           {value}
         </span>
         <button
@@ -44,8 +42,7 @@ export default function Stepper({ label, value, action, min, max }) {
             color: theme.text,
             borderRadius: '50%',
           }}
-          onClick={increment}
-        >
+          onClick={increment}>
           +
         </button>
       </div>

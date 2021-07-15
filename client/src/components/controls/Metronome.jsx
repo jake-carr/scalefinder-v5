@@ -129,8 +129,7 @@ export default class Metronome extends Component {
             <label
               className="my-1"
               htmlFor="bpm-slider"
-              style={{ color: theme.text }}
-            >
+              style={{ color: theme.text }}>
               METRONOME
             </label>
             <button
@@ -142,8 +141,7 @@ export default class Metronome extends Component {
                 borderRadius: '50%',
                 marginBottom: '0.1em',
               }}
-              onClick={() => this.startStop()}
-            >
+              onClick={() => this.startStop()}>
               {this.state.isPlaying ? (
                 <span className="text-lg" id="pause-symbol">
                   =
@@ -151,8 +149,7 @@ export default class Metronome extends Component {
               ) : (
                 <span
                   className="text-sm"
-                  style={{ paddingTop: '0.1em', paddingLeft: '0.1em' }}
-                >
+                  style={{ paddingTop: '0.1em', paddingLeft: '0.1em' }}>
                   &#9658;
                 </span>
               )}
@@ -179,8 +176,7 @@ export default class Metronome extends Component {
           <label
             className="my-1 text-sm"
             htmlFor="bpm-slider"
-            style={{ color: theme.secondary1 }}
-          >
+            style={{ color: theme.secondary1 }}>
             <span style={{ color: theme.text }}>BPM </span>
             <span style={{ color: theme.secondary1 }}>{this.state.tempo}</span>
           </label>

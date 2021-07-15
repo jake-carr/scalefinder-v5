@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { connect } from 'react-redux'
 import { indexToString, getAlteration } from '../../constants/utils'
-import { ThemeContext } from '../App'
 import TuningPicker from './TuningPicker'
+import { ThemeContext } from '../App'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tuner)
 
@@ -46,8 +46,7 @@ function Tuner({ tuning, stringIndex, set, sharps }) {
           color: theme.text,
           borderRadius: '50%',
         }}
-        onClick={() => tuneDown()}
-      >
+        onClick={() => tuneDown()}>
         -
       </button>
       <TuningPicker stringIndex={stringIndex} />
@@ -57,8 +56,7 @@ function Tuner({ tuning, stringIndex, set, sharps }) {
           color: theme.text,
           borderRadius: '50%',
         }}
-        onClick={() => tuneUp()}
-      >
+        onClick={() => tuneUp()}>
         +
       </button>
     </div>

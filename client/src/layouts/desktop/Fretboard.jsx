@@ -23,8 +23,7 @@ function Fretboard({ tuning, darkTheme }) {
   return (
     <div
       className="h-3/4 flex flex-col justify-between"
-      style={{ backgroundColor: theme.bg2 }}
-    >
+      style={{ backgroundColor: theme.bg2 }}>
       <div />
       <div className="flex flex-col justify-center align-center self-center">
         {renderGuitarStrings()}

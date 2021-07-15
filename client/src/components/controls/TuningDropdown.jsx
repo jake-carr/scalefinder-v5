@@ -66,12 +66,10 @@ function TuningDropdown({ tuning, set }) {
   return (
     <div
       className="w-48 flex flex-col relative"
-      onBlur={() => toggleOpen(false)}
-    >
+      onBlur={() => toggleOpen(false)}>
       <label
         className="relative text-sm bottom-5 h-0"
-        htmlFor="tuning-dropdown"
-      >
+        htmlFor="tuning-dropdown">
         TUNING
       </label>
       <Select

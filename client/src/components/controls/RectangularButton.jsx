@@ -47,8 +47,7 @@ export default function RectangularButton({ title, action, value, condition }) {
       className={`w-40 h-10 mx-1 rounded border-box border-2 border-transparent duration-300 outline-none focus:outline-none`}
       style={applyStyles()}
       title={title}
-      onClick={() => action(!value)}
-    >
+      onClick={() => action(!value)}>
       {title}
     </button>
   )

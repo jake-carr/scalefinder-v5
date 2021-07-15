@@ -33,8 +33,7 @@ function GuitarString({ stringIndex, frets, tuning }) {
 
   return (
     <div
-      className={`${setStringHeight()} w-full flex flex-row justify-center my-1 duration-300`}
-    >
+      className={`${setStringHeight()} w-full flex flex-row justify-center my-1 duration-300`}>
       <Tuner stringIndex={stringIndex} />
       {renderFrets()}
     </div>

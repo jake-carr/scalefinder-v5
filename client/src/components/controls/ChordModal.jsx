@@ -113,8 +113,7 @@ function ChordModal({
           opacity: chordNotes.length >= 3 ? 1 : 0,
           paddingLeft: chordNotes.length < 4 ? '2rem' : 0,
         }}
-        className="flex flex-row flex-nowrap duration-300"
-      >
+        className="flex flex-row flex-nowrap duration-300">
         {colors.map((color, i) => {
           return (
             <span
@@ -124,8 +123,7 @@ function ChordModal({
                 color: color.text,
                 backgroundColor: color,
                 opacity: i < 3 || chordNotes.length === 4 ? 1 : 0,
-              }}
-            >
+              }}>
               {i + 1}
             </span>
           )
@@ -138,13 +136,11 @@ function ChordModal({
     <>
       <div
         className="p-1 h-full w-full transition duration-300 flex flex-col justify-center text-center"
-        style={{ backgroundColor: theme.bg0, opacity: chordModal ? 1 : 0 }}
-      >
+        style={{ backgroundColor: theme.bg0, opacity: chordModal ? 1 : 0 }}>
         {chordsInKey['basicChords'] ? (
           <div
             className="text-sm flex flex-col 2xl:text-base"
-            style={{ color: theme.chord1 }}
-          >
+            style={{ color: theme.chord1 }}>
             <span>Basic chords</span>
             <div className="flex flex-row flex-nowrap justify-center">
               <span>
@@ -157,8 +153,7 @@ function ChordModal({
                         style={{
                           color:
                             chord === selectedChord ? theme.chord1 : theme.text,
-                        }}
-                      >
+                        }}>
                         {trimChordName(chord)}
                       </span>
                       {i < chordsInKey.basicChords.length - 1 ? (
@@ -174,8 +169,7 @@ function ChordModal({
         {chordsInKey['seventhChords'] ? (
           <div
             className="text-sm mt-2 flex flex-col 2xl:text-base"
-            style={{ color: theme.chord3 }}
-          >
+            style={{ color: theme.chord3 }}>
             <span>Seventh chords</span>
             <div className="flex flex-row flex-nowrap justify-center">
               <span>
@@ -188,8 +182,7 @@ function ChordModal({
                         style={{
                           color:
                             chord === selectedChord ? theme.chord3 : theme.text,
-                        }}
-                      >
+                        }}>
                         {chord}
                       </span>
                       {i < chordsInKey.seventhChords.length - 1 ? (
@@ -204,14 +197,12 @@ function ChordModal({
         ) : null}
         <span
           className="text-xs my-2 2xl:text-sm"
-          style={{ color: theme.ref == 'dark' ? theme.bg3 : theme.text }}
-        >
+          style={{ color: theme.ref == 'dark' ? theme.bg3 : theme.text }}>
           Click a chord name to highlight its intervals on the fretboard.
         </span>
         <div
           className="flex flex-row justify-center items-center"
-          style={{ color: theme.text }}
-        >
+          style={{ color: theme.text }}>
           {circles()}
         </div>
       </div>
