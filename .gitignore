@@ -2,7 +2,9 @@ node_modules
 
 bundle.js
 
-*.bundle.js
+client_src*
+
+vendors*
 
 package-lock.json
 
