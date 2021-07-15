@@ -47,7 +47,7 @@ function App({ darkTheme }) {
   }, [])
 
   return (
-    <Suspense fallback={<div>HANG ON (this should be a spinner)</div>}>
+    <Suspense fallback={<LoadingSpinner />}>
       <Provider value={darkTheme ? DARK_THEME : LIGHT_THEME}>
         <div className="app-main relative">{layout ? layout : null}</div>
       </Provider>
@@ -59,4 +59,25 @@ function mapStateToProps(state) {
   return {
     darkTheme: state.darkTheme,
   }
+}
+
+function LoadingSpinner() {
+  return (
+    <div class="loader">
+      <div class="loader-circle">
+        <div class="loader-circle1 loader-child"></div>
+        <div class="loader-circle2 loader-child"></div>
+        <div class="loader-circle3 loader-child"></div>
+        <div class="loader-circle4 loader-child"></div>
+        <div class="loader-circle5 loader-child"></div>
+        <div class="loader-circle6 loader-child"></div>
+        <div class="loader-circle7 loader-child"></div>
+        <div class="loader-circle8 loader-child"></div>
+        <div class="loader-circle9 loader-child"></div>
+        <div class="loader-circle10 loader-child"></div>
+        <div class="loader-circle11 loader-child"></div>
+        <div class="loader-circle12 loader-child"></div>
+      </div>
+    </div>
+  )
 }
