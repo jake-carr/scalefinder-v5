@@ -31,6 +31,7 @@
     "react-dom": "^17.0.2",
     "react-input-slider": "^6.0.0",
     "react-redux": "^7.2.4",
+    "react-screen-orientation": "0.0.4",
     "react-select": "^4.3.1",
     "react-tooltip": "^4.2.21",
     "tailwindcss": "^2.2.2",

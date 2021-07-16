@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { connect } from 'react-redux'
 import { DARK_THEME, LIGHT_THEME } from '../constants/themes'
+import DeviceOrientation, { Orientation } from 'react-screen-orientation'
 
 export const ThemeContext = createContext(DARK_THEME)
 
@@ -21,11 +22,38 @@ function App({ darkTheme }) {
   useEffect(() => {
     if (/Mobi/.test(navigator.userAgent)) {
       async function loadMobileLayout() {
-        const MobileLayout = lazy(() =>
-          import('../layouts/mobile/MobileLayout'),
+        const MobileSettings = lazy(() =>
+          import('../layouts/mobile/MobileSettings'),
         )
         setLayout(() => {
-          return <MobileLayout />
+          return (
+            <DeviceOrientation lockOrientation={'landscape'}>
+              <Orientation orientation="landscape" alwaysRender={false}>
+                <div className="app-main relative">
+                  <MobileSettings />
+                </div>
+              </Orientation>
+              <Orientation orientation="portrait" alwaysRender={false}>
+                <div
+                  style={{
+                    width: '100vw',
+                    height: '100vh',
+                    textAlign: 'center',
+                    backgroundColor: '#404040',
+                  }}>
+                  <h2
+                    style={{
+                      fontSize: 30,
+                      paddingTop: '10%',
+                      color: 'white',
+                    }}>
+                    Please rotate your device
+                  </h2>
+                  <LoadingSpinner />
+                </div>
+              </Orientation>
+            </DeviceOrientation>
+          )
         })
       }
       loadMobileLayout()
@@ -35,10 +63,10 @@ function App({ darkTheme }) {
         const Fretboard = lazy(() => import('../layouts/desktop/Fretboard'))
         setLayout(() => {
           return (
-            <>
+            <div className="app-main relative">
               <Settings />
               <Fretboard />
-            </>
+            </div>
           )
         })
       }
@@ -49,7 +77,7 @@ function App({ darkTheme }) {
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Provider value={darkTheme ? DARK_THEME : LIGHT_THEME}>
-        <div className="app-main relative">{layout ? layout : null}</div>
+        <>{layout ? layout : null}</>
       </Provider>
     </Suspense>
   )

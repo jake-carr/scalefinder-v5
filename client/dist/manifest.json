@@ -8,5 +8,6 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": "."
+  "start_url": ".",
+  "orientation": "landscape"
 }

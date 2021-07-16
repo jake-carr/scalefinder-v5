@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// this file is a placeholder, delete once other components are done and imported to app/
 
 // TODO
 
