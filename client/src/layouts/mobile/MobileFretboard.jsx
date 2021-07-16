@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import { connect } from 'react-redux'
 import { ThemeContext } from '../../components/App'
 import GuitarString from '../../components/display/GuitarString.jsx'
-import Footer from './Footer'
+import MobileFooter from './MobileFooter'
 
-export default connect(mapStateToProps, null)(Fretboard)
+export default connect(mapStateToProps, null)(MobileFretboard)
 
-function Fretboard({ tuning, darkTheme }) {
+function MobileFretboard({ tuning, darkTheme }) {
   const theme = useContext(ThemeContext)
 
   const renderGuitarStrings = () => {
@@ -15,7 +15,7 @@ function Fretboard({ tuning, darkTheme }) {
         <GuitarString
           stringIndex={i} // index within tuning
           key={i}
-          mobile={false}
+          mobile={true}
         />
       )
     })
@@ -23,13 +23,13 @@ function Fretboard({ tuning, darkTheme }) {
 
   return (
     <div
-      className="h-3/4 flex flex-col justify-between"
+      className="h-2/3 flex flex-col justify-between"
       style={{ backgroundColor: theme.bg2 }}>
       <div />
       <div className="flex flex-col justify-center align-center self-center">
         {renderGuitarStrings()}
       </div>
-      <Footer />
+      <MobileFooter />
     </div>
   )
 }

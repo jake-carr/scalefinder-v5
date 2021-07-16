@@ -6,7 +6,7 @@ import Fret from './Fret'
 
 export default connect(mapStateToProps, null)(GuitarString)
 
-function GuitarString({ stringIndex, frets, tuning }) {
+function GuitarString({ stringIndex, frets, tuning, mobile }) {
   const renderFrets = () => {
     const root = tuning[stringIndex]
     const fretLabels = [1, 3, 5, 7, 9, 12, 15, 17, 19, 21, 24]
@@ -20,21 +20,34 @@ function GuitarString({ stringIndex, frets, tuning }) {
       ) {
         label = fretNumber
       }
-      return <Fret key={i} note={note} label={label} strings={tuning.length} />
+      return (
+        <Fret
+          key={i}
+          note={note}
+          label={label}
+          strings={tuning.length}
+          mobile={mobile}
+        />
+      )
     })
   }
 
   const setStringHeight = () => {
     const strings = tuning.length
-    if (strings >= 7) return 'h-11'
-    else if (strings >= 5) return 'h-12'
-    else return 'h-14'
+    if (mobile) {
+      if (strings >= 5) return 'h-6'
+      else return 'h-8'
+    } else {
+      if (strings >= 7) return 'h-11'
+      else if (strings >= 5) return 'h-12'
+      else return 'h-14'
+    }
   }
 
   return (
     <div
       className={`${setStringHeight()} w-full flex flex-row justify-center my-1 duration-300`}>
-      <Tuner stringIndex={stringIndex} />
+      <Tuner stringIndex={stringIndex} mobile={mobile} />
       {renderFrets()}
     </div>
   )

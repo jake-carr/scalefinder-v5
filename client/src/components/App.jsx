@@ -25,12 +25,16 @@ function App({ darkTheme }) {
         const MobileSettings = lazy(() =>
           import('../layouts/mobile/MobileSettings'),
         )
+        const MobileFretboard = lazy(() =>
+          import('../layouts/mobile/MobileFretboard'),
+        )
         setLayout(() => {
           return (
             <DeviceOrientation lockOrientation={'landscape'}>
               <Orientation orientation="landscape" alwaysRender={false}>
                 <div className="app-main relative">
                   <MobileSettings />
+                  <MobileFretboard />
                 </div>
               </Orientation>
               <Orientation orientation="portrait" alwaysRender={false}>

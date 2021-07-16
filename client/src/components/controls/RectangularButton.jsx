@@ -1,7 +1,13 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '../App'
 
-export default function RectangularButton({ title, action, value, condition }) {
+export default function RectangularButton({
+  condition,
+  mobile,
+  action,
+  title,
+  value,
+}) {
   const theme = useContext(ThemeContext)
   const {
     secondary0,
@@ -44,7 +50,9 @@ export default function RectangularButton({ title, action, value, condition }) {
 
   return (
     <button
-      className="w-40 h-10 mx-1 rounded border-box border-2 border-transparent duration-300 outline-none focus:outline-none"
+      className={`${
+        mobile ? 'w-auto px-2 text-sm' : 'w-40 text-base'
+      } h-10 mx-1 rounded border-box border-2 border-transparent duration-300 outline-none focus:outline-none`}
       style={applyStyles()}
       title={title}
       onClick={() => action(!value)}>

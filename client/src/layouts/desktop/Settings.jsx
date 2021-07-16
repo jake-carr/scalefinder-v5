@@ -122,7 +122,7 @@ function Settings({
 
   return (
     <main
-      className="w-full text-base h-1/4 relative duration-300 flex flex-row flex-nowrap justify-center"
+      className="w-full text-base h-1/4 relative duration-300 flex flex-row flex-nowrap justify-around"
       style={{ color: theme.text, backgroundColor: theme.bg1 }}>
       <div className="h-full w-1/6 flex flex-col justify-between">
         <div className="flex justify-left pl-2">
@@ -200,17 +200,20 @@ function Settings({
             <span className="text-xl self-center">{sharps ? '♭' : '♯'}</span>
           </button>
           <RectangularButton
+            mobile={false}
             title="Highlight root notes"
             action={() => toggle('highlightRoots')}
             value={highlightRoots}
             condition={'highlightRoots'}
           />
           <RectangularButton
+            mobile={false}
             title={labelAllNotes ? 'Label scale only' : 'Label all notes'}
             action={() => toggle('labelAllNotes')}
             value={labelAllNotes}
           />
           <RectangularButton
+            mobile={false}
             title={degrees ? 'Hide scale degrees' : 'Show scale degrees'}
             action={() => toggle('degrees')}
             value={degrees}

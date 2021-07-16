@@ -6,7 +6,7 @@ import { ThemeContext } from '../App'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tuner)
 
-function Tuner({ tuning, stringIndex, set, sharps }) {
+function Tuner({ tuning, stringIndex, set, sharps, mobile }) {
   const theme = useContext(ThemeContext)
 
   const parseDown = (n) => {
@@ -41,7 +41,9 @@ function Tuner({ tuning, stringIndex, set, sharps }) {
   return (
     <div className="relative flex justify-center align-center items-center text-lg">
       <button
-        className="border-box border-2 border-transparent duration-200 px-2 h-6 w-6 flex text-sm items-center text-center justify-center outline-none focus:outline-none"
+        className={`${
+          mobile ? 'h-4 w-4' : 'h-6 w-6'
+        } border-box border-2 border-transparent duration-200 px-2 flex text-sm items-center text-center justify-center outline-none focus:outline-none`}
         style={{
           color: theme.text,
           borderRadius: '50%',
@@ -49,9 +51,19 @@ function Tuner({ tuning, stringIndex, set, sharps }) {
         onClick={() => tuneDown()}>
         -
       </button>
-      <TuningPicker stringIndex={stringIndex} />
+      {mobile ? (
+        <div
+          className="outline-none border-box border-2 border-transparent rounded-full h-6 w-6 my-1 mx-1 text-sm font-bold text-center outline-none focus:outline-none"
+          style={{ backgroundColor: theme.tuning0, color: theme.text }}>
+          {indexToString(tuning[stringIndex], sharps)}
+        </div>
+      ) : (
+        <TuningPicker stringIndex={stringIndex} />
+      )}
       <button
-        className="border-box border-2 border-transparent duration-200 px-2 h-6 w-6 flex text-sm items-center text-center justify-center outline-none focus:outline-none"
+        className={`${
+          mobile ? 'h-4 w-4' : 'h-6 w-6'
+        } border-box border-2 border-transparent duration-200 px-2 flex text-sm items-center text-center justify-center outline-none focus:outline-none`}
         style={{
           color: theme.text,
           borderRadius: '50%',
