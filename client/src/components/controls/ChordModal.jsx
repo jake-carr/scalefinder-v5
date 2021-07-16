@@ -135,7 +135,7 @@ function ChordModal({
   return (
     <>
       <div
-        className="p-1 h-full w-full transition duration-300 flex flex-col justify-center text-center"
+        className="p-1 h-full w-full duration-100 flex flex-col justify-center text-center"
         style={{ backgroundColor: theme.bg0, opacity: chordModal ? 1 : 0 }}>
         {chordsInKey['basicChords'] ? (
           <div
