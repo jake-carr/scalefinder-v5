@@ -2,13 +2,9 @@ import React, { useEffect, useContext } from 'react'
 import { connect } from 'react-redux'
 import RectangularButton from '../../components/controls/RectangularButton'
 import TuningDropdown from '../../components/controls/TuningDropdown'
-// import ChordModal from '../../components/controls/ChordModal'
-// import Metronome from '../../components/controls/Metronome'
-// import Checkbox from '../../components/controls/Checkbox'
 import Dropdown from '../../components/controls/Dropdown'
 import Stepper from '../../components/controls/Stepper'
 import { scales, createScale, listScales } from '../../constants/scales'
-// import { saveInLocalStorage } from '../../constants/storage'
 import { getAlteration } from '../../constants/utils'
 import { ThemeContext } from '../../components/App'
 import { tunings } from '../../constants/tunings'
@@ -16,15 +12,15 @@ import { tunings } from '../../constants/tunings'
 export default connect(mapStateToProps, mapDispatchToProps)(MobileSettings)
 
 function MobileSettings({
-  darkTheme,
-  currentScale,
-  rootIndex,
-  scaleIndex,
-  tuning,
   highlightRoots,
-  labelAllNotes,
   degreeNotation,
+  labelAllNotes,
+  currentScale,
+  scaleIndex,
+  darkTheme,
+  rootIndex,
   degrees,
+  tuning,
   sharps,
   toggle,
   set,
