@@ -133,7 +133,7 @@ export default class Metronome extends Component {
               METRONOME
             </label>
             <button
-              className="self-center ml-2 leading-6 h-6 w-6 flex text-sm items-center text-center border-box border-2 border-transparent duration-300 justify-center focus:outline-none"
+              className="self-center ml-2 leading-6 h-6 w-6 flex text-sm items-center text-center border-box border-2 border-transparent duration-300 justify-center outline-none focus:outline-none"
               aria-label="metronome-play-pause-button"
               style={{
                 background: 'none',

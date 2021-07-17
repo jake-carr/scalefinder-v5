@@ -135,11 +135,14 @@ function ChordModal({
   return (
     <>
       <div
-        className="p-1 h-full w-full duration-100 flex flex-col justify-center text-center"
-        style={{ backgroundColor: theme.bg0, opacity: chordModal ? 1 : 0 }}>
+        className="p-1 h-full w-full duration-300 flex flex-col justify-center text-center"
+        style={{
+          backgroundColor: theme.bg0,
+          opacity: chordModal ? 1 : 0,
+        }}>
         {chordsInKey['basicChords'] ? (
           <div
-            className="text-sm flex flex-col 2xl:text-base"
+            className="text-sm flex flex-col 2xl:text-base overflow-hidden"
             style={{ color: theme.chord1 }}>
             <span>Basic chords</span>
             <div className="flex flex-row flex-nowrap justify-center">
@@ -168,7 +171,7 @@ function ChordModal({
         ) : null}
         {chordsInKey['seventhChords'] ? (
           <div
-            className="text-sm mt-2 flex flex-col 2xl:text-base"
+            className="text-sm mt-2 flex flex-col 2xl:text-base overflow-hidden"
             style={{ color: theme.chord3 }}>
             <span>Seventh chords</span>
             <div className="flex flex-row flex-nowrap justify-center">
