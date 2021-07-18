@@ -138,7 +138,7 @@ function Dropdown({
       onBlur={() => toggleOpen(false)}>
       <div
         className={`relative flex flex-row h-0 ${
-          name === 'Degree Notation' ? 'text-xs bottom-4' : 'text-sm bottom-5'
+          name === 'Degree Notation' ? 'text-xs top-11' : 'text-sm bottom-5'
         }  `}>
         <label htmlFor={name}>{name.toUpperCase()}</label>
         {name === 'Scale' ? (
