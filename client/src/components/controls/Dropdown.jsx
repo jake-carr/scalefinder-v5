@@ -3,10 +3,8 @@ import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
 import { scales, listScales } from '../../constants/scales'
 import { ThemeContext } from '../App'
-// import Select from 'react-select'
+const ReactTooltip = lazy(() => import('react-tooltip'))
 const Select = lazy(() => import('react-select'))
-
-import ReactTooltip from 'react-tooltip'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
 
@@ -109,9 +107,9 @@ function Dropdown({
   }
 
   const multiline = (infoString) => {
-    infoString = infoString.split(' ')
     // Add break tags to long info strings for use with React-tooltip
-    for (let i = 1; i < infoString.length; i += 4) infoString[i] += `<br />`
+    infoString = infoString.split(' ')
+    for (let i = 4; i < infoString.length; i += 4) infoString[i] += `<br />`
     return infoString.join(' ')
   }
 

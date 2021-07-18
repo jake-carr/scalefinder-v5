@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, lazy } from 'react'
 import { connect } from 'react-redux'
 import { ThemeContext } from '../App'
 import { tunings } from '../../constants/tunings'
-import Select from 'react-select'
+const Select = lazy(() => import('react-select'))
 
 export default connect(mapStateToProps, mapDispatchToProps)(TuningDropdown)
 

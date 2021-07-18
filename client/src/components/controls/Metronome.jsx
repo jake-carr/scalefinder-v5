@@ -1,6 +1,6 @@
-import React, { Component, useContext } from 'react'
+import React, { Component, useContext, lazy } from 'react'
 import { LIGHT_THEME, DARK_THEME } from '../../constants/themes'
-import Slider from 'react-input-slider'
+const Slider = lazy(() => import('react-input-slider'))
 
 export default class Metronome extends Component {
   constructor(props) {
