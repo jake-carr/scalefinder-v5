@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, lazy } from 'react'
 import { connect } from 'react-redux'
 import { indexToString } from '../../constants/utils'
 import { scales, listScales } from '../../constants/scales'
 import { ThemeContext } from '../App'
-import Select from 'react-select'
+// import Select from 'react-select'
+const Select = lazy(() => import('react-select'))
+
 import ReactTooltip from 'react-tooltip'
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
