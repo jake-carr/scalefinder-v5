@@ -79,22 +79,14 @@ function Dropdown({
   const scaleNames = listScales()
 
   const displayValue = () => {
-    if (name === 'Root') {
-      return indexToString(val, sharps)
-    }
-    if (name === 'Degree Notation') {
-      return val
-    } else {
-      return scaleNames[val]
-    }
+    if (name === 'Root') return indexToString(val, sharps)
+    else if (name === 'Degree Notation') return val
+    else return scaleNames[val]
   }
 
   const handleSelect = (e) => {
-    if (name === 'Degree Notation') {
-      action(options[e.value])
-    } else {
-      action(e.value)
-    }
+    if (name === 'Degree Notation') action(options[e.value])
+    else action(e.value)
     changeSelection(e.label)
   }
 
@@ -103,33 +95,22 @@ function Dropdown({
   }, [selection])
 
   useEffect(() => {
-    if (name === 'Root') {
-      changeSelection(indexToString(val, sharps))
-    } else if (name === 'Degree Notation') {
-      changeSelection(val)
-    } else {
-      changeSelection(scaleNames[val])
-    }
+    if (name === 'Root') changeSelection(indexToString(val, sharps))
+    else if (name === 'Degree Notation') changeSelection(val)
+    else changeSelection(scaleNames[val])
   }, [val])
 
   const setWidth = () => {
-    if (name === 'Root') {
-      return 'w-20'
-    } else if (name === 'Degree Notation') {
-      return 'w-48'
-    } else {
-      return 'w-56'
-    }
+    if (name === 'Root') return 'w-20'
+    else if (name === 'Degree Notation') return 'w-48'
+    else return 'w-56'
   }
 
-  const multiline = (str) => {
+  const multiline = (infoString) => {
+    infoString = infoString.split(' ')
     // Add break tags to long info strings for use with React-tooltip
-    str = str.split(' ')
-    const len = str.length
-    for (let i = 1; i < len; i += 4) {
-      str[i] += `<br />`
-    }
-    return str.join(' ')
+    for (let i = 1; i < infoString.length; i += 4) infoString[i] += `<br />`
+    return infoString.join(' ')
   }
 
   return (
