@@ -12,6 +12,7 @@ function Dropdown({
   scaleIndex,
   infoModal,
   options,
+  mobile,
   action,
   sharps,
   toggle,
@@ -121,7 +122,7 @@ function Dropdown({
         className={`relative flex flex-row h-0 ${
           name === 'Degree Notation' ? 'text-xs top-11' : 'text-sm bottom-5'
         }  `}>
-        <label htmlFor={name}>{name.toUpperCase()}</label>
+        {!mobile ? <label htmlFor={name}>{name.toUpperCase()}</label> : null}
         {name === 'Scale' ? (
           <>
             <a

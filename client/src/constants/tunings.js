@@ -49,6 +49,14 @@ export const tunings = [
     values: [5, 0, 8, 5, 0, 5],
   },
   {
+    name: 'Standard (Banjo)',
+    values: [5, 2, 10, 5, 10],
+  },
+  {
+    name: 'Standard (Bass)',
+    values: [10, 5, 0, 7],
+  },
+  {
     name: 'Standard (7 String)',
     values: [7, 2, 10, 5, 0, 7, 2],
   },
@@ -56,6 +64,4 @@ export const tunings = [
     name: 'Standard (8 String)',
     values: [7, 2, 10, 5, 0, 7, 2, 9],
   },
-  { name: 'Standard (Banjo)', values: [5, 2, 10, 5, 10] },
-  { name: 'Standard (Bass)', values: [10, 5, 0, 7] },
 ]

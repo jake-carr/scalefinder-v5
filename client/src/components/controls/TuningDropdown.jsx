@@ -6,14 +6,17 @@ const Select = lazy(() => import('react-select'))
 
 export default connect(mapStateToProps, mapDispatchToProps)(TuningDropdown)
 
-function TuningDropdown({ tuning, set }) {
+function TuningDropdown({ tuning, set, mobile }) {
   const [open, toggleOpen] = useState(false)
   const [selection, changeSelection] = useState('')
   const scheme = useContext(ThemeContext) // Theme keyword reserved for react-select
 
-  const tuningOptions = tunings.map((option) => {
+  let tuningOptions = tunings.map((option) => {
     return { value: option.values, label: option.name }
   })
+
+  // Remove 8-string standard option on mobile since layout is max 7 strings
+  if (mobile) tuningOptions.pop()
 
   const handleSelectPresetTuning = (event) => {
     let values = []
@@ -21,7 +24,7 @@ function TuningDropdown({ tuning, set }) {
       values.push(option.value)
     }
     let index = values.indexOf(event.value)
-    set('tuning', values[index]) // set('tuning')
+    set('tuning', values[index])
   }
 
   const createTheme = (theme) => {

@@ -82,7 +82,7 @@ function MobileSettings({
       className="w-full text-base h-1/3 relative duration-300 flex flex-col flex-nowrap justify-around pt-4"
       style={{ color: theme.text, backgroundColor: theme.bg1 }}>
       <div className="flex flex-row flex-nowrap justify-center">
-        <TuningDropdown />
+        <TuningDropdown mobile={true} />
         <button
           title="Randomize root and scale."
           onClick={() => randomize()}
@@ -150,6 +150,7 @@ function MobileSettings({
             action={selectDegreeNotation}
             val={degreeNotation}
             name={'Degree Notation'}
+            mobile={true}
           />
         ) : null}
       </div>
