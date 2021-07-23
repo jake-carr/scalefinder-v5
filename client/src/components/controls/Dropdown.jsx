@@ -79,8 +79,8 @@ function Dropdown({
   const opts = mapOptions()
   const scaleNames = listScales()
 
-  const displayValue = () => {
-    if (name === 'Root') return indexToString(val, sharps)
+  const displayValue = (isSharps) => {
+    if (name === 'Root') return indexToString(val, isSharps)
     else if (name === 'Degree Notation') return val
     else return scaleNames[val]
   }
@@ -169,8 +169,8 @@ function Dropdown({
         onChange={(e) => handleSelect(e)}
         options={opts}
         value={{
-          value: displayValue(),
-          label: selection,
+          value: selection,
+          label: displayValue(sharps),
         }}
       />
     </div>
