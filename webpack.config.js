@@ -1,13 +1,12 @@
 const path = require('path')
 
 module.exports = {
-  // entry: ['babel-polyfill', './client/src/index.jsx'],
   entry: {
     babel: 'babel-polyfill',
     desktop: './client/src/layouts/desktop/index.jsx',
     mobile: './client/src/layouts/mobile/index.jsx',
   },
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -24,7 +23,6 @@ module.exports = {
     extensions: ['.jsx', '.js'],
   },
   output: {
-    // filename: 'bundle.js',
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'client/dist'),
   },
