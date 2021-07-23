@@ -137,10 +137,7 @@ function Settings({
           <Checkbox />
         </div>
       </div>
-      <div
-        className={`h-full ${
-          chordModal ? 'w-2/3 ' : 'w-1/2'
-        } flex flex-col justify-around duration-300`}>
+      <div className="h-full w-1/2 flex flex-col justify-around duration-300">
         <div className="pt-4 flex flex-row flex-nowrap justify-center">
           <TuningDropdown />
           <button
@@ -254,7 +251,7 @@ function Settings({
           />
         </div>
       </div>
-      <div className={`h-full ${chordModal ? 'w-1/3' : 'w-1/6'} duration-300`}>
+      <div className="h-full w-1/3 duration-300">
         <ChordModal />
       </div>
     </main>

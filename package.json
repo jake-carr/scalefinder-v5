@@ -8,7 +8,7 @@
     "build": "webpack -w",
     "start": "nodemon server",
     "prod": "webpack --mode production",
-    "watch": "cross-env NODE_ENV=development postcss client/src/tailwind.css -o client/dist/tailwinds.css --watch",
+    "watch:css": "cross-env NODE_ENV=development postcss client/src/tailwind.css -o client/dist/tailwinds.css --watch",
     "prod:css": "cross-env NODE_ENV=production postcss client/src/tailwind.css -o client/dist/tailwinds.css"
   },
   "keywords": [],
