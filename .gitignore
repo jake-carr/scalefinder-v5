@@ -11,7 +11,3 @@ client_src*
 vendors*
 
 package-lock.json
-
-styles/
-
-tailwind.css
