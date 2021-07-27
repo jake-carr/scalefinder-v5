@@ -10,13 +10,13 @@
   user-select: none; /* Standard */
 }
 
-#pause-symbol {
-  transform: rotate(90deg);
-}
-
 .tooltip {
   z-index: 1000 !important;
   opacity: 1 !important;
+}
+
+#pause-symbol {
+  transform: rotate(90deg);
 }
 
 button:hover,
